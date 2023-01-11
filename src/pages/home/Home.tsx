@@ -73,7 +73,7 @@ const HorizontalTabs = () => {
             <Box
                 sx={{
                     backgroundImage: `url(${House})`,
-                    pt: 8,
+                    pt: 7,
                     pb: 6,
                     backgroundPosition: 'top'
 
