@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, TextField, Box, Button, IconButton, Typography } from '@mui/material';
-import { Link,useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 // import image
 import Real from '../assets/buildingssss.jpg';
@@ -28,9 +28,9 @@ const App = () => {
       >
       </Grid>
       <Grid item md={4} sx={{ textAlign: "center", alignItems: "center" }}>
-        <Box sx={{ pt: 5, color: "#3B81F1", fontWeight: "bold", fontSize: 22 }}> Welcome to</Box>
-        <img src={Logo} width="180" />
-        <Grid container spacing={3} sx={{ pt: 5, pl: 10, pr: 10, color: "white" }}>
+        {/* <Box sx={{ pt: 5, color: "#fffeca", fontWeight: "bold", fontSize: 20, fontFamily: "Times New Roman" }}> Welcome to</Box> */}
+        <img src={Logo} width="150" style={{ paddingTop: 50 }} />
+        <Grid container spacing={3} sx={{ pt: 5, pl: 15, pr: 15, color: "white" }}>
           <Grid item md={12} >
             <TextField
               sx={{ input: { color: '#3B81F1' } }}
@@ -48,7 +48,7 @@ const App = () => {
             />
           </Grid>
           <Grid item md={12}>
-            <Button onClick={()=> navigate("/dashboard")} variant="contained" size="medium" sx={{ paddingInline: 7, paddingBlock: 1, borderRadius: 10, mt: 4 }}>
+            <Button onClick={() => navigate("/dashboard")} variant="contained" size="medium" sx={{ paddingInline: 7, paddingBlock: 1, borderRadius: 10, mt: 4, bgcolor: "#fffeca", color: "black" }}>
               Sign in
             </Button>
             <Box sx={{ pt: 3 }}>or continue with </Box>
