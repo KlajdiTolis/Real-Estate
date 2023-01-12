@@ -62,7 +62,7 @@ function CustomizedDialogs() {
 
     return (
         <div>
-            <Button variant="contained" onClick={handleClickOpen}>
+            <Button sx={{ bgcolor: "#fffeca" ,color: "black" }} variant="contained" onClick={handleClickOpen}>
                 View
             </Button>
             <BootstrapDialog
@@ -71,7 +71,7 @@ function CustomizedDialogs() {
                 open={open}
             >
                 <DialogContent dividers>
-                   <Carusel />
+                    <Carusel />
                 </DialogContent>
                 {/* <DialogActions>
                     <Button autoFocus onClick={handleClose}>
