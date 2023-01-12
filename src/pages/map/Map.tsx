@@ -44,7 +44,7 @@ function Map() {
             type="search" id="search" placeholder="Search..." required onChange={(e) => setSearch(e.target.value)} value={search} />
         </Autocomplete> */}
         {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}
-        <GoogleMap zoom={13} center={center} mapContainerStyle={{ width: "100%", height: "80vh" }}
+        <GoogleMap zoom={13} center={center} mapContainerStyle={{ width: "100%", height: "80vh",borderTopLeftRadius:40}}
           options={{
             fullscreenControl: false,
             streetViewControl: false,

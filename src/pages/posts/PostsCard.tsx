@@ -35,7 +35,7 @@ import Pagination from '../../layout/Pagination';
 //     );
 // }
 
-const cards = [1, 2,];
+const cards = [1, 2, 3, 4];
 
 const theme = createTheme();
 
@@ -57,7 +57,7 @@ const Home = () => {
                 {/* End hero unit */}
                 <Grid container spacing={4}>
                     {cards.map((card) => (
-                        <Grid item key={card} xs={12} sm={6} md={12}>
+                        <Grid item key={card} xs={12} sm={6} md={6}>
                             <Card
                                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                             >
@@ -81,7 +81,7 @@ const Home = () => {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    {/* <Button size="small"><ViewDialog /></Button> */}
+                                    <Button size="small"><ViewDialog /></Button>
                                     {/* <Link to='edit'><EditPost /></Link> */}
 
                                 </CardActions>

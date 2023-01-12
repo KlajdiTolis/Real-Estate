@@ -10,10 +10,12 @@ import Link from '@mui/material/Link';
 import Posts from "../posts/PostsCard"
 import Map from "../map/Map"
 import Loan from './Loan';
+import HomeCarousel from './HomeCarousel';
 
 //import Image
 import House from "../../assets/realEstatebgImage.webp"
 import Logo from "../../assets/real-estate-logo.png"
+import { borderRadius } from '@mui/system';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -73,10 +75,11 @@ const HorizontalTabs = () => {
             <Box
                 sx={{
                     backgroundImage: `url(${House})`,
-                    pt: 7,
-                    pb: 6,
-                    backgroundPosition: 'top'
-
+                    pt: 2,
+                    pb: 12,
+                    backgroundPosition: 'top',
+                    borderBottomLeftRadius: 110,
+                    borderBottomRightRadius: 110
                 }}
             >
                 <Container>
@@ -94,17 +97,13 @@ const HorizontalTabs = () => {
                         Let's Work Together
                     </Typography>
                     <Box sx={{ textAlign: "center", pb: 5 }}>
-                        <input style={{ width: 300, height: 43, backgroundColor: "white", borderRadius: 10, paddingLeft: 35, backgroundImage: `url(${"https://static.thenounproject.com/png/101791-200.png"})`, backgroundSize: "30px", backgroundRepeat: "no-repeat" }}
+                        <input style={{ width: 350, height: 50, backgroundColor: "white", borderRadius: 10, paddingLeft: 25, opacity: "80%" }}
                             type="search" id="search" placeholder="Search..." required />
                     </Box>
                 </Container>
             </Box>
             <Grid container>
-                <Grid container>
-                    <Grid item md={12} xs={12}>
-                    </Grid>
-                </Grid>
-                <Grid item md={5} xs={12}>
+                <Grid item md={5.5} xs={12}>
                     <Box sx={{ paddingInline: 5, pt: 5 }}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" >
@@ -120,8 +119,27 @@ const HorizontalTabs = () => {
                         </TabPanel>
                     </Box>
                 </Grid>
-                <Grid item md={7} xs={11} >
+                <Grid item md={6.5} xs={11} >
                     <Map />
+                </Grid>
+            </Grid>
+            <Box sx={{ pt: 14 }}>
+            </Box>
+            <Grid container>
+                <Grid item md={4} xs={12}>
+                    <Box sx={{ textAlign: "center", pt: 5, pl: 8, pr: 8 }}>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </Box>
+                </Grid>
+                <Grid item md={4} xs={12}>
+                    <Box sx={{ textAlign: "center" }}>
+                        <HomeCarousel />
+                    </Box>
+                </Grid>
+                <Grid item md={4} xs={12}>
+                    <Box sx={{ textAlign: "center", pt: 5, pl: 8, pr: 8 }}>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </Box>
                 </Grid>
             </Grid>
             {/* Footer */}
