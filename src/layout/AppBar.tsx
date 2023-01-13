@@ -13,11 +13,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Grid } from '@mui/material'
-import { useNavigate,Outlet,Link } from 'react-router-dom';
+import { useNavigate, Outlet, Link } from 'react-router-dom';
 
 //import logo
 import Logo from '../assets/real-estate-logo.png'
 import Layout from './Layout';
+import Logo1 from "../assets/KT.png"
+import Logo123 from "../assets/logo123.png"
 
 const pages = ['Home', 'Pricing', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -44,10 +46,10 @@ const ApppBar = () => {
     };
 
     return (
-        <AppBar position="sticky" sx={{ bgcolor: "#a9baad" }} >
+        <AppBar position="sticky" sx={{ bgcolor: "#1c324f" }} >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <img src={Logo} alt="sdasd" width={60} height={60} />
+                    <img src={Logo123} alt="sdasd" width={60} height={60} />
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -103,7 +105,7 @@ const ApppBar = () => {
                     >
                         TITLE
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, textAlign: "center" }}>
                         {/* {pages.map((page) => (
                             <Button
                                 key={page}

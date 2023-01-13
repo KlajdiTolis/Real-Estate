@@ -12,15 +12,15 @@ import Typography from '@mui/material/Typography';
 const Loan = () => {
     return (
         <Grid container>
-            <Grid item md={6} display={{ xs: "none", lg: "block" }} sx={{ p: 5 }}>
-                <img src={LoanImg} alt="loan" width={800} height={500} style={{ borderBottomRightRadius: 90, borderTopRightRadius: 20 }} />
-            </Grid>
-            <Grid item xs={false} md={6} display={{ xs: "none", lg: "block" }} sx={{ position: "relative", textAlign: "center", top: 200 }}>
-                <Typography sx={{ fontSize: 22, pb: 3, fontWeight: "bold" }}>Need a home loan? Get pre-approved</Typography>
-                <Typography sx={{ pb: 3 }}>Find a lender who can offer competitive mortgage rates and help you with pre-approval.</Typography>
-                <Button>
-                    Contact us
+            <Grid item xs={false} md={6} display={{ lg: "block" }} sx={{ position: "relative", textAlign: "center", top: 200 }}>
+                <Typography sx={{ fontSize: 22, pb: 3, fontWeight: "bold", fontFamily: "monospace", textShadow: "1px 0px #000000" }}>Need a home loan? Get pre-approved</Typography>
+                <Typography sx={{ pb: 3, fontFamily: "monospace" }}>Find a lender who can offer competitive mortgage rates and help you with pre-approval.</Typography>
+                <Button variant="contained" sx={{ fontSize: 18, paddingBlock: 1, borderRadius: 3, mt: 2, mb: 4, boxShadow: 5, bgcolor: "#fffeca", color: "black", fontFamily: "monospace", fontWeight: "bold" }}>
+                    Contact drejtorin
                 </Button>
+            </Grid>
+            <Grid item md={6} display={{ xs: "none", lg: "block" }} sx={{ p: 5, }}>
+                <img src={LoanImg} alt="loan" width={800} height={500} style={{ borderRadius: 100, boxShadow: "1px 2px #000000" }} />
             </Grid>
         </Grid>
     );
