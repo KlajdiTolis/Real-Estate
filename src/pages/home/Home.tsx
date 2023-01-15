@@ -30,26 +30,13 @@ interface TabPanelProps {
   value: number;
 }
 
-const HorizontalTabs = () => {
-  const Copyright = () => {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="https://mui.com/">
-          Your Website
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  };
-
+const Home = () => {
   return (
     <Box>
       <Box
         sx={{
           backgroundImage: `url(${House})`,
-          pt: 2,
+          pt: 5,
           pb: 10,
           backgroundPosition: "top",
           borderBottomLeftRadius: 210,
@@ -76,7 +63,7 @@ const HorizontalTabs = () => {
           >
             Let's Work Together
           </Typography>
-          <Box sx={{ textAlign: "center", pb: 5 }}>
+          {/* <Box sx={{ textAlign: "center", pb: 5 }}>
             <input
               style={{
                 width: 350,
@@ -92,15 +79,15 @@ const HorizontalTabs = () => {
               placeholder="Search..."
               required
             />
-          </Box>
+          </Box> */}
         </Container>
       </Box>
       <Grid
         container
         spacing={3}
         sx={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(255, 0, 0, 0), #fefff2)",
+          // backgroundImage:
+          //   "linear-gradient(to right, rgba(255, 0, 0, 0), #fefff2)",
           pt: 12,
         }}
       >
@@ -149,4 +136,4 @@ const HorizontalTabs = () => {
     </Box>
   );
 };
-export default HorizontalTabs;
+export default Home;
