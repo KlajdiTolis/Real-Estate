@@ -1,61 +1,112 @@
-import React, { useEffect, useState } from 'react';
-import { Grid, TextField, Box, Button, IconButton, Typography } from '@mui/material';
-import { Link, useNavigate } from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import {
+  Grid,
+  TextField,
+  Box,
+  Button,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 
 // import image
-import Real from '../assets/buildingssss.jpg';
-import Logo from '../assets/real-estate-logo.png';
-import Logo1 from "../assets/KT.png"
-import Logo123 from "../assets/logo123.png"
-import Real2 from '../assets/real-estate2.jpg'
-import GoogleIcon from '@mui/icons-material/Google';
-import sds from '../assets/real-estate-business-building-technology.webp'
+import Real from "../assets/buildingssss.jpg";
+import Logo from "../assets/real-estate-logo.png";
+import Logo1 from "../assets/KT.png";
+import Logo123 from "../assets/logo123.png";
+import LogoBW from "../assets/logoBW.png";
+import Real2 from "../assets/real-estate2.jpg";
+import GoogleIcon from "@mui/icons-material/Google";
+import sds from "../assets/real-estate-business-building-technology.webp";
 
 const App = () => {
-
   const navigate = useNavigate();
 
   return (
-    <Grid container sx={{ height: '100vh', backgroundImage: "linear-gradient(to bottom, #a1a383, #333232)" }}>
-      <Grid item
+    <Grid
+      container
+      sx={{
+        height: "100vh",
+        backgroundImage: "linear-gradient(to bottom, #a1a383, #333232)",
+      }}
+    >
+      <Grid
+        item
         xs={false}
         sm={4}
         md={8}
         sx={{
           backgroundImage: `url(${Real2})`,
-          backgroundSize: 'cover',
+          backgroundSize: "cover",
           borderBottomRightRadius: 800,
-          backgroundPosition: 'center',
-          boxShadow: 20
+          backgroundPosition: "center",
+          boxShadow: 20,
         }}
-      >
-      </Grid>
+      ></Grid>
       <Grid item md={4} sx={{ textAlign: "center", alignItems: "center" }}>
-        <Box sx={{ pt: 5, color: "black", fontWeight: "bold", fontSize: 20, fontFamily: "monospace" }}> Welcome to</Box>
-        <img src={Logo123} width="150" style={{ paddingTop: 20, }} />
-        <Grid container spacing={3} sx={{ pt: 5, pl: 15, pr: 15, color: "white" }}>
-          <Grid item md={12} >
+        <Box
+          sx={{
+            pt: 5,
+            color: "black",
+            fontWeight: "bold",
+            fontSize: 20,
+            fontFamily: "monospace",
+          }}
+        >
+          {" "}
+          Welcome to
+        </Box>
+        <img src={LogoBW} width="150" style={{ paddingTop: 20 }} />
+        <Grid
+          container
+          spacing={3}
+          sx={{ pt: 5, pl: 15, pr: 15, color: "white" }}
+        >
+          <Grid item md={12}>
             <TextField
-              sx={{ input: { color: 'black' }, boxShadow: 1 }}
+              sx={{ input: { color: "black" }, boxShadow: 1 }}
               fullWidth
               label="Name"
-              placeholder='Name'
+              placeholder="Name"
             />
           </Grid>
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: '#black' }, boxShadow: 1 }}
+              sx={{ input: { color: "#black" }, boxShadow: 1 }}
               fullWidth
               label="Password"
-              placeholder='Password'
+              placeholder="Password"
             />
           </Grid>
           <Grid item md={12}>
-            <Button onClick={() => navigate("/dashboard")} variant="contained" size="medium" sx={{ fontSize: 14, paddingInline: 3.0, paddingBlock: 1, borderRadius: 10, mt: 4, boxShadow: 5, bgcolor: "#fffeca", color: "black", fontFamily: "monospace", fontWeight: "bold" }}>
+            <Button
+              onClick={() => navigate("/dashboard")}
+              variant="contained"
+              size="medium"
+              sx={{
+                fontSize: 14,
+                paddingInline: 3,
+                paddingBlock: 1,
+                borderRadius: 10,
+                mt: 4,
+                boxShadow: 5,
+                bgcolor: "#fffeca",
+                color: "black",
+                fontFamily: "monospace",
+                fontWeight: "bold",
+              }}
+            >
               Sign in
             </Button>
             <Box sx={{ pt: 3, fontFamily: "monospace" }}>or continue with </Box>
-            <IconButton sx={{ margin: 2, color: "black", bgcolor: "#fffeca", boxShadow: 8 }} >
+            <IconButton
+              sx={{
+                margin: 2,
+                color: "black",
+                bgcolor: "#fffeca",
+                boxShadow: 8,
+              }}
+            >
               <GoogleIcon />
             </IconButton>
             <Typography sx={{ fontFamily: "monospace" }}>
@@ -66,6 +117,6 @@ const App = () => {
       </Grid>
     </Grid>
   );
-}
+};
 
 export default App;
