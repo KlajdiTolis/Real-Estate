@@ -42,7 +42,7 @@ const Loan = () => {
             paddingBlock: 1,
             borderRadius: 3,
             mt: 2,
-            mb: 4,
+            mb: 24,
             boxShadow: 5,
             bgcolor: "#fffeca",
             color: "black",
@@ -53,13 +53,19 @@ const Loan = () => {
           Contact drejtorin
         </Button>
       </Grid>
-      <Grid item md={6} xs={12} display={{ lg: "block" }} sx={{ p: 5 }}>
+      <Grid
+        item
+        md={6}
+        xs={12}
+        display={{ lg: "block" }}
+        sx={{ pt: 10, p: 10 }}
+      >
         <Box
           sx={{
             textAlign: "center",
             display: "flex",
             justifyContent: "center",
-            pt: 10,
+            boxShadow: 10,
           }}
         >
           <HomeCarousel />

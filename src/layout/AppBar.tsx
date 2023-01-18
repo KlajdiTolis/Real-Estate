@@ -47,7 +47,12 @@ const ApppBar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "#4d594a" }}>
+    <AppBar
+      position="static"
+      sx={{
+        backgroundImage: "linear-gradient(to right,#3e4d54, #476e5f , #3e4d54)",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img src={LogoBW} alt="sdasd" width={60} height={60} />

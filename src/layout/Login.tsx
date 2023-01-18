@@ -60,7 +60,7 @@ const App = () => {
         <Grid
           container
           spacing={3}
-          sx={{ pt: 5, pl: 15, pr: 15, color: "white" }}
+          sx={{ pt: 2, pl: 15, pr: 15, color: "white" }}
         >
           <Grid item md={12}>
             <TextField
@@ -88,7 +88,7 @@ const App = () => {
                 paddingInline: 3,
                 paddingBlock: 1,
                 borderRadius: 10,
-                mt: 4,
+                mt: 1,
                 boxShadow: 5,
                 bgcolor: "#fffeca",
                 color: "black",
@@ -98,10 +98,12 @@ const App = () => {
             >
               Sign in
             </Button>
-            <Box sx={{ pt: 3, fontFamily: "monospace" }}>or continue with </Box>
+            <Box sx={{ pt: 2, pb: 1, fontFamily: "monospace" }}>
+              or continue with{" "}
+            </Box>
             <IconButton
               sx={{
-                margin: 2,
+                p: 1,
                 color: "black",
                 bgcolor: "#fffeca",
                 boxShadow: 8,
@@ -109,7 +111,7 @@ const App = () => {
             >
               <GoogleIcon />
             </IconButton>
-            <Typography sx={{ fontFamily: "monospace" }}>
+            <Typography sx={{ fontFamily: "monospace", pt: 1 }}>
               Do not have any account?
             </Typography>
           </Grid>
