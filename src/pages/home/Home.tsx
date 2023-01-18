@@ -1,11 +1,8 @@
 import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 
 import Posts from "../posts/PostsCard";
 import Map from "../map/Map";
@@ -15,6 +12,7 @@ import CardBuy from "./CardBuy";
 import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
+import { useMediaQuery, Theme } from '@mui/material';
 
 //import Image
 import House from "../../assets/realEstatebgImage.webp";
@@ -22,7 +20,6 @@ import Logo from "../../assets/real-estate-logo.png";
 import Logo1 from "../../assets/KT.png";
 import Logo123 from "../../assets/logo123.png";
 import LogoBW from "../../assets/logoBW.png";
-import { LinearProgress } from "@mui/material";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,6 +28,7 @@ interface TabPanelProps {
 }
 
 const Home = () => {
+
   return (
     <Box>
       <Box
@@ -63,7 +61,7 @@ const Home = () => {
           >
             Let's Work Together
           </Typography>
-          {/* <Box sx={{ textAlign: "center", pb: 5 }}>
+          <Box sx={{ textAlign: "center", pb: 2 }}>
             <input
               style={{
                 width: 350,
@@ -79,7 +77,7 @@ const Home = () => {
               placeholder="Search..."
               required
             />
-          </Box> */}
+          </Box>
         </Container>
       </Box>
       <Grid

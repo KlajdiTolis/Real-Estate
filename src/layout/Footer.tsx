@@ -12,7 +12,7 @@ function Footer() {
         bgcolor: "#4d594a",
         color: "white",
         textAlign: "center",
-        height: "30vh",
+        height: "20vh",
       }}
     >
       <Typography variant="h6" align="center" gutterBottom>

@@ -111,7 +111,7 @@ const App = () => {
             >
               <GoogleIcon />
             </IconButton>
-            <Typography sx={{ fontFamily: "monospace" }}>
+            <Typography sx={{ fontFamily: "monospace", pt: 1 }}>
               Do not have any account?
             </Typography>
           </Grid>

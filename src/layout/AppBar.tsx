@@ -50,7 +50,7 @@ const ApppBar = () => {
     <AppBar
       position="static"
       sx={{
-        backgroundImage: "linear-gradient(to right,#a1ab6f, #74b58e , #a1ab6f)",
+        backgroundImage: "linear-gradient(to right,#3e4d54, #476e5f , #3e4d54)",
       }}
     >
       <Container maxWidth="xl">
