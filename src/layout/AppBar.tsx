@@ -50,7 +50,7 @@ const ApppBar = () => {
     <AppBar
       position="static"
       sx={{
-        backgroundImage: "linear-gradient(to right,#3e4d54, #476e5f , #3e4d54)",
+        backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
       }}
     >
       <Container maxWidth="xl">
@@ -130,7 +130,7 @@ const ApppBar = () => {
             <Layout />
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -158,7 +158,7 @@ const ApppBar = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

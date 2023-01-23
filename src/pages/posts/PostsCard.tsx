@@ -53,7 +53,7 @@ const Home = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container sx={{ py: 4 }} maxWidth="md">
+            <Container sx={{ py: 4, pt: 10 }} maxWidth="md">
                 {/* End hero unit */}
                 <Grid container spacing={4}>
                     {cards.map((card) => (

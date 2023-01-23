@@ -23,6 +23,7 @@ const center1 = {
 function Map() {
 
   const [map, setMap] = useState(/** @type google.maps.Map */(null))
+  const [search,setSearch] = useState("")
   const [selectedMarker, SetSelectedMarker] = useState("")
 
   const { isLoaded } = useLoadScript({
@@ -38,13 +39,13 @@ function Map() {
 
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
-      <Box sx={{ width: "100%", height: "100vh", pt: 15, pl: 5, pb: 5 }}>
-        {/* <Autocomplete>
+      <Box sx={{ width: "100%", height: "100vh", pt: 10, pl: 5, pb: 5 }}>
+        <Autocomplete>
           <input style={{ width: 300, height: 40, backgroundColor: "white", borderRadius: 10, paddingLeft: 35, backgroundImage: `url(${"https://static.thenounproject.com/png/101791-200.png"})`, backgroundSize: "30px", backgroundRepeat: "no-repeat" }}
             type="search" id="search" placeholder="Search..." required onChange={(e) => setSearch(e.target.value)} value={search} />
-        </Autocomplete> */}
-        {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}
-        <GoogleMap zoom={13} center={center} mapContainerStyle={{ width: "100%", height: "80vh",borderTopLeftRadius:40}}
+        </Autocomplete>
+        <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button>
+        <GoogleMap zoom={13} center={center} mapContainerStyle={{ width: "100%", height: "80vh", borderRadius: 30 }}
           options={{
             fullscreenControl: false,
             streetViewControl: false,

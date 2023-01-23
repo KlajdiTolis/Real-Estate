@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 import Posts from "../posts/PostsCard";
-import Map from "../map/Map";
+import Map from "../map/MapSell";
 import Loan from "./Loan";
 import HomeCarousel from "./HomeCarousel";
 import CardBuy from "./CardBuy";
@@ -18,7 +18,8 @@ import { useMediaQuery, Theme } from '@mui/material';
 import House from "../../assets/realEstatebgImage.webp";
 import Logo from "../../assets/real-estate-logo.png";
 import Logo1 from "../../assets/KT.png";
-import Logo123 from "../../assets/logo123.png";
+import Bg from "../../assets/background.webp";
+import BackG from "../../assets/bg.webp";
 import LogoBW from "../../assets/logoBW.png";
 
 interface TabPanelProps {
@@ -37,8 +38,9 @@ const Home = () => {
           pt: 5,
           pb: 10,
           backgroundPosition: "top",
-          borderBottomLeftRadius: 210,
-          // borderBottomRightRadius: 210,
+          // borderBottomLeftRadius: 210,
+          // borderBottomRightRadius: 210,    
+        // backgroundRepeat:"no-repeat",
           boxShadow: 10,
         }}
       >
@@ -87,6 +89,7 @@ const Home = () => {
           // backgroundImage:
           //   "linear-gradient(to right, rgba(255, 0, 0, 0), #fefff2)",
           pt: 12,
+          paddingInline:40
         }}
       >
         <Grid
