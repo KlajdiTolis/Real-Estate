@@ -1,10 +1,23 @@
+import { Grid } from '@mui/material';
 import React from 'react'
 import ApppBar from '../../layout/AppBar'
+import Map from '../map/MapSell';
+import Post from "../posts/PostsCard";
 
-function sell() {
+function Sell() {
   return (
-    <div><ApppBar /></div>
+    <>
+      <ApppBar />
+      <Grid container>
+        <Grid item xs={12} md={6}>
+        <Map />
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <Post />
+        </Grid>
+      </Grid>
+    </>
   )
 }
 
-export default sell
+export default Sell;

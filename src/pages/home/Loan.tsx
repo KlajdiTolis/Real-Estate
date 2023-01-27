@@ -44,10 +44,11 @@ const Loan = () => {
             mt: 2,
             mb: 24,
             boxShadow: 5,
-            bgcolor: "#fffeca",
-            color: "black",
+            bgcolor: "#5a6360",
+            color: "white",
             fontFamily: "monospace",
             fontWeight: "bold",
+            textShadow: "3px 2px #000000"
           }}
         >
           Contact drejtorin
