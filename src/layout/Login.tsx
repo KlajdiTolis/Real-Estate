@@ -27,7 +27,7 @@ const App = () => {
       container
       sx={{
         height: "100vh",
-        backgroundImage: "linear-gradient(to bottom, #a1a383, #333232)",
+        backgroundImage: "linear-gradient(to top,#4a524f, #2c302f , #8c8f8e)",
       }}
     >
       <Grid

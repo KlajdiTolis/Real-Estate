@@ -9,7 +9,7 @@ function Footer() {
         left: 0,
         bottom: 0,
         width: "100%",
-        bgcolor: "#4d594a",
+        backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
         color: "white",
         textAlign: "center",
         height: "20vh",

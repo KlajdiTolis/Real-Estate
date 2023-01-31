@@ -48,7 +48,7 @@ const ApppBar = () => {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
         backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
       }}

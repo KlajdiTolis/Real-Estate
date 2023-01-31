@@ -87,9 +87,10 @@ const Home = () => {
         spacing={3}
         sx={{
           // backgroundImage:
-          //   "linear-gradient(to right, rgba(255, 0, 0, 0), #fefff2)",
+          //   "linear-gradient(to right, rgba(255, 0, 0, 0 ), #fefff2)",
           pt: 12,
           paddingInline:40
+
         }}
       >
         <Grid
