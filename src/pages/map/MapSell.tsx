@@ -50,10 +50,10 @@ const Map = () => {
   return (
     <Box sx={{ display: "flex", height: "100vh", }}>
       <Grid container>
-        <Grid item xs={6} md={12}>
+        <Grid item xs={12} md={12}>
           <Box>Filters</Box>
         </Grid>
-        <Grid item xs={6} md={12}>
+        <Grid item xs={12} md={12}>
           <Box sx={{ width: "100%", height: "100vh", pt: 10 }}>
             {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}
             <GoogleMap zoom={13} center={center} mapContainerStyle={{ width: "100%", height: "80vh", }}
