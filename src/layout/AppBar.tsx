@@ -21,6 +21,7 @@ import Layout from "./Layout";
 import Logo1 from "../assets/KT.png";
 import Logo123 from "../assets/logo123.png";
 import LogoBW from "../assets/logoBW.png";
+import BGremoveLogo from "../assets/buildings-removebg-preview.png"
 
 const pages = ["Home", "Pricing", "About"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -50,12 +51,13 @@ const ApppBar = () => {
     <AppBar
       position="sticky"
       sx={{
-        backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
+        // backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
+        bgcolor: "#222222"
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={LogoBW} alt="sdasd" width={60} height={60} />
+          <img src={BGremoveLogo} alt="sdasd" width={60} height={60} />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"

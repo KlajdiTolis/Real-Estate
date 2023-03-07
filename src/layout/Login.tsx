@@ -10,11 +10,6 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 // import image
-import Real from "../assets/buildingssss.jpg";
-import Logo from "../assets/real-estate-logo.png";
-import Logo1 from "../assets/KT.png";
-import Logo123 from "../assets/logo123.png";
-import LogoBW from "../assets/logoBW.png";
 import Real2 from "../assets/real-estate2.jpg";
 import GoogleIcon from "@mui/icons-material/Google";
 import BGremoveLogo from "../assets/buildings-removebg-preview.png"
@@ -105,9 +100,6 @@ const App = () => {
             >
               Sign in
             </Button>
-            {/* <Box sx={{ pt: 2, pb: 1, fontFamily: "monospace" }}>
-              or continue with{" "}
-            </Box> */}
             <Box sx={{ pt: 4 }}>
               <IconButton
                 sx={{
