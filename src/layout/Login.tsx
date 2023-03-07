@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Real2 from "../assets/real-estate2.jpg";
 import GoogleIcon from "@mui/icons-material/Google";
 import BGremoveLogo from "../assets/buildings-removebg-preview.png"
-import BgLogin from "../assets/whiteBg.jpg"
+import BgLogin from "../assets/whitebg2.jpg"
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import shadows from "@mui/material/styles/shadows";

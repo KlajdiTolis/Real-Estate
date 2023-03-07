@@ -16,11 +16,6 @@ import { useMediaQuery, Theme } from '@mui/material';
 
 //import Image
 import House from "../../assets/realEstatebgImage.webp";
-import Logo from "../../assets/real-estate-logo.png";
-import Logo1 from "../../assets/KT.png";
-import Bg from "../../assets/background.webp";
-import BackG from "../../assets/bg.webp";
-import LogoBW from "../../assets/logoBW.png";
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png"
 
 interface TabPanelProps {
