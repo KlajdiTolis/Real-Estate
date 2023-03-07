@@ -21,6 +21,7 @@ import Logo1 from "../../assets/KT.png";
 import Bg from "../../assets/background.webp";
 import BackG from "../../assets/bg.webp";
 import LogoBW from "../../assets/logoBW.png";
+import BGremoveLogo from "../../assets/buildings-removebg-preview.png"
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -37,16 +38,15 @@ const Home = () => {
           backgroundImage: `url(${House})`,
           pt: 5,
           pb: 10,
-          backgroundPosition: "top",
-          // borderBottomLeftRadius: 210,
-          // borderBottomRightRadius: 210,    
-        // backgroundRepeat:"no-repeat",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           boxShadow: 10,
         }}
       >
         <Container>
           <Box sx={{ textAlign: "center" }}>
-            <img src={LogoBW} width={150} height={150} />
+            <img src={BGremoveLogo} width={150} height={150} />
           </Box>
           <Typography
             component="h1"
@@ -87,9 +87,10 @@ const Home = () => {
         spacing={3}
         sx={{
           // backgroundImage:
-          //   "linear-gradient(to right, rgba(255, 0, 0, 0), #fefff2)",
+          //   "linear-gradient(to right, rgba(255, 0, 0, 0 ), #fefff2)",
           pt: 12,
-          paddingInline:40
+          paddingInline: 40
+
         }}
       >
         <Grid

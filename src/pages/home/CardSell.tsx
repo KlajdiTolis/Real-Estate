@@ -32,7 +32,7 @@ export default function MultiActionAreaCard() {
                 </CardContent>
             </CardActionArea>
             <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-                <Button onClick={() => { navigate("/sell") }} size="small" variant="contained" color="primary" sx={{ fontSize: 14, paddingBlock: 1, borderRadius: 10, mt: 1, mb: 4, boxShadow: 5, bgcolor: "#5a6360", color: "white", textShadow: "2px 1px #000000", fontFamily: "monospace", fontWeight: "bold" }}>
+                <Button onClick={() => { navigate("/sell") }} size="small" variant="contained" color="primary" sx={{ fontSize: 14, paddingBlock: 1, borderRadius: 10, mt: 1, mb: 4, boxShadow: 5, bgcolor: "#558381", color: "white", textShadow: "2px 1px #000000", fontFamily: "monospace", fontWeight: "bold" }}>
                     Sell
                 </Button>
             </CardActions>
