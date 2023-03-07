@@ -17,66 +17,73 @@ import Logo123 from "../assets/logo123.png";
 import LogoBW from "../assets/logoBW.png";
 import Real2 from "../assets/real-estate2.jpg";
 import GoogleIcon from "@mui/icons-material/Google";
-import sds from "../assets/real-estate-business-building-technology.webp";
+import BGremoveLogo from "../assets/buildings-removebg-preview.png"
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 
 const App = () => {
   const navigate = useNavigate();
+
+  const [showHidePassword, setShowHidePassword] = useState<boolean>(true);
+
+  const handleShowHide = (e: any) => {
+    setShowHidePassword(!showHidePassword)
+  }
 
   return (
     <Grid
       container
       sx={{
         height: "100vh",
-        backgroundImage: "linear-gradient(to top,#4a524f, #2c302f , #8c8f8e)",
+        backgroundColor: "#222222"
       }}
     >
-      <Grid
-        item
-        xs={false}
-        sm={4}
-        md={8}
-        sx={{
-          backgroundImage: `url(${Real2})`,
-          backgroundSize: "cover",
-          borderBottomRightRadius: 800,
-          backgroundPosition: "center",
-          boxShadow: 20,
-        }}
-      ></Grid>
-      <Grid item md={4} sx={{ textAlign: "center", alignItems: "center" }}>
+      <Grid item md={3.5} xs={12} sx={{ textAlign: "center", alignItems: "center", justifyContent: "center" }}>
         <Box
           sx={{
-            pt: 5,
-            color: "black",
+            pt: 6,
+            color: "white",
             fontWeight: "bold",
             fontSize: 20,
             fontFamily: "monospace",
+            ml: -4
           }}
         >
-          {" "}
           Welcome to
         </Box>
-        <img src={LogoBW} width="150" style={{ paddingTop: 20 }} />
+        <img src={BGremoveLogo} width="150" style={{ paddingTop: 9, marginLeft: -35 }} />
         <Grid
           container
           spacing={3}
-          sx={{ pt: 2, pl: 15, pr: 15, color: "white" }}
+          sx={{ pt: 5, pl: 7, pr: 15, color: "white" }}
         >
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "black" }, boxShadow: 1 }}
+              sx={{ input: { color: "white" }, boxShadow: 1, }}
               fullWidth
+              color="success"
               label="Name"
               placeholder="Name"
+              variant="outlined"
             />
           </Grid>
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "#black" }, boxShadow: 1 }}
+              sx={{ input: { color: "white", }, boxShadow: 1, borderBottom: "white" }}
               fullWidth
+              color="success"
               label="Password"
               placeholder="Password"
+              variant="outlined"
+            // type={showHidePassword ? "password" : "text"}
             />
+            {showHidePassword ?
+              <Button onClick={handleShowHide} sx={{ position: "relative", ml: -8.5, mt: 1.2, color: "#558381" }}><VisibilityOutlinedIcon /></Button>
+              :
+              <Button onClick={handleShowHide} sx={{ position: "relative", ml: -8.5, mt: 1.2, color: "#558381" }}><VisibilityOffOutlinedIcon /></Button>}
+            <Box sx={{ display: "flex", justifyContent: "right", color: "", pt: 1 }}>
+              Forget Password
+            </Box>
           </Grid>
           <Grid item md={12}>
             <Button
@@ -90,7 +97,7 @@ const App = () => {
                 borderRadius: 10,
                 mt: 1,
                 boxShadow: 5,
-                bgcolor: "#fffeca",
+                bgcolor: "#558381",
                 color: "black",
                 fontFamily: "monospace",
                 fontWeight: "bold",
@@ -98,25 +105,40 @@ const App = () => {
             >
               Sign in
             </Button>
-            <Box sx={{ pt: 2, pb: 1, fontFamily: "monospace" }}>
+            {/* <Box sx={{ pt: 2, pb: 1, fontFamily: "monospace" }}>
               or continue with{" "}
+            </Box> */}
+            <Box sx={{ pt: 4 }}>
+              <IconButton
+                sx={{
+                  p: 1,
+                  color: "black",
+                  bgcolor: "gray",
+                  boxShadow: 8,
+                }}
+              >
+                <GoogleIcon />
+              </IconButton>
             </Box>
-            <IconButton
-              sx={{
-                p: 1,
-                color: "black",
-                bgcolor: "#fffeca",
-                boxShadow: 8,
-              }}
-            >
-              <GoogleIcon />
-            </IconButton>
-            <Typography sx={{ fontFamily: "monospace", pt: 1 }}>
+            <Typography sx={{ fontFamily: "monospace", pt: 4 }}>
               Do not have any account?
             </Typography>
           </Grid>
         </Grid>
       </Grid>
+      <Grid
+        item
+        xs={false}
+        sm={4}
+        md={8.5}
+        sx={{
+          backgroundImage: `url(${Real2})`,
+          backgroundSize: "cover",
+          borderTopLeftRadius: 600,
+          backgroundPosition: "center",
+          boxShadow: 20,
+        }}
+      ></Grid>
     </Grid>
   );
 };
