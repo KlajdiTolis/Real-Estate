@@ -35,13 +35,12 @@ const Home = () => {
     <Box>
       <Box
         sx={{
-          // backgroundImage: `url(${House})`,
+          backgroundImage: `url(${House})`,
           pt: 5,
           pb: 10,
-          backgroundPosition: "top",
-          // borderBottomLeftRadius: 210,
-          // borderBottomRightRadius: 210,    
-        // backgroundRepeat:"no-repeat",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           boxShadow: 10,
         }}
       >
@@ -90,7 +89,7 @@ const Home = () => {
           // backgroundImage:
           //   "linear-gradient(to right, rgba(255, 0, 0, 0 ), #fefff2)",
           pt: 12,
-          paddingInline:40
+          paddingInline: 40
 
         }}
       >

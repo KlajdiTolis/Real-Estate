@@ -13,8 +13,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Real2 from "../assets/real-estate2.jpg";
 import GoogleIcon from "@mui/icons-material/Google";
 import BGremoveLogo from "../assets/buildings-removebg-preview.png"
+import BgLogin from "../assets/whiteBg.jpg"
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import shadows from "@mui/material/styles/shadows";
 
 const App = () => {
   const navigate = useNavigate();
@@ -30,18 +32,21 @@ const App = () => {
       container
       sx={{
         height: "100vh",
-        backgroundColor: "#222222"
+        backgroundImage: `url(${BgLogin})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
       }}
     >
-      <Grid item md={3.5} xs={12} sx={{ textAlign: "center", alignItems: "center", justifyContent: "center" }}>
+      <Grid item md={3.5} xs={12} sx={{ textAlign: "center", alignItems: "center", justifyContent: "center", }}>
         <Box
           sx={{
             pt: 6,
-            color: "white",
+            color: "black",
             fontWeight: "bold",
             fontSize: 20,
             fontFamily: "monospace",
-            ml: -4
+            ml: -4,
+            textShadow: "0.5px 1px #000000",
           }}
         >
           Welcome to
@@ -50,11 +55,11 @@ const App = () => {
         <Grid
           container
           spacing={3}
-          sx={{ pt: 5, pl: 7, pr: 15, color: "white" }}
+          sx={{ pt: 5, pl: 7, pr: 15, color: "white", display: "flex", justifyContent: "center", }}
         >
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "white" }, boxShadow: 1, }}
+              sx={{ input: { color: "black" }, boxShadow: 1, }}
               fullWidth
               color="success"
               label="Name"
@@ -64,19 +69,19 @@ const App = () => {
           </Grid>
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "white", }, boxShadow: 1, borderBottom: "white" }}
+              sx={{ input: { color: "black", }, boxShadow: 1, borderBottom: "white" }}
               fullWidth
               color="success"
               label="Password"
               placeholder="Password"
               variant="outlined"
-            // type={showHidePassword ? "password" : "text"}
+              type={showHidePassword ? "password" : "text"}
             />
             {showHidePassword ?
               <Button onClick={handleShowHide} sx={{ position: "relative", ml: -8.5, mt: 1.2, color: "#558381" }}><VisibilityOutlinedIcon /></Button>
               :
               <Button onClick={handleShowHide} sx={{ position: "relative", ml: -8.5, mt: 1.2, color: "#558381" }}><VisibilityOffOutlinedIcon /></Button>}
-            <Box sx={{ display: "flex", justifyContent: "right", color: "", pt: 1 }}>
+            <Box sx={{ display: "flex", justifyContent: "right", color: "black", pt: 1, fontSize: 15, textShadow: "0.5px 0px #000000", }}>
               Forget Password
             </Box>
           </Grid>
@@ -112,7 +117,7 @@ const App = () => {
                 <GoogleIcon />
               </IconButton>
             </Box>
-            <Typography sx={{ fontFamily: "monospace", pt: 4 }}>
+            <Typography sx={{ fontFamily: "monospace", pt: 4, color: "black", fontWeight: "bold", textShadow: "0.5px 0px #000000", }}>
               Do not have any account?
             </Typography>
           </Grid>
