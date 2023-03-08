@@ -16,12 +16,9 @@ import { useMediaQuery, Theme } from '@mui/material';
 
 //import Image
 import House from "../../assets/realEstatebgImage.webp";
-import Logo from "../../assets/real-estate-logo.png";
-import Logo1 from "../../assets/KT.png";
-import Bg from "../../assets/background.webp";
-import BackG from "../../assets/bg.webp";
-import LogoBW from "../../assets/logoBW.png";
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png"
+import HomeBg from "../../assets/homeImage/homebg4.jpg"
+import BgLogin from "../../assets/whitebg2.jpg"
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -35,18 +32,19 @@ const Home = () => {
     <Box>
       <Box
         sx={{
-          backgroundImage: `url(${House})`,
+          backgroundImage: `url(${HomeBg})`,
           pt: 5,
           pb: 10,
-          backgroundPosition: "center",
+          backgroundPosition: "top",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           boxShadow: 10,
+          height: "45vh"
         }}
       >
         <Container>
           <Box sx={{ textAlign: "center" }}>
-            <img src={BGremoveLogo} width={150} height={150} />
+            <img src={BGremoveLogo} width={120} height={120} />
           </Box>
           <Typography
             component="h1"
@@ -55,15 +53,15 @@ const Home = () => {
             color="text.primary"
             gutterBottom
             sx={{
-              pb: 2,
               fontFamily: "monospace",
               textShadow: "3px 3px #000000",
               color: "white",
+              pb: 1,
             }}
           >
-            Let's Work Together
+            Find Your Dream House
           </Typography>
-          <Box sx={{ textAlign: "center", pb: 2 }}>
+          <Box sx={{ textAlign: "center" }}>
             <input
               style={{
                 width: 350,
@@ -71,7 +69,7 @@ const Home = () => {
                 backgroundColor: "white",
                 borderRadius: 10,
                 paddingLeft: 25,
-                opacity: "80%",
+                opacity: "60%",
                 fontFamily: "monospace",
               }}
               type="search"
@@ -84,40 +82,45 @@ const Home = () => {
       </Box>
       <Grid
         container
-        spacing={3}
         sx={{
-          // backgroundImage:
-          //   "linear-gradient(to right, rgba(255, 0, 0, 0 ), #fefff2)",
-          pt: 12,
-          paddingInline: 40
-
+          backgroundImage: `url(${BgLogin})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          pt: 8,
         }}
       >
         <Grid
-          item
-          md={4}
-          xs={12}
-          sx={{ display: "flex", justifyContent: "center" }}
+          container
+          spacing={3}
+          sx={{ paddingInline: 30 }}
         >
-          <CardBuy />
+          <Grid
+            item
+            md={4}
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <CardBuy />
+          </Grid>
+          <Grid
+            item
+            md={4}
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <CardSell />
+          </Grid>
+          <Grid
+            item
+            md={4}
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <CardRent />
+          </Grid>
         </Grid>
-        <Grid
-          item
-          md={4}
-          xs={12}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <CardSell />
-        </Grid>
-        <Grid
-          item
-          md={4}
-          xs={12}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <CardRent />
-        </Grid>
-        <Grid item md={12} sx={{ pt: 12 }}>
+
+        <Grid item md={12} sx={{ pt: 3, paddingInline: 10 }}>
           <Loan />
         </Grid>
         {/* <Grid item md={6} xs={12} sx={{pt:12}}>
@@ -131,7 +134,7 @@ const Home = () => {
                     </Box>
                 </Grid> */}
       </Grid>
-      <Box sx={{ pt: 10 }}></Box>
+      <Box sx={{ pt: 0, pb: 2 }}></Box>
       {/* Footer */}
       <Footer />
       {/* </ThemeProvider> */}

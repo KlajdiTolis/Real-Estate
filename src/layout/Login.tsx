@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Real2 from "../assets/real-estate2.jpg";
 import GoogleIcon from "@mui/icons-material/Google";
 import BGremoveLogo from "../assets/buildings-removebg-preview.png"
-import BgLogin from "../assets/whiteBg.jpg"
+import BgLogin from "../assets/whitebg2.jpg"
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import shadows from "@mui/material/styles/shadows";
@@ -59,7 +59,7 @@ const App = () => {
         >
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "black" }, boxShadow: 1, }}
+              sx={{ input: { color: "black" }, boxShadow: 1,}}
               fullWidth
               color="success"
               label="Name"
@@ -69,7 +69,7 @@ const App = () => {
           </Grid>
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "black", }, boxShadow: 1, borderBottom: "white" }}
+              sx={{ input: { color: "black" }, boxShadow: 1, }}
               fullWidth
               color="success"
               label="Password"

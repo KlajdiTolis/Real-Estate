@@ -52,7 +52,7 @@ const ApppBar = () => {
       position="sticky"
       sx={{
         // backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
-        bgcolor: "#222222"
+        bgcolor: "#474f4b"
       }}
     >
       <Container maxWidth="xl">
