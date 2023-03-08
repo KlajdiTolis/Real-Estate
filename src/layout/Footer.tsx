@@ -1,7 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-function Footer() {
+//image
+// import Footerbg from "../assets/footer/footerbg2.jpg"
+
+const Footer = () => {
   return (
     <Box
       sx={{
@@ -9,10 +12,13 @@ function Footer() {
         left: 0,
         bottom: 0,
         width: "100%",
-        backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
+        backgroundImage: "linear-gradient(to right, #2c302f , #8c8f8e)",
+        // backgroundImage: `url(${Footerbg})`,
         color: "white",
         textAlign: "center",
         height: "20vh",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
       <Typography variant="h6" align="center" gutterBottom>

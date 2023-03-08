@@ -14,11 +14,11 @@ export default function MultiActionAreaCard() {
     const navigate = useNavigate()
 
     return (
-        <Card sx={{ maxWidth: 345, borderRadius: 3, boxShadow: 13 }}>
+        <Card sx={{ maxWidth: 300, borderRadius: 3, boxShadow: 13 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    height="140"
+                    height="200"
                     image={Rentt}
                     alt="green iguana"
                 />

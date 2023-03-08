@@ -59,7 +59,7 @@ const App = () => {
         >
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "black" }, boxShadow: 1, }}
+              sx={{ input: { color: "black" }, boxShadow: 1,}}
               fullWidth
               color="success"
               label="Name"
@@ -69,7 +69,7 @@ const App = () => {
           </Grid>
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "black", }, boxShadow: 1, borderBottom: "white" }}
+              sx={{ input: { color: "black" }, boxShadow: 1, }}
               fullWidth
               color="success"
               label="Password"
