@@ -12,7 +12,7 @@ import CardBuy from "./CardBuy";
 import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
-import { useMediaQuery, Theme } from '@mui/material';
+import { useMediaQuery } from 'react-responsive'
 
 //import Image
 import House from "../../assets/realEstatebgImage.webp";
@@ -28,23 +28,35 @@ interface TabPanelProps {
 
 const Home = () => {
 
+  const bigScreen = useMediaQuery({
+    query: '(min-width: 1300px)'
+  })
+
+  const phone = useMediaQuery({
+    query: '(max-width: 700px)'
+  })
+
   return (
-    <Box>
+    <Box sx={{
+      backgroundImage: `url(${BgLogin})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    }}>
       <Box
         sx={{
           backgroundImage: `url(${HomeBg})`,
-          pt: 5,
-          pb: 10,
+          pt: bigScreen ? 5 : 0,
           backgroundPosition: "top",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           boxShadow: 10,
-          height: "45vh"
+          borderBottomRightRadius: bigScreen ? 300 : (phone ? 0 : 200),
+          height: bigScreen ? "38vh" : "41vh"
         }}
       >
         <Container>
           <Box sx={{ textAlign: "center" }}>
-            <img src={BGremoveLogo} width={120} height={120} />
+            <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 120 : 100} />
           </Box>
           <Typography
             component="h1"
@@ -57,6 +69,7 @@ const Home = () => {
               textShadow: "3px 3px #000000",
               color: "white",
               pb: 1,
+              fontSize: bigScreen ? 45 : 35,
             }}
           >
             Find Your Dream House
@@ -64,12 +77,12 @@ const Home = () => {
           <Box sx={{ textAlign: "center" }}>
             <input
               style={{
-                width: 350,
+                width: bigScreen ? 450 : 290,
                 height: 50,
-                backgroundColor: "white",
-                borderRadius: 10,
-                paddingLeft: 25,
-                opacity: "60%",
+                // backgroundColor: "white",
+                // borderRadius: 2,
+                paddingLeft: 15,
+                opacity: "95%",
                 fontFamily: "monospace",
               }}
               type="search"
@@ -83,16 +96,13 @@ const Home = () => {
       <Grid
         container
         sx={{
-          backgroundImage: `url(${BgLogin})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
           pt: 8,
         }}
       >
         <Grid
           container
           spacing={3}
-          sx={{ paddingInline: 30 }}
+          sx={{ paddingInline: bigScreen ? 25 : (phone ? 5 : 20) }}
         >
           <Grid
             item
@@ -119,8 +129,7 @@ const Home = () => {
             <CardRent />
           </Grid>
         </Grid>
-
-        <Grid item md={12} sx={{ pt: 3, paddingInline: 10 }}>
+        <Grid item md={12} sx={{ paddingInline: bigScreen ? 40 : (phone ? 0 : 5), pt: 6, pb: 8 }}>
           <Loan />
         </Grid>
         {/* <Grid item md={6} xs={12} sx={{pt:12}}>
