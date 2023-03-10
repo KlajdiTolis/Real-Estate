@@ -91,7 +91,7 @@ const App = () => {
           </Grid>
           <Grid item md={12}>
             <Button
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/")}
               variant="contained"
               size="medium"
               sx={{

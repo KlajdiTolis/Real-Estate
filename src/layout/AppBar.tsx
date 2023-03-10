@@ -76,8 +76,8 @@ const ApppBar = () => {
     <AppBar
       position="sticky"
       sx={{
-        // backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
-        bgcolor: "#988da8"
+       backgroundImage: "linear-gradient(to right, #87a194 , #988da8)"
+        // bgcolor: "#988da8"
       }}
     >
       <Container maxWidth="xl">
@@ -154,7 +154,7 @@ const ApppBar = () => {
             {/* <Layout /> */}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0.7, border: 1, borderColor: "white" }}>
                 <img src={UserLogo} width={33} />
               </IconButton>

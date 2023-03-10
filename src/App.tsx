@@ -12,8 +12,8 @@ import Rent from "./pages/rent/Rent"
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Dashboard />} />
       <Route path="buy" element={<Buy />} />
       <Route path="sell" element={<Sell />} />
       <Route path="rent" element={<Rent />} />
