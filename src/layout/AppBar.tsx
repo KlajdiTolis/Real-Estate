@@ -16,15 +16,40 @@ import { Grid } from "@mui/material";
 import { useNavigate, Outlet, Link } from "react-router-dom";
 
 //import logo
-import Logo from "../assets/real-estate-logo.png";
-import Layout from "./Layout";
-import Logo1 from "../assets/KT.png";
-import Logo123 from "../assets/logo123.png";
-import LogoBW from "../assets/logoBW.png";
-import BGremoveLogo from "../assets/buildings-removebg-preview.png"
+import UserLogo from "../assets/homeImage/user.png"
 
-const pages = ["Home", "Pricing", "About"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = [{
+  id: 0,
+  name: "Buy",
+  to: "/buy"
+},
+{
+  id: 1,
+  name: "Sell",
+  to: "/sell"
+}
+  ,
+{
+  id: 2,
+  name: "Rent",
+  to: "/rent"
+}];
+const settings = [{
+  id: 0,
+  name: "Profil",
+  to: "/profil"
+},
+{
+  id: 1,
+  name: "Account",
+  to: "/account"
+}
+  ,
+{
+  id: 2,
+  name: "Logout",
+  to: "/logout"
+}];;
 
 const ApppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>();
@@ -52,12 +77,11 @@ const ApppBar = () => {
       position="sticky"
       sx={{
         // backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
-        bgcolor: "#506b69"
+        bgcolor: "#988da8"
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={BGremoveLogo} alt="sdasd" width={60} height={60} />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -87,21 +111,19 @@ const ApppBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              {/* <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center"><Layout /></Typography>
+                </MenuItem> */}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <img src={BGremoveLogo} alt="sdasd" width={60} height={60} /> */}
           <Typography
             variant="h5"
             noWrap
             component="a"
             href=""
             sx={{
-              mr: 2,
+              mr: 5,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
@@ -111,7 +133,7 @@ const ApppBar = () => {
               textDecoration: "none",
             }}
           >
-            TITLE
+            Real Estate
           </Typography>
           <Box
             sx={{
@@ -120,22 +142,21 @@ const ApppBar = () => {
               textAlign: "center",
             }}
           >
-            {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
-            <Layout />
+            {pages.map((page) => (
+              <Box>
+                <Link to={page.to}
+                  key={page.id}
+                  style={{ textDecoration: "none", color: "white", fontSize: 20, fontWeight: "bold", fontFamily: "monospace", textShadow: "2px 2px #000000", paddingInline: 37 }}>
+                  {page.name}
+                </Link>
+              </Box>
+            ))}
+            {/* <Layout /> */}
           </Box>
-
-          {/* <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0.7, border: 1, borderColor: "white" }}>
+                <img src={UserLogo} width={33} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -155,15 +176,15 @@ const ApppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box> */}
+          </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 };
 export default ApppBar;

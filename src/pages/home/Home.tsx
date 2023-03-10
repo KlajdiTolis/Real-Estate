@@ -50,8 +50,9 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           boxShadow: 10,
-          borderBottomRightRadius: bigScreen ? 300 : (phone ? 0 : 200),
-          height: bigScreen ? "38vh" : "41vh"
+          // borderBottomRightRadius: bigScreen ? 250 : (phone ? 0 : 150),
+          // borderBottomLeftRadius: bigScreen ? 250 : (phone ? 0 : 150),
+          height: bigScreen ? "47vh" : "41vh"
         }}
       >
         <Container>
@@ -79,8 +80,6 @@ const Home = () => {
               style={{
                 width: bigScreen ? 450 : 290,
                 height: 50,
-                // backgroundColor: "white",
-                // borderRadius: 2,
                 paddingLeft: 15,
                 opacity: "95%",
                 fontFamily: "monospace",
@@ -102,7 +101,7 @@ const Home = () => {
         <Grid
           container
           spacing={3}
-          sx={{ paddingInline: bigScreen ? 25 : (phone ? 5 : 20) }}
+          sx={{ paddingInline: bigScreen ? 25 : (phone ? 5 : 14) }}
         >
           <Grid
             item
