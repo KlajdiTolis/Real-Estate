@@ -29,7 +29,7 @@ const Footer = () => {
         backgroundImage: "linear-gradient(to right, #988da8 , #87a194)",
         color: "white",
         textAlign: "center",
-        height: bigScreen ? "27vh" : "35vh",
+        height: bigScreen ? "30vh" : "35vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         borderTopLeftRadius: "50% 30%",
@@ -69,7 +69,7 @@ const Footer = () => {
             {
               bigScreen ?
                 <Box sx={{ textAlign: "center", paddingInline: 5, pt: 1, fontSize: 13 }}>
-                  tronic tyw asd asd asd asdsadas dsad sa sad asdsadsad asd asdsdsad asdsadsa dsadsaadsvdv sd sdfdsa dsadsad
+                  tronic tyw asd asd a dsadsad
                 </Box>
                 :
                 <Box sx={{ textAlign: "center", paddingInline: 5, pt: 1, fontSize: 13 }}>
