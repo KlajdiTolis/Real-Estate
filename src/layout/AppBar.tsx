@@ -85,7 +85,9 @@ const ApppBar = () => {
     <AppBar
       position="sticky"
       sx={{
-        backgroundImage: "linear-gradient(to right, #87a194 , #988da8)"
+        backgroundImage: "linear-gradient(to right, #87a194 , #988da8)",
+        // borderBottomLeftRadius: "50% 20%",
+        // borderBottomRightRadius: "50% 20%",
         // bgcolor: "#988da8"
       }}
     >

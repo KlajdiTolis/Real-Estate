@@ -52,7 +52,7 @@ const Home = () => {
           boxShadow: 10,
           // borderBottomRightRadius: bigScreen ? 250 : (phone ? 0 : 150),
           // borderBottomLeftRadius: bigScreen ? 250 : (phone ? 0 : 150),
-          height: bigScreen ? "47vh" : "41vh"
+          height: bigScreen ? "45vh" : "41vh"
         }}
       >
         <Container>
