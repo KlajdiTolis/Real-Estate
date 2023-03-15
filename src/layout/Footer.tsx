@@ -25,11 +25,11 @@ const Footer = () => {
         position: "relative",
         left: 0,
         bottom: 0,
-        width: "100vw",
+        width: "100%",
         backgroundImage: "linear-gradient(to right, #988da8 , #87a194)",
         color: "white",
         textAlign: "center",
-        height: bigScreen ? "25vh" : "35vh",
+        height: bigScreen ? "27vh" : "35vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         borderTopLeftRadius: "50% 30%",
@@ -38,46 +38,53 @@ const Footer = () => {
       }}
     >
       <Grid container>
-        <Grid item md={3} sx={{ pt: 6 }}>
-          <Typography sx={{ fontSize: 21, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}> What we offer</Typography>
+        <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
+          <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}> What we offer</Typography>
           <Stack
             direction="column"
             justifyContent="center"
             alignItems="center"
             spacing={1}>
             <Box sx={{ border: 1, pl: 3, borderRadius: 20, paddingBlock: 0.4, mt: 2, borderColor: "#8dc1e0" }}>
-              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/buy'>Buy</Link>
+              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 14, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/buy'>Buy</Link>
             </Box>
             <Box sx={{ border: 1, pl: 3, borderRadius: 20, paddingBlock: 0.4, borderColor: "#8dc1e0" }}>
-              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/sell'>Sell</Link>
+              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 14, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/sell'>Sell</Link>
             </Box>
             <Box sx={{ border: 1, pl: 3, borderRadius: 20, paddingBlock: 0.4, borderColor: "#8dc1e0" }}>
-              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/rent'>Rent</Link>
+              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 14, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/rent'>Rent</Link>
             </Box>
           </Stack>
         </Grid>
-        <Grid item md={3} sx={{ pt: 4 }}>
+        <Grid item md={3} sx={{ pt: 4, display: { xs: "none", md: "block" } }} >
           <Stack
             direction="column"
             justifyContent="center"
             alignItems="center"
             spacing={1}>
-            <Typography sx={{ fontSize: 21, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}> Short Discription</Typography>
+            <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}> Short Discription</Typography>
             <Box>
-              <img src={RealEstateSketch} width={140} />
+              <img src={RealEstateSketch} width={bigScreen ? 140 : 110} />
             </Box>
-            <Box sx={{ textAlign: "center", paddingInline: 5, pt: 1, fontSize: 13 }}>
-              tronic tyw asd asd asd asdsadas dsad sa sad asdsadsad asd asdsdsad asdsadsa dsadsaadsvdv sd sdfdsa dsadsad
-            </Box>
+            {
+              bigScreen ?
+                <Box sx={{ textAlign: "center", paddingInline: 5, pt: 1, fontSize: 13 }}>
+                  tronic tyw asd asd asd asdsadas dsad sa sad asdsadsad asd asdsdsad asdsadsa dsadsaadsvdv sd sdfdsa dsadsad
+                </Box>
+                :
+                <Box sx={{ textAlign: "center", paddingInline: 5, pt: 1, fontSize: 13 }}>
+                  tronicsd asdsdsad asdsadsa dsadsaadsvdv sd sdfdsa dsadsad
+                </Box>
+            }
           </Stack>
         </Grid>
-        <Grid item md={3} sx={{ pt: 4 }}>
+        <Grid item md={3} xs={12} sx={{ pt: 4, }}>
           <Stack
             direction="column"
             justifyContent="center"
             alignItems="center"
             spacing={1}>
-            <Typography sx={{ fontSize: 21, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}>Contact</Typography>
+            <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}>Contact</Typography>
             <Box sx={{ textAlign: "center", paddingInline: 10, pt: 1, fontSize: 13 }}>
               <Box>
                 Pallati me shigjeta, Kavaja Street, Tirana
@@ -94,8 +101,8 @@ const Footer = () => {
             </Box>
           </Stack>
         </Grid>
-        <Grid item md={3} sx={{ pt: 6 }}>
-          <Typography sx={{ fontSize: 21, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic", pb: 3 }}>Follow us</Typography>
+        <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
+          <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic", pb: 3 }}>Follow us</Typography>
           <Stack
             direction="row"
             justifyContent="center"
