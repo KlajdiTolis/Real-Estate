@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 import Posts from "../posts/PostsCard";
-import Map from "../map/MapSell";
+import Map from "../sell/MapSell";
 import Loan from "./Loan";
 import HomeCarousel from "./HomeCarousel";
 import CardBuy from "./CardBuy";

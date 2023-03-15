@@ -135,7 +135,7 @@ const App = () => {
         sx={{
           backgroundImage: `url(${Real2})`,
           backgroundSize: "cover",
-          borderTopLeftRadius: bigScreen ? 600 : 500,
+          borderTopLeftRadius: bigScreen ? 600 : 300,
           backgroundPosition: "center",
           boxShadow: 20,
         }}

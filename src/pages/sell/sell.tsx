@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import React from 'react'
 import ApppBar from '../../layout/AppBar'
-import Map from '../map/MapSell';
+import Map from './MapSell';
 import Post from "../posts/PostsCard";
 
 function Sell() {

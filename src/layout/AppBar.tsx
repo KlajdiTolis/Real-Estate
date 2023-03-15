@@ -34,22 +34,23 @@ const pages = [{
   name: "Rent",
   to: "/rent"
 }];
-const settings = [{
-  id: 0,
-  name: "Profil",
-  to: "/profil"
-},
-{
-  id: 1,
-  name: "Account",
-  to: "/account"
-}
-  ,
-{
-  id: 2,
-  name: "Logout",
-  to: "/logout"
-}];;
+const settings = [
+  // {
+  //   id: 0,
+  //   name: "Profil",
+  //   to: "/profil"
+  // },
+  // {
+  //   id: 1,
+  //   name: "Account",
+  //   to: "/account"
+  // }
+  //   ,
+  {
+    id: 2,
+    name: "Logout",
+    to: "/login"
+  }];;
 
 const ApppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>();
@@ -158,12 +159,12 @@ const ApppBar = () => {
               <Box>
                 <Link to={page.to}
                   key={page.id}
-                  style={{ textDecoration: "none", color: "white",fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", textShadow: "2px 2px #000000", paddingInline: 37 }}>
+                  style={{ textDecoration: "none", color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", textShadow: "2px 2px #000000", paddingInline: 37 }}>
                   {page.name}
                 </Link>
               </Box>
             ))}
-           <Link to='/contact' style={{ paddingLeft: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+            <Link to='/contact' style={{ paddingLeft: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
               Contact Us
             </Link>
             {/* <Layout /> */}
@@ -191,8 +192,11 @@ const ApppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
+
                 <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting.name}</Typography>
+                  <Box>
+                    <a style={{ textDecoration: "none", color: "black" }} href="/login">{setting.name}</a>
+                  </Box>
                 </MenuItem>
               ))}
             </Menu>
