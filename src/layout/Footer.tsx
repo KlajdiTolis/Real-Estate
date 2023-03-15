@@ -12,7 +12,7 @@ const Footer = () => {
         left: 0,
         bottom: 0,
         width: "100%",
-        backgroundImage: "linear-gradient(to right, #2c302f , #8c8f8e)",
+        backgroundImage: "linear-gradient(to right, #87a194 , #988da8)",
         // backgroundImage: `url(${Footerbg})`,
         color: "white",
         textAlign: "center",

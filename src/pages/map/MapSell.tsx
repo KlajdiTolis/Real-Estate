@@ -65,6 +65,9 @@ const Map = () => {
               }}
               onLoad={(map: any) => setMap(map)}
             >
+              <MarkerF position={center1}>
+
+              </MarkerF>
               <Box sx={{ textAlign: "center", pt: 2 }}>
                 <Box sx={{ position: "relative", zIndex: 1 }}>
                   <Places setSelected={setSelected} />

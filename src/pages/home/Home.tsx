@@ -56,9 +56,11 @@ const Home = () => {
         }}
       >
         <Container>
-          <Box sx={{ textAlign: "center" }}>
-            <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 120 : 100} />
-          </Box>
+          {/* {phone && */}
+            <Box sx={{ textAlign: "center" }}>
+              <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 120 : 100} />
+            </Box>
+          {/* } */}
           <Typography
             component="h1"
             variant="h3"
