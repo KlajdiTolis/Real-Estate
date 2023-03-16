@@ -5,23 +5,20 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 import Posts from "../posts/PostsCard";
-import Map from "../map/MapSell";
+import Map from "../sell/MapSell";
 import Loan from "./Loan";
 import HomeCarousel from "./HomeCarousel";
 import CardBuy from "./CardBuy";
 import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
-import { useMediaQuery, Theme } from '@mui/material';
+import { useMediaQuery } from 'react-responsive'
 
 //import Image
 import House from "../../assets/realEstatebgImage.webp";
-import Logo from "../../assets/real-estate-logo.png";
-import Logo1 from "../../assets/KT.png";
-import Bg from "../../assets/background.webp";
-import BackG from "../../assets/bg.webp";
-import LogoBW from "../../assets/logoBW.png";
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png"
+import HomeBg from "../../assets/homeImage/homebg4.jpg"
+import BgLogin from "../../assets/whitebg2.jpg"
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,23 +28,39 @@ interface TabPanelProps {
 
 const Home = () => {
 
+  const bigScreen = useMediaQuery({
+    query: '(min-width: 1300px)'
+  })
+
+  const phone = useMediaQuery({
+    query: '(max-width: 700px)'
+  })
+
   return (
-    <Box>
+    <Box sx={{
+      backgroundImage: `url(${BgLogin})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    }}>
       <Box
         sx={{
-          backgroundImage: `url(${House})`,
-          pt: 5,
-          pb: 10,
-          backgroundPosition: "center",
+          backgroundImage: `url(${HomeBg})`,
+          pt: bigScreen ? 5 : 0,
+          backgroundPosition: "top",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           boxShadow: 10,
+          // borderBottomRightRadius: bigScreen ? 250 : (phone ? 0 : 150),
+          // borderBottomLeftRadius: bigScreen ? 250 : (phone ? 0 : 150),
+          height: bigScreen ? "45vh" : "41vh"
         }}
       >
         <Container>
-          <Box sx={{ textAlign: "center" }}>
-            <img src={BGremoveLogo} width={150} height={150} />
-          </Box>
+          {/* {phone && */}
+            <Box sx={{ textAlign: "center" }}>
+              <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 120 : 100} />
+            </Box>
+          {/* } */}
           <Typography
             component="h1"
             variant="h3"
@@ -55,23 +68,22 @@ const Home = () => {
             color="text.primary"
             gutterBottom
             sx={{
-              pb: 2,
               fontFamily: "monospace",
               textShadow: "3px 3px #000000",
               color: "white",
+              pb: 1,
+              fontSize: bigScreen ? 45 : 35,
             }}
           >
-            Let's Work Together
+            Find Your Dream House
           </Typography>
-          <Box sx={{ textAlign: "center", pb: 2 }}>
+          <Box sx={{ textAlign: "center" }}>
             <input
               style={{
-                width: 350,
+                width: bigScreen ? 450 : 290,
                 height: 50,
-                backgroundColor: "white",
-                borderRadius: 10,
-                paddingLeft: 25,
-                opacity: "80%",
+                paddingLeft: 15,
+                opacity: "95%",
                 fontFamily: "monospace",
               }}
               type="search"
@@ -84,40 +96,41 @@ const Home = () => {
       </Box>
       <Grid
         container
-        spacing={3}
         sx={{
-          // backgroundImage:
-          //   "linear-gradient(to right, rgba(255, 0, 0, 0 ), #fefff2)",
-          pt: 12,
-          paddingInline: 40
-
+          pt: 8,
         }}
       >
         <Grid
-          item
-          md={4}
-          xs={12}
-          sx={{ display: "flex", justifyContent: "center" }}
+          container
+          spacing={3}
+          sx={{ paddingInline: bigScreen ? 25 : (phone ? 5 : 14) }}
         >
-          <CardBuy />
+          <Grid
+            item
+            md={4}
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <CardBuy />
+          </Grid>
+          <Grid
+            item
+            md={4}
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <CardSell />
+          </Grid>
+          <Grid
+            item
+            md={4}
+            xs={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <CardRent />
+          </Grid>
         </Grid>
-        <Grid
-          item
-          md={4}
-          xs={12}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <CardSell />
-        </Grid>
-        <Grid
-          item
-          md={4}
-          xs={12}
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <CardRent />
-        </Grid>
-        <Grid item md={12} sx={{ pt: 12 }}>
+        <Grid item md={12} sx={{ paddingInline: bigScreen ? 40 : (phone ? 0 : 5), pt: 6, pb: 8 }}>
           <Loan />
         </Grid>
         {/* <Grid item md={6} xs={12} sx={{pt:12}}>
@@ -131,7 +144,7 @@ const Home = () => {
                     </Box>
                 </Grid> */}
       </Grid>
-      <Box sx={{ pt: 10 }}></Box>
+      <Box sx={{ pt: 0, pb: 2 }}></Box>
       {/* Footer */}
       <Footer />
       {/* </ThemeProvider> */}

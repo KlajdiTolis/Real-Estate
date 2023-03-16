@@ -23,7 +23,7 @@ const Loan = () => {
         <Typography
           sx={{
             fontSize: 22,
-            pb: 3,
+            pb: 0,
             fontWeight: "bold",
             fontFamily: "monospace",
             textShadow: "1px 0px #000000",
@@ -59,7 +59,7 @@ const Loan = () => {
         md={6}
         xs={12}
         display={{ lg: "block" }}
-        sx={{ pt: 10, p: 10 }}
+        sx={{ pt: 10, p: 5 }}
       >
         <Box
           sx={{

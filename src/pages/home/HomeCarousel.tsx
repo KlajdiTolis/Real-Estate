@@ -6,6 +6,9 @@ import Carousel from "react-bootstrap/Carousel";
 
 //import images
 import Buildingsss from "../../assets/buildings.jpg";
+import Loan1 from "../../assets/loan/lowInteres.jpg"
+import Loan2 from "../../assets/loan/supportLoan.jpg"
+import Loan3 from "../../assets/loan/longTerm.jpg"
 
 function UncontrolledExample() {
   //     const isXSmall = useMediaQuery((theme: Theme) =>
@@ -16,7 +19,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={Buildingsss}
+          src={Loan1}
           alt="First slide"
           height={400}
         />
@@ -28,7 +31,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={Buildingsss}
+          src={Loan2}
           alt="Second slide"
           height={400}
         />
@@ -40,7 +43,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={Buildingsss}
+          src={Loan3}
           alt="Third slide"
           height={400}
         />
