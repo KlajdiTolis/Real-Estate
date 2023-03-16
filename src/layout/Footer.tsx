@@ -10,8 +10,11 @@ import Twitter from "../assets/socialMedia/twitter.png"
 import Linkedin from "../assets/socialMedia/linkedin.png"
 import RealEstateSketch from "../assets/footer/realEstateSketch.png"
 
-
-// import Footerbg from "../assets/footer/footerbg2.jpg"
+//logo
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import MailIcon from '@mui/icons-material/Mail';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import InfoIcon from '@mui/icons-material/Info';
 
 const Footer = () => {
 
@@ -32,13 +35,13 @@ const Footer = () => {
         height: bigScreen ? "30vh" : "35vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        borderTopLeftRadius: "50% 30%",
-        borderTopRightRadius: "50% 25%",
+        borderTopLeftRadius: bigScreen ? "50% 30%" : " ",
+        borderTopRightRadius: bigScreen ? "50% 25%" : " ",
 
       }}
     >
       <Grid container>
-        <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
+        {/* <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
           <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}> What we offer</Typography>
           <Stack
             direction="column"
@@ -55,6 +58,8 @@ const Footer = () => {
               <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 14, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/rent'>Rent</Link>
             </Box>
           </Stack>
+        </Grid> */}
+        <Grid item md={1.5}>
         </Grid>
         <Grid item md={3} sx={{ pt: 4, display: { xs: "none", md: "block" } }} >
           <Stack
@@ -62,17 +67,17 @@ const Footer = () => {
             justifyContent="center"
             alignItems="center"
             spacing={1}>
-            <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}> Short Discription</Typography>
+            <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "black", fontFamily: "monospace", fontStyle: "italic", textShadow: "2px 2px #659469", }}> Short Discription</Typography>
             <Box>
               <img src={RealEstateSketch} width={bigScreen ? 140 : 110} />
             </Box>
             {
               bigScreen ?
-                <Box sx={{ textAlign: "center", paddingInline: 5, pt: 1, fontSize: 13 }}>
-                  tronic tyw asd asd a dsadsad
+                <Box sx={{ textAlign: "left", paddingInline: 5, pt: 1, fontSize: 13, color: "black", fontFamily: "monospace"  }}>
+                  We are a Real Estate company that offer buy,sell and rent of your property,Here you can find your future property,can sell your actuale one or rent it with the best prices.
                 </Box>
                 :
-                <Box sx={{ textAlign: "center", paddingInline: 5, pt: 1, fontSize: 13 }}>
+                <Box sx={{ textAlign: "left", paddingInline: 5, pt: 1, fontSize: 13, color: "black" }}>
                   tronicsd asdsdsad asdsadsa dsadsaadsvdv sd sdfdsa dsadsad
                 </Box>
             }
@@ -84,25 +89,29 @@ const Footer = () => {
             justifyContent="center"
             alignItems="center"
             spacing={1}>
-            <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}>Contact</Typography>
-            <Box sx={{ textAlign: "center", paddingInline: 10, pt: 1, fontSize: 13 }}>
+            <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "black", fontFamily: "monospace", fontStyle: "italic", textShadow: "2px 2px #659469" }}>Contact</Typography>
+            <Box sx={{ textAlign: "left", paddingInline: 12, pt: 1, fontSize: 13, color: "black", fontWeight: "bold" }}>
               <Box>
+                <LocationOnIcon sx={{ mr: 1 }} />
                 Pallati me shigjeta, Kavaja Street, Tirana
-              </Box>
-              <Box sx={{ pt: 0.5 }}>
+              </Box >
+              <Box sx={{ pt: 1 }}>
+                <MailIcon sx={{ mr: 1 }} />
                 Klajdi.tolis08@gmail.com
               </Box>
-              <Box sx={{ pt: 0.5 }}>
+              <Box sx={{ pt: 1 }}>
+                <LocalPhoneIcon sx={{ mr: 1 }} />
                 +355 693350203
               </Box>
-              <Box sx={{ pt: 0.5 }}>
+              <Box sx={{ pt: 1 }}>
+                <InfoIcon sx={{ mr: 1 }} />
                 Realestate@info.com
               </Box>
             </Box>
           </Stack>
         </Grid>
         <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
-          <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic", pb: 3 }}>Follow us</Typography>
+          <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic", pb: 3, textShadow: "2px 2px #8d7ea3" }}>Follow us</Typography>
           <Stack
             direction="row"
             justifyContent="center"
@@ -123,6 +132,8 @@ const Footer = () => {
             </Box>
             {/* </Box> */}
           </Stack>
+        </Grid>
+        <Grid item md={1.5}>
         </Grid>
       </Grid>
     </Box>

@@ -13,6 +13,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Grid } from "@mui/material";
 import { useNavigate, Outlet, Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
+import { Stack } from "@mui/material";
 
 //import logo
 import UserLogo from "../assets/homeImage/user.png"
@@ -50,7 +51,7 @@ const settings = [
     id: 2,
     name: "Logout",
     to: "/login"
-  }];;
+  }];
 
 const ApppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>();
@@ -122,9 +123,23 @@ const ApppBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"><Layout /></Typography>
-                </MenuItem> */}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Stack
+                  direction="column">
+                  <Link to='/' style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }}>
+                    Home
+                  </Link>
+                  {pages.map((page) => (
+                    <Box>
+                      <Link to={page.to}
+                        key={page.id}
+                        style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }}>
+                        {page.name}
+                      </Link>
+                    </Box>
+                  ))}
+                </Stack>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -167,7 +182,7 @@ const ApppBar = () => {
               </Box>
             ))}
             <Link to='/contact' style={{ paddingLeft: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
-              Contact Us
+              Loans
             </Link>
             {/* <Layout /> */}
           </Box>
@@ -197,7 +212,7 @@ const ApppBar = () => {
 
                 <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                   <Box>
-                    <a style={{ textDecoration: "none", color: "black" }} href="/login">{setting.name}</a>
+                    <a style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }} href="/login">{setting.name}</a>
                   </Box>
                 </MenuItem>
               ))}
