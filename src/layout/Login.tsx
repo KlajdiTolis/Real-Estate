@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 
 // import image
 import Real2 from "../assets/real-estate2.jpg";
@@ -27,6 +28,10 @@ const App = () => {
     setShowHidePassword(!showHidePassword)
   }
 
+  const bigScreen = useMediaQuery({
+    query: '(min-width: 1300px)'
+  })
+
   return (
     <Grid
       container
@@ -37,7 +42,7 @@ const App = () => {
         backgroundSize: "cover"
       }}
     >
-      <Grid item md={3.5} xs={12} sx={{ textAlign: "center", alignItems: "center", justifyContent: "center", }}>
+      <Grid item md={bigScreen ? 3.5 : 4} xs={12} sx={{ textAlign: "center", alignItems: "center", justifyContent: "center", }}>
         <Box
           sx={{
             pt: 6,
@@ -45,21 +50,20 @@ const App = () => {
             fontWeight: "bold",
             fontSize: 20,
             fontFamily: "monospace",
-            ml: -4,
             textShadow: "0.5px 1px #000000",
           }}
         >
           Welcome to
         </Box>
-        <img src={BGremoveLogo} width="150" style={{ paddingTop: 9, marginLeft: -35 }} />
+        <img src={BGremoveLogo} width={bigScreen ? 150 : 130} style={{ paddingTop: 9, }} />
         <Grid
           container
           spacing={3}
-          sx={{ pt: 5, pl: 7, pr: 15, color: "white", display: "flex", justifyContent: "center", }}
+          sx={{ pt: 5, pl: bigScreen ? 10 : 7, pr: bigScreen ? 10 : 7, color: "white", display: "flex", justifyContent: "center", }}
         >
           <Grid item md={12}>
             <TextField
-              sx={{ input: { color: "black" }, boxShadow: 1,}}
+              sx={{ input: { color: "black" }, boxShadow: 1, }}
               fullWidth
               color="success"
               label="Name"
@@ -87,7 +91,7 @@ const App = () => {
           </Grid>
           <Grid item md={12}>
             <Button
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/")}
               variant="contained"
               size="medium"
               sx={{
@@ -127,11 +131,11 @@ const App = () => {
         item
         xs={false}
         sm={4}
-        md={8.5}
+        md={bigScreen ? 8.5 : 8}
         sx={{
           backgroundImage: `url(${Real2})`,
           backgroundSize: "cover",
-          borderTopLeftRadius: 600,
+          borderTopLeftRadius: bigScreen ? 600 : 300,
           backgroundPosition: "center",
           boxShadow: 20,
         }}

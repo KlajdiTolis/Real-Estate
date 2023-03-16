@@ -7,24 +7,51 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Grid } from "@mui/material";
 import { useNavigate, Outlet, Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive'
+import { Stack } from "@mui/material";
 
 //import logo
-import Logo from "../assets/real-estate-logo.png";
-import Layout from "./Layout";
-import Logo1 from "../assets/KT.png";
-import Logo123 from "../assets/logo123.png";
-import LogoBW from "../assets/logoBW.png";
-import BGremoveLogo from "../assets/buildings-removebg-preview.png"
+import UserLogo from "../assets/homeImage/user.png"
+import RealEstateLogo from "../assets/buildings-removebg-preview.png"
 
-const pages = ["Home", "Pricing", "About"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = [{
+  id: 0,
+  name: "Buy",
+  to: "/buy"
+},
+{
+  id: 1,
+  name: "Sell",
+  to: "/sell"
+}
+  ,
+{
+  id: 2,
+  name: "Rent",
+  to: "/rent"
+}];
+const settings = [
+  // {
+  //   id: 0,
+  //   name: "Profil",
+  //   to: "/profil"
+  // },
+  // {
+  //   id: 1,
+  //   name: "Account",
+  //   to: "/account"
+  // }
+  //   ,
+  {
+    id: 2,
+    name: "Logout",
+    to: "/login"
+  }];
 
 const ApppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>();
@@ -45,19 +72,28 @@ const ApppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
+  }
+
+  const phone = useMediaQuery({
+    query: '(max-width: 700px)'
+  })
+
+  const bigScreen = useMediaQuery({
+    query: '(min-width: 1300px)'
+  })
 
   return (
     <AppBar
       position="sticky"
       sx={{
-        // backgroundImage: "linear-gradient(to right,#4a524f, #2c302f , #8c8f8e)",
-        bgcolor: "#474f4b"
+        backgroundImage: "linear-gradient(to right, #87a194 , #988da8)",
+        // borderBottomLeftRadius: "50% 20%",
+        // borderBottomRightRadius: "50% 20%",
+        // bgcolor: "#988da8"
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={BGremoveLogo} alt="sdasd" width={60} height={60} />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -87,21 +123,31 @@ const ApppBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Stack
+                  direction="column">
+                  <Link to='/' style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }}>
+                    Home
+                  </Link>
+                  {pages.map((page) => (
+                    <Box>
+                      <Link to={page.to}
+                        key={page.id}
+                        style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }}>
+                        {page.name}
+                      </Link>
+                    </Box>
+                  ))}
+                </Stack>
+              </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
             component="a"
             href=""
             sx={{
-              mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
@@ -111,31 +157,39 @@ const ApppBar = () => {
               textDecoration: "none",
             }}
           >
-            TITLE
+            Real Estate
+            {/* <img src={RealEstateLogo} width={90} /> */}
           </Typography>
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
-              textAlign: "center",
+              // textAlign: "center",
+              justifyContent: "left"
             }}
           >
-            {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
-            <Layout />
-          </Box>
+            <Link to='/' style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+              Home
+            </Link>
 
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            {pages.map((page) => (
+              <Box>
+                <Link to={page.to}
+                  key={page.id}
+                  style={{ textDecoration: "none", color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", textShadow: "2px 2px #000000", paddingInline: 37 }}>
+                  {page.name}
+                </Link>
+              </Box>
+            ))}
+            <Link to='/contact' style={{ paddingLeft: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+              Loans
+            </Link>
+            {/* <Layout /> */}
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0.7, border: 1, borderColor: "white" }}>
+                <img src={UserLogo} width={33} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -155,15 +209,18 @@ const ApppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+
+                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                  <Box>
+                    <a style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }} href="/login">{setting.name}</a>
+                  </Box>
                 </MenuItem>
               ))}
             </Menu>
-          </Box> */}
+          </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 };
 export default ApppBar;
