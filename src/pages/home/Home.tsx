@@ -3,7 +3,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { Stack, Autocomplete, TextField, Slider } from "@mui/material";
+import { useMediaQuery } from 'react-responsive'
 
+//import components
 import Posts from "../posts/PostsCard";
 import Map from "../sell/MapSell";
 import Loan from "./Loan";
@@ -12,7 +15,7 @@ import CardBuy from "./CardBuy";
 import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
-import { useMediaQuery } from 'react-responsive'
+import Search from "../home/components/Search"
 
 //import Image
 import House from "../../assets/realEstatebgImage.webp";
@@ -26,7 +29,48 @@ interface TabPanelProps {
   value: number;
 }
 
+const options = [{
+  id: 0,
+  name: "Buy"
+},
+// {
+//   id: 1,
+//   name: "Sell"
+// },
+{
+  id: 2,
+  name: "Rent"
+},
+]
+
+const property = [{
+  id: 0,
+  name: "home"
+},
+{
+  id: 1,
+  name: "shop"
+},
+{
+  id: 2,
+  name: "apartament"
+},
+]
+
 const Home = () => {
+
+  const [optionVal, setOptionVal] = React.useState<string>("");
+  const [firstVal, setFirstVal] = React.useState<number>(0);
+  const [secondVal, setSecondVal] = React.useState<any>(3000);
+  const [value, setValue] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    setValue([firstVal, secondVal]);
+  }, [firstVal, secondVal]);
+
+  const handleChange = (event: Event, newValue: number | number[]) => {
+    setValue(newValue as number[]);
+  };
 
   const bigScreen = useMediaQuery({
     query: '(min-width: 1300px)'
@@ -36,6 +80,7 @@ const Home = () => {
     query: '(max-width: 700px)'
   })
 
+  console.log(optionVal);
   return (
     <Box sx={{
       backgroundImage: `url(${BgLogin})`,
@@ -57,9 +102,9 @@ const Home = () => {
       >
         <Container>
           {/* {phone && */}
-            <Box sx={{ textAlign: "center" }}>
-              <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 120 : 100} />
-            </Box>
+          <Box sx={{ textAlign: "center" }}>
+            <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 120 : 100} />
+          </Box>
           {/* } */}
           <Typography
             component="h1"
@@ -77,21 +122,55 @@ const Home = () => {
           >
             Find Your Dream House
           </Typography>
-          <Box sx={{ textAlign: "center" }}>
-            <input
-              style={{
-                width: bigScreen ? 450 : 290,
-                height: 50,
-                paddingLeft: 15,
-                opacity: "95%",
-                fontFamily: "monospace",
-              }}
-              type="search"
-              id="search"
-              placeholder="Search..."
-              required
-            />
-          </Box>
+          <Stack
+            direction="row"
+            sx={{ p: 3, backgroundImage: `url(${BgLogin})`, borderRadius: 15 }}>
+            <Box sx={{ textAlign: "center", pr: 6, pl: 2 }}>
+              <Search />
+            </Box>
+            <Box>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={options as any}
+                onChange={(event: any, value: any) => { setOptionVal(value.name) }}
+                getOptionLabel={(option: any) => option['name']}
+                sx={{ width: 180, bgcolor: "white" }}
+                renderInput={(params) => <TextField {...params} label="Options" />}
+              />
+            </Box>
+            <Box width={300} sx={{ pl: 6 }}>
+              <Stack
+                direction="column">
+                <Slider
+                  sx={{ color: "#a66560" }}
+                  getAriaLabel={() => 'Temperature range'}
+                  value={value}
+                  onChange={handleChange}
+                  valueLabelDisplay="auto"
+                  disableSwap
+                  max={optionVal == "Rent" ? 5000 : 100000}
+                  min={optionVal == "Rent" ? 0 : 1000}
+                  step={optionVal == "Rent" ? 10 : 1000}
+                // getAriaValueText={valuetext}
+                />
+                <Box>
+                  <TextField sx={{ width: 100, bgcolor: "white" }} label="First Price" variant="standard" onChange={(e: any) => { setFirstVal(e.target.value) }} />
+                  <TextField sx={{ width: 100, ml: 6.5, bgcolor: "white" }} label="Second Price" variant="standard" onChange={(e: any) => { setSecondVal(e.target.value) }} />
+                </Box>
+              </Stack>
+            </Box>
+            <Box sx={{ pl: 6 }}>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={property as any}
+                getOptionLabel={(option: any) => option['name']}
+                sx={{ width: 180, }}
+                renderInput={(params) => <TextField {...params} label="Propety Type" />}
+              />
+            </Box>
+          </Stack>
         </Container>
       </Box>
       <Grid
