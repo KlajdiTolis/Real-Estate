@@ -32,7 +32,7 @@ const Footer = () => {
         backgroundImage: "linear-gradient(to right, #988da8 , #87a194)",
         color: "white",
         textAlign: "center",
-        height: bigScreen ? "30vh" : "35vh",
+        height: bigScreen ? "40vh" : "35vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         borderTopLeftRadius: bigScreen ? "50% 30%" : " ",
@@ -74,7 +74,7 @@ const Footer = () => {
             {
               bigScreen ?
                 <Box sx={{ textAlign: "left", paddingInline: 5, pt: 1, fontSize: 13, color: "black", fontFamily: "monospace" }}>
-                  We are a Real Estate company that offer buy,sell and rent of your property,Here you can find your future property,can sell your actuale one or rent it with the best prices.
+                 Here you can find your future property,can sell your actuale one or rent it with the best prices.
                 </Box>
                 :
                 <Box sx={{ textAlign: "left", paddingInline: 5, pt: 1, fontSize: 13, color: "black" }}>
