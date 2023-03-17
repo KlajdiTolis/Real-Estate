@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Stack, Autocomplete, TextField, Slider } from "@mui/material";
+import { Stack, Autocomplete, TextField, Slider, Button } from "@mui/material";
 import { useMediaQuery } from 'react-responsive'
 
 //import components
@@ -73,11 +73,15 @@ const Home = () => {
   };
 
   const bigScreen = useMediaQuery({
-    query: '(min-width: 1300px)'
+    query: '(min-width: 1500px)'
   })
 
   const phone = useMediaQuery({
     query: '(max-width: 700px)'
+  })
+
+  const minWidth = useMediaQuery({
+    query: '(min-height: 700px)'
   })
 
   console.log(optionVal);
@@ -154,10 +158,10 @@ const Home = () => {
                   step={optionVal == "Rent" ? 10 : 1000}
                 // getAriaValueText={valuetext}
                 />
-                <Box>
+                {/* <Box>
                   <TextField sx={{ width: 100, bgcolor: "white" }} label="First Price" variant="standard" onChange={(e: any) => { setFirstVal(e.target.value) }} />
                   <TextField sx={{ width: 100, ml: 6.5, bgcolor: "white" }} label="Second Price" variant="standard" onChange={(e: any) => { setSecondVal(e.target.value) }} />
-                </Box>
+                </Box> */}
               </Stack>
             </Box>
             <Box sx={{ pl: 6 }}>
@@ -169,6 +173,11 @@ const Home = () => {
                 sx={{ width: 180, }}
                 renderInput={(params) => <TextField {...params} label="Propety Type" />}
               />
+            </Box>
+            <Box sx={{ pl: 3, pt: 1 }}>
+              <Button variant="contained" sx={{ borderRadius: 5, bgcolor: "red", }}>
+                Submit
+              </Button>
             </Box>
           </Stack>
         </Container>
