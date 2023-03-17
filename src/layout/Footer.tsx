@@ -19,7 +19,7 @@ import InfoIcon from '@mui/icons-material/Info';
 const Footer = () => {
 
   const bigScreen = useMediaQuery({
-    query: '(min-width: 1300px)'
+    query: '(min-width: 1500px)'
   })
 
   return (
@@ -59,7 +59,7 @@ const Footer = () => {
             </Box>
           </Stack>
         </Grid> */}
-        <Grid item md={1.5}>
+        <Grid item md={bigScreen ? 1.5 : 0.5}>
         </Grid>
         <Grid item md={3} sx={{ pt: 4, display: { xs: "none", md: "block" } }} >
           <Stack
@@ -73,7 +73,7 @@ const Footer = () => {
             </Box>
             {
               bigScreen ?
-                <Box sx={{ textAlign: "left", paddingInline: 5, pt: 1, fontSize: 13, color: "black", fontFamily: "monospace"  }}>
+                <Box sx={{ textAlign: "left", paddingInline: 5, pt: 1, fontSize: 13, color: "black", fontFamily: "monospace" }}>
                   We are a Real Estate company that offer buy,sell and rent of your property,Here you can find your future property,can sell your actuale one or rent it with the best prices.
                 </Box>
                 :
@@ -83,7 +83,7 @@ const Footer = () => {
             }
           </Stack>
         </Grid>
-        <Grid item md={3} xs={12} sx={{ pt: 4, }}>
+        <Grid item md={bigScreen ? 3 : 5} xs={12} sx={{ pt: 4, }}>
           <Stack
             direction="column"
             justifyContent="center"

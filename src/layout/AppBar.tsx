@@ -80,7 +80,7 @@ const ApppBar = () => {
   })
 
   const bigScreen = useMediaQuery({
-    query: '(min-width: 1300px)'
+    query: '(min-width: 1500px)'
   })
 
   return (
@@ -169,7 +169,7 @@ const ApppBar = () => {
               justifyContent: "left"
             }}
           >
-            <Link to='/' style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+            <Link to='/' style={{ marginLeft: 35, paddingRight: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
               Home
             </Link>
 
