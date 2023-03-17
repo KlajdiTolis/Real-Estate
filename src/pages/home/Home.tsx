@@ -101,7 +101,7 @@ const Home = () => {
           boxShadow: 10,
           // borderBottomRightRadius: bigScreen ? 250 : (phone ? 0 : 150),
           // borderBottomLeftRadius: bigScreen ? 250 : (phone ? 0 : 150),
-          height: bigScreen ? "47vh" : "45vh"
+          height: bigScreen ? "43vh" : "45vh"
         }}
       >
         <Container>
