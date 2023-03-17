@@ -18,6 +18,7 @@ import { Stack } from "@mui/material";
 //import logo
 import UserLogo from "../assets/homeImage/user.png"
 import RealEstateLogo from "../assets/buildings-removebg-preview.png"
+import UserSettings from "../assets/homeImage/setting.png"
 
 const pages = [{
   id: 0,
@@ -79,7 +80,7 @@ const ApppBar = () => {
   })
 
   const bigScreen = useMediaQuery({
-    query: '(min-width: 1300px)'
+    query: '(min-width: 1500px)'
   })
 
   return (
@@ -168,7 +169,7 @@ const ApppBar = () => {
               justifyContent: "left"
             }}
           >
-            <Link to='/' style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+            <Link to='/' style={{ marginLeft: 35, paddingRight: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
               Home
             </Link>
 
@@ -181,15 +182,15 @@ const ApppBar = () => {
                 </Link>
               </Box>
             ))}
-            <Link to='/contact' style={{ paddingLeft: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+            <Link to='/loan' style={{ paddingLeft: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
               Loans
             </Link>
             {/* <Layout /> */}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0.7, border: 1, borderColor: "white" }}>
-                <img src={UserLogo} width={33} />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0.7, border: 0.5, borderColor: "#4b6e49" }}>
+                <img src={UserSettings} width={33} />
               </IconButton>
             </Tooltip>
             <Menu
