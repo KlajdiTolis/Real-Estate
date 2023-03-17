@@ -101,13 +101,13 @@ const Home = () => {
           boxShadow: 10,
           // borderBottomRightRadius: bigScreen ? 250 : (phone ? 0 : 150),
           // borderBottomLeftRadius: bigScreen ? 250 : (phone ? 0 : 150),
-          height: bigScreen ? "50vh" : "45vh"
+          height: bigScreen ? "43vh" : "45vh"
         }}
       >
         <Container>
           {/* {phone && */}
           <Box sx={{ textAlign: "center" }}>
-            <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 120 : 100} />
+            <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 100 : 80} />
           </Box>
           {/* } */}
           <Typography
@@ -121,7 +121,7 @@ const Home = () => {
               textShadow: "3px 3px #000000",
               color: "white",
               pb: 1,
-              fontSize: bigScreen ? 45 : 35,
+              fontSize: bigScreen ? 40 : 35,
             }}
           >
             Find Your Dream House
@@ -218,7 +218,7 @@ const Home = () => {
             <CardRent />
           </Grid>
         </Grid>
-        <Grid item md={12} sx={{ paddingInline: bigScreen ? 40 : (phone ? 0 : 5), pt: 6, pb: 8 }}>
+        <Grid item md={12} sx={{ paddingInline: bigScreen ? 35 : (phone ? 0 : 5), pt: 6, pb: 8 }}>
           <Loan />
         </Grid>
         {/* <Grid item md={6} xs={12} sx={{pt:12}}>
