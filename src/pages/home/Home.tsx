@@ -1,27 +1,30 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { Stack, Autocomplete, TextField, Slider, Button } from "@mui/material";
-import { useMediaQuery } from 'react-responsive'
+import {
+  Stack,
+  Autocomplete,
+  TextField,
+  Slider,
+  Button,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from "@mui/material";
+import { useMediaQuery } from "react-responsive";
 
 //import components
-import Posts from "../posts/PostsCard";
-import Map from "../sell/MapSell";
 import Loan from "./Loan";
-import HomeCarousel from "./HomeCarousel";
 import CardBuy from "./CardBuy";
 import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
-import Search from "../home/components/Search"
+import Filters from "./components/Filters";
+import Favorites from "./components/Favorites";
 
 //import Image
-import House from "../../assets/realEstatebgImage.webp";
-import BGremoveLogo from "../../assets/buildings-removebg-preview.png"
-import HomeBg from "../../assets/homeImage/homebg4.jpg"
-import BgLogin from "../../assets/whitebg2.jpg"
+import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
+import HomeBg from "../../assets/homeImage/homebg4.jpg";
+import BgLogin from "../../assets/whitebg2.jpg";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -29,36 +32,7 @@ interface TabPanelProps {
   value: number;
 }
 
-const options = [{
-  id: 0,
-  name: "Buy"
-},
-// {
-//   id: 1,
-//   name: "Sell"
-// },
-{
-  id: 2,
-  name: "Rent"
-},
-]
-
-const property = [{
-  id: 0,
-  name: "home"
-},
-{
-  id: 1,
-  name: "shop"
-},
-{
-  id: 2,
-  name: "apartament"
-},
-]
-
 const Home = () => {
-
   const [optionVal, setOptionVal] = React.useState<string>("");
   const [firstVal, setFirstVal] = React.useState<number>(0);
   const [secondVal, setSecondVal] = React.useState<any>(3000);
@@ -73,24 +47,26 @@ const Home = () => {
   };
 
   const bigScreen = useMediaQuery({
-    query: '(min-width: 1500px)'
-  })
+    query: "(min-width: 1500px)",
+  });
 
   const phone = useMediaQuery({
-    query: '(max-width: 700px)'
-  })
+    query: "(max-width: 700px)",
+  });
 
   const minWidth = useMediaQuery({
-    query: '(min-height: 700px)'
-  })
+    query: "(min-height: 700px)",
+  });
 
   console.log(optionVal);
   return (
-    <Box sx={{
-      backgroundImage: `url(${BgLogin})`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-    }}>
+    <Box
+      sx={{
+        backgroundImage: `url(${BgLogin})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       <Box
         sx={{
           backgroundImage: `url(${HomeBg})`,
@@ -101,15 +77,17 @@ const Home = () => {
           boxShadow: 10,
           // borderBottomRightRadius: bigScreen ? 250 : (phone ? 0 : 150),
           // borderBottomLeftRadius: bigScreen ? 250 : (phone ? 0 : 150),
-          height: bigScreen ? "43vh" : "45vh"
+          height: bigScreen ? "43vh" : "45vh",
         }}
       >
         <Container>
-          {/* {phone && */}
           <Box sx={{ textAlign: "center" }}>
-            <img src={BGremoveLogo} width={bigScreen ? 120 : 100} height={bigScreen ? 100 : 80} />
+            <img
+              src={BGremoveLogo}
+              width={bigScreen ? 120 : 100}
+              height={bigScreen ? 100 : 80}
+            />
           </Box>
-          {/* } */}
           <Typography
             component="h1"
             variant="h3"
@@ -126,60 +104,9 @@ const Home = () => {
           >
             Find Your Dream House
           </Typography>
-          <Stack
-            direction="row"
-            sx={{ p: 3, backgroundImage: `url(${BgLogin})`, borderRadius: 15 }}>
-            <Box sx={{ textAlign: "center", pr: 6, pl: 2 }}>
-              <Search />
-            </Box>
-            <Box>
-              <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={options as any}
-                onChange={(event: any, value: any) => { setOptionVal(value.name) }}
-                getOptionLabel={(option: any) => option['name']}
-                sx={{ width: 180, bgcolor: "white" }}
-                renderInput={(params) => <TextField {...params} label="Options" />}
-              />
-            </Box>
-            <Box width={300} sx={{ pl: 6 }}>
-              <Stack
-                direction="column">
-                <Slider
-                  sx={{ color: "#a66560" }}
-                  getAriaLabel={() => 'Temperature range'}
-                  value={value}
-                  onChange={handleChange}
-                  valueLabelDisplay="auto"
-                  disableSwap
-                  max={optionVal == "Rent" ? 5000 : 100000}
-                  min={optionVal == "Rent" ? 0 : 1000}
-                  step={optionVal == "Rent" ? 10 : 1000}
-                // getAriaValueText={valuetext}
-                />
-                {/* <Box>
-                  <TextField sx={{ width: 100, bgcolor: "white" }} label="First Price" variant="standard" onChange={(e: any) => { setFirstVal(e.target.value) }} />
-                  <TextField sx={{ width: 100, ml: 6.5, bgcolor: "white" }} label="Second Price" variant="standard" onChange={(e: any) => { setSecondVal(e.target.value) }} />
-                </Box> */}
-              </Stack>
-            </Box>
-            <Box sx={{ pl: 6 }}>
-              <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={property as any}
-                getOptionLabel={(option: any) => option['name']}
-                sx={{ width: 180, }}
-                renderInput={(params) => <TextField {...params} label="Propety Type" />}
-              />
-            </Box>
-            <Box sx={{ pl: 3, pt: 1 }}>
-              <Button variant="contained" sx={{ borderRadius: 5, bgcolor: "red", }}>
-                Submit
-              </Button>
-            </Box>
-          </Stack>
+          <Box>
+            <Filters />
+          </Box>
         </Container>
       </Box>
       <Grid
@@ -191,7 +118,7 @@ const Home = () => {
         <Grid
           container
           spacing={3}
-          sx={{ paddingInline: bigScreen ? 25 : (phone ? 5 : 14) }}
+          sx={{ paddingInline: bigScreen ? 25 : phone ? 5 : 14 }}
         >
           <Grid
             item
@@ -218,8 +145,19 @@ const Home = () => {
             <CardRent />
           </Grid>
         </Grid>
-        <Grid item md={12} sx={{ paddingInline: bigScreen ? 35 : (phone ? 0 : 5), pt: 6, pb: 8 }}>
+        <Grid
+          item
+          md={12}
+          sx={{ paddingInline: bigScreen ? 35 : phone ? 0 : 5, pt: 6, pb: 8 }}
+        >
           <Loan />
+        </Grid>
+        <Grid
+          item
+          md={12}
+          sx={{ paddingInline: bigScreen ? 35 : phone ? 0 : 5, pt: 6, pb: 8 }}
+        >
+          <Favorites />
         </Grid>
         {/* <Grid item md={6} xs={12} sx={{pt:12}}>
                     <Box sx={{ textAlign: "center", display: "flex", justifyContent: "center" }}>
