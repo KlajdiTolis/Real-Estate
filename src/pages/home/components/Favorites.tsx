@@ -5,36 +5,71 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
+import { Grid, Box, Typography, Button } from "@mui/material";
 
 export default function TitlebarImageList() {
   return (
-    <ImageList sx={{ width: 800, height: 450 }}>
-      <ImageListItem key="Subheader" cols={3}>
-        <ListSubheader component="div">December</ListSubheader>
-      </ImageListItem>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
-            actionIcon={
-              <IconButton
-                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                aria-label={`info about ${item.title}`}
+    <Box>
+      <Grid container>
+        <Grid item md={6.5} sx={{ display: "flex", justifyContent: "right" }}>
+          <ImageList sx={{ height: 500, width: 800 }}>
+            <ImageListItem key="Subheader" cols={3}>
+              <ListSubheader component="div">Suggested Properties</ListSubheader>
+            </ImageListItem>
+            {itemData.map((item) => (
+              <ImageListItem key={item.img}>
+                <img
+                  src={`${item.img}?w=248&fit=crop&auto=format`}
+                  srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+                <ImageListItemBar
+                  title={item.title}
+                  subtitle={item.author}
+                  actionIcon={
+                    <IconButton
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      aria-label={`info about ${item.title}`}
+                    >
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </Grid>
+        <Grid item md={5.5} sx={{ display: "flex", textAlign: "center", alignItems: "center", paddingInline: 15 }}>
+          <Grid container>
+            <Grid item md={12} >
+              <Typography>
+                Browse our top real estate properties, featuring a stunning city apartment with modern design and private balcony, a beautiful house with a spacious living room and large backyard, and a magnificent oceanfront villa with luxurious amenities and breathtaking views of the sea. Contact us today to schedule a viewing and find your dream home.
+              </Typography>
+            </Grid>
+            <Grid item md={12}>
+              <Button
+                variant="contained"
+                sx={{
+                  fontSize: 18,
+                  paddingBlock: 1,
+                  borderRadius: 3,
+                  boxShadow: 5,
+                  bgcolor: "#5a6360",
+                  color: "white",
+                  fontFamily: "monospace",
+                  fontWeight: "bold",
+                  textShadow: "3px 2px #000000"
+                }}
               >
-                <InfoIcon />
-              </IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+                Contact drejtorin
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Box>
+
   );
 }
 

@@ -54,7 +54,7 @@ const Home = () => {
     query: "(max-width: 700px)",
   });
 
-  const minWidth = useMediaQuery({
+  const minHeight = useMediaQuery({
     query: "(min-height: 700px)",
   });
 
@@ -148,16 +148,16 @@ const Home = () => {
         <Grid
           item
           md={12}
-          sx={{ paddingInline: bigScreen ? 35 : phone ? 0 : 5, pt: 6, pb: 8 }}
+          sx={{ pt: 6, pb: 8 }}
         >
-          <Loan />
+          <Favorites />
         </Grid>
         <Grid
           item
           md={12}
           sx={{ paddingInline: bigScreen ? 35 : phone ? 0 : 5, pt: 6, pb: 8 }}
         >
-          <Favorites />
+          <Loan />
         </Grid>
         {/* <Grid item md={6} xs={12} sx={{pt:12}}>
                     <Box sx={{ textAlign: "center", display: "flex", justifyContent: "center" }}>
