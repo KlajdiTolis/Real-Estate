@@ -1,20 +1,34 @@
 import * as React from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
-import IconButton from "@mui/material/IconButton";
+import {
+  Grid,
+  Box,
+  Typography,
+  Button,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  ListSubheader,
+  IconButton,
+} from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
-import { Grid, Box, Typography, Button } from "@mui/material";
+import { useMediaQuery } from "react-responsive";
 
 export default function TitlebarImageList() {
+  const bigScreen = useMediaQuery({
+    query: "(min-width: 1700px)",
+  });
+
   return (
     <Box>
       <Grid container>
         <Grid item md={6.5} sx={{ display: "flex", justifyContent: "right" }}>
-          <ImageList sx={{ height: 500, width: 800 }}>
-            <ImageListItem key="Subheader" cols={3}>
-              <ListSubheader component="div">Suggested Properties</ListSubheader>
+          <ImageList
+            sx={{ height: bigScreen ? 500 : 400, width: bigScreen ? 800 : 600 }}
+          >
+            <ImageListItem key="Subheader" cols={2}>
+              <ListSubheader component="div">
+                Suggested Properties
+              </ListSubheader>
             </ImageListItem>
             {itemData.map((item) => (
               <ImageListItem key={item.img}>
@@ -40,18 +54,35 @@ export default function TitlebarImageList() {
             ))}
           </ImageList>
         </Grid>
-        <Grid item md={5.5} sx={{ display: "flex", textAlign: "center", alignItems: "center", paddingInline: 15 }}>
+        <Grid
+          item
+          md={5.5}
+          sx={{
+            display: "flex",
+            textAlign: "center",
+            alignItems: "center",
+            paddingInline: bigScreen ? 15 : 5,
+          }}
+        >
           <Grid container>
-            <Grid item md={12} >
-              <Typography>
-                Browse our top real estate properties, featuring a stunning city apartment with modern design and private balcony, a beautiful house with a spacious living room and large backyard, and a magnificent oceanfront villa with luxurious amenities and breathtaking views of the sea. Contact us today to schedule a viewing and find your dream home.
+            <Grid item md={12}>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  fontFamily: "monospace",
+                }}
+              >
+                Browse our top real estate properties, featuring a stunning city
+                apartment with modern design and private balcony. Contact us
+                today to schedule a viewing and find your dream home.
               </Typography>
             </Grid>
             <Grid item md={12}>
               <Button
                 variant="contained"
                 sx={{
-                  fontSize: 18,
+                  fontSize: 16,
                   paddingBlock: 1,
                   borderRadius: 3,
                   boxShadow: 5,
@@ -59,7 +90,8 @@ export default function TitlebarImageList() {
                   color: "white",
                   fontFamily: "monospace",
                   fontWeight: "bold",
-                  textShadow: "3px 2px #000000"
+                  textShadow: "3px 2px #000000",
+                  mt: 4,
                 }}
               >
                 Contact drejtorin
@@ -69,7 +101,6 @@ export default function TitlebarImageList() {
         </Grid>
       </Grid>
     </Box>
-
   );
 }
 
@@ -121,28 +152,5 @@ const itemData = [
     img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
     title: "Fern",
     author: "@katie_wasserman",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    title: "Mushrooms",
-    author: "@silverdalex",
-    rows: 2,
-    cols: 2,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-    title: "Tomato basil",
-    author: "@shelleypauls",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-    title: "Sea star",
-    author: "@peterlaster",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-    title: "Bike",
-    author: "@southside_customs",
-    cols: 2,
   },
 ];

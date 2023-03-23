@@ -90,7 +90,7 @@ const ApppBar = () => {
       position="sticky"
       sx={{
         backgroundImage: "linear-gradient(to right, #87a194 , #988da8)",
-        height: bigScreen ? 63 : 58,
+        // height: bigScreen ? 63 : 58,
         // borderBottomLeftRadius: "50% 20%",
         // borderBottomRightRadius: "50% 20%",
         // bgcolor: "#988da8"
