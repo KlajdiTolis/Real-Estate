@@ -21,6 +21,10 @@ const Footer = () => {
     query: "(min-width: 1500px)",
   });
 
+  const minHeight = useMediaQuery({
+    query: "(min-height: 700px)",
+  });
+
   return (
     <Box
       sx={{
@@ -31,7 +35,7 @@ const Footer = () => {
         backgroundImage: "linear-gradient(to right, #988da8 , #87a194)",
         color: "white",
         textAlign: "center",
-        height: bigScreen ? "40vh" : "35vh",
+        height: bigScreen && minHeight ? "30vh" : "35vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         borderTopLeftRadius: bigScreen ? "50% 30%" : "",
@@ -58,7 +62,7 @@ const Footer = () => {
           </Stack>
         </Grid> */}
         <Grid item md={bigScreen ? 1.5 : 0.5}></Grid>
-        <Grid item md={3} sx={{ pt: 4, display: { xs: "none", md: "block" } }}>
+        <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
           <Stack
             direction="column"
             justifyContent="center"

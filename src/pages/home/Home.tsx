@@ -54,7 +54,7 @@ const Home = () => {
     query: "(max-width: 700px)",
   });
 
-  const minWidth = useMediaQuery({
+  const minHeight = useMediaQuery({
     query: "(min-height: 700px)",
   });
 
@@ -75,8 +75,8 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           boxShadow: 10,
-          // borderBottomRightRadius: bigScreen ? 250 : (phone ? 0 : 150),
-          // borderBottomLeftRadius: bigScreen ? 250 : (phone ? 0 : 150),
+          // borderBottomRightRadius: bigScreen ? 200 : phone ? 0 : 150,
+          // borderBottomLeftRadius: bigScreen ? 200 : phone ? 0 : 150,
           height: bigScreen ? "43vh" : "45vh",
         }}
       >
@@ -113,12 +113,19 @@ const Home = () => {
         container
         sx={{
           pt: 8,
+          // bgcolor: "red",
         }}
       >
         <Grid
           container
           spacing={3}
-          sx={{ paddingInline: bigScreen ? 25 : phone ? 5 : 14 }}
+          sx={{
+            paddingInline: bigScreen ? 25 : phone ? 5 : 14,
+            bgcolor: "rgb(224, 192, 201,0.5)",
+            pb: 5,
+            borderRadius: 40,
+            marginInline: 1,
+          }}
         >
           <Grid
             item
@@ -148,30 +155,36 @@ const Home = () => {
         <Grid
           item
           md={12}
-          sx={{ paddingInline: bigScreen ? 35 : phone ? 0 : 5, pt: 6, pb: 8 }}
+          sx={{
+            pt: 5,
+            pb: 5,
+            bgcolor: "#E0C0C9",
+            mt: 4,
+            mb: 4,
+            borderRadius: 40,
+            ml: 1,
+            mr: 1,
+          }}
         >
-          <Loan />
+          <Favorites />
         </Grid>
         <Grid
           item
           md={12}
-          sx={{ paddingInline: bigScreen ? 35 : phone ? 0 : 5, pt: 6, pb: 8 }}
+          sx={{
+            paddingInline: bigScreen ? 35 : phone ? 0 : 5,
+            bgcolor: "#E0C0C9",
+            mt: 4,
+            mb: 4,
+            borderRadius: 40,
+            ml: 1,
+            mr: 1,
+          }}
         >
-          <Favorites />
+          <Loan />
         </Grid>
-        {/* <Grid item md={6} xs={12} sx={{pt:12}}>
-                    <Box sx={{ textAlign: "center", display: "flex", justifyContent: "center" }}>
-                        <HomeCarousel />
-                    </Box>
-                </Grid>
-                <Grid item md={5} xs={12} sx={{pt:12}}>
-                    <Box sx={{ textAlign: "center", pt: 5, pl: 8, pr: 8 }}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    </Box>
-                </Grid> */}
       </Grid>
       <Box sx={{ pt: 0, pb: 2 }}></Box>
-      {/* Footer */}
       <Footer />
       {/* </ThemeProvider> */}
     </Box>

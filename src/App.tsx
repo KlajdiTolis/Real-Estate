@@ -6,7 +6,7 @@ import Login from "./layout/Login";
 import Posts from "./pages/posts/PostsCard";
 import EditPost from "./pages/posts/EditPost";
 import Buy from "./pages/buy/Buy";
-import Sell from "./pages/sell/sell";
+import Sell from "./pages/sell/Sell";
 import Rent from "./pages/rent/Rent";
 
 const App = () => {
