@@ -12,29 +12,31 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Grid } from "@mui/material";
 import { useNavigate, Outlet, Link } from "react-router-dom";
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from "react-responsive";
 import { Stack } from "@mui/material";
 
 //import logo
-import UserLogo from "../assets/homeImage/user.png"
-import RealEstateLogo from "../assets/buildings-removebg-preview.png"
+import UserLogo from "../assets/homeImage/user.png";
+import RealEstateLogo from "../assets/buildings-removebg-preview.png";
+import UserSettings from "../assets/homeImage/setting.png";
 
-const pages = [{
-  id: 0,
-  name: "Buy",
-  to: "/buy"
-},
-{
-  id: 1,
-  name: "Sell",
-  to: "/sell"
-}
-  ,
-{
-  id: 2,
-  name: "Rent",
-  to: "/rent"
-}];
+const pages = [
+  {
+    id: 0,
+    name: "Buy",
+    to: "/buy",
+  },
+  {
+    id: 1,
+    name: "Sell",
+    to: "/sell",
+  },
+  {
+    id: 2,
+    name: "Rent",
+    to: "/rent",
+  },
+];
 const settings = [
   // {
   //   id: 0,
@@ -50,8 +52,9 @@ const settings = [
   {
     id: 2,
     name: "Logout",
-    to: "/login"
-  }];
+    to: "/login",
+  },
+];
 
 const ApppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>();
@@ -72,21 +75,22 @@ const ApppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  }
+  };
 
   const phone = useMediaQuery({
-    query: '(max-width: 700px)'
-  })
+    query: "(max-width: 700px)",
+  });
 
   const bigScreen = useMediaQuery({
-    query: '(min-width: 1300px)'
-  })
+    query: "(min-width: 1500px)",
+  });
 
   return (
     <AppBar
       position="sticky"
       sx={{
         backgroundImage: "linear-gradient(to right, #87a194 , #988da8)",
+        // height: bigScreen ? 63 : 58,
         // borderBottomLeftRadius: "50% 20%",
         // borderBottomRightRadius: "50% 20%",
         // bgcolor: "#988da8"
@@ -124,16 +128,30 @@ const ApppBar = () => {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <Stack
-                  direction="column">
-                  <Link to='/' style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }}>
+                <Stack direction="column">
+                  <Link
+                    to="/"
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                      fontFamily: "monospace",
+                      fontSize: 16,
+                    }}
+                  >
                     Home
                   </Link>
                   {pages.map((page) => (
                     <Box>
-                      <Link to={page.to}
+                      <Link
+                        to={page.to}
                         key={page.id}
-                        style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }}>
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          fontFamily: "monospace",
+                          fontSize: 16,
+                        }}
+                      >
                         {page.name}
                       </Link>
                     </Box>
@@ -165,31 +183,69 @@ const ApppBar = () => {
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               // textAlign: "center",
-              justifyContent: "left"
+              justifyContent: "left",
             }}
           >
-            <Link to='/' style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+            <Link
+              to="/"
+              style={{
+                marginLeft: 35,
+                paddingRight: 24,
+                color: "white",
+                fontSize: bigScreen ? 20 : 18,
+                fontWeight: "bold",
+                fontFamily: "monospace",
+                display: "flex",
+                textDecoration: "none",
+                textShadow: "2px 2px #000000",
+              }}
+            >
               Home
             </Link>
 
             {pages.map((page) => (
               <Box>
-                <Link to={page.to}
+                <Link
+                  to={page.to}
                   key={page.id}
-                  style={{ textDecoration: "none", color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", textShadow: "2px 2px #000000", paddingInline: 37 }}>
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontSize: bigScreen ? 20 : 18,
+                    fontWeight: "bold",
+                    fontFamily: "monospace",
+                    textShadow: "2px 2px #000000",
+                    paddingInline: 37,
+                  }}
+                >
                   {page.name}
                 </Link>
               </Box>
             ))}
-            <Link to='/contact' style={{ paddingLeft: 24, color: "white", fontSize: bigScreen ? 20 : 18, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }}>
+            <Link
+              to="/loan"
+              style={{
+                paddingLeft: 24,
+                color: "white",
+                fontSize: bigScreen ? 20 : 18,
+                fontWeight: "bold",
+                fontFamily: "monospace",
+                display: "flex",
+                textDecoration: "none",
+                textShadow: "2px 2px #000000",
+              }}
+            >
               Loans
             </Link>
             {/* <Layout /> */}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0.7, border: 1, borderColor: "white" }}>
-                <img src={UserLogo} width={33} />
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0.7, border: 0.5, borderColor: "#4b6e49" }}
+              >
+                <img src={UserSettings} width={33} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -209,10 +265,19 @@ const ApppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-
                 <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                   <Box>
-                    <a style={{ textDecoration: "none", color: "black", fontFamily: "monospace", fontSize: 16 }} href="/login">{setting.name}</a>
+                    <a
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        fontFamily: "monospace",
+                        fontSize: 16,
+                      }}
+                      href="/login"
+                    >
+                      {setting.name}
+                    </a>
                   </Box>
                 </MenuItem>
               ))}
@@ -220,7 +285,7 @@ const ApppBar = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar >
+    </AppBar>
   );
 };
 export default ApppBar;

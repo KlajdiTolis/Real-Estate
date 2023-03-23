@@ -18,49 +18,61 @@ const Loan = () => {
         xs={false}
         md={6}
         display={{ lg: "block" }}
-        sx={{ position: "relative", textAlign: "center", top: 200 }}
+        sx={{
+          display: "flex",
+          textAlign: "center",
+          alignItems: "center",
+          // paddingInline: 15,
+          // pr: 15,
+        }}
       >
-        <Typography
-          sx={{
-            fontSize: 22,
-            pb: 0,
-            fontWeight: "bold",
-            fontFamily: "monospace",
-            textShadow: "1px 0px #000000",
-          }}
-        >
-          Need a home loan? Get pre-approved
-        </Typography>
-        <Typography sx={{ pb: 3, fontFamily: "monospace" }}>
-          Find a lender who can offer competitive mortgage rates and help you
-          with pre-approval.
-        </Typography>
-        <Button
-          variant="contained"
-          sx={{
-            fontSize: 18,
-            paddingBlock: 1,
-            borderRadius: 3,
-            mt: 2,
-            mb: 24,
-            boxShadow: 5,
-            bgcolor: "#5a6360",
-            color: "white",
-            fontFamily: "monospace",
-            fontWeight: "bold",
-            textShadow: "3px 2px #000000"
-          }}
-        >
-          Contact drejtorin
-        </Button>
+        <Grid container>
+          <Grid item md={12}>
+            <Typography
+              sx={{
+                fontSize: 22,
+                pb: 0,
+                fontWeight: "bold",
+                fontFamily: "monospace",
+                textShadow: "1px 0px #000000",
+              }}
+            >
+              Need a home loan? Get pre-approved
+            </Typography>
+            <Typography
+              sx={{
+                pb: 3,
+                fontSize: 16,
+                fontWeight: "bold",
+                fontFamily: "monospace",
+              }}
+            >
+              Find a lender who can offer competitive mortgage rates and help
+              you with pre-approval.
+            </Typography>
+          </Grid>
+          <Grid item md={12}>
+            <Button
+              variant="contained"
+              sx={{
+                fontSize: 16,
+                paddingBlock: 1,
+                borderRadius: 3,
+                mt: 2,
+                boxShadow: 5,
+                bgcolor: "#5a6360",
+                color: "white",
+                fontFamily: "monospace",
+                fontWeight: "bold",
+                textShadow: "3px 2px #000000",
+              }}
+            >
+              Contact drejtorin
+            </Button>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid
-        item
-        md={6}
-        xs={12}
-        display={{ lg: "block" }}
-        sx={{ pt: 10, p: 5 }}
-      >
+      <Grid item md={6} xs={12} display={{ lg: "block" }} sx={{ pt: 10, p: 5 }}>
         <Box
           sx={{
             textAlign: "center",
