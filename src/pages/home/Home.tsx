@@ -158,9 +158,8 @@ const Home = () => {
           sx={{
             pt: 5,
             pb: 5,
-            bgcolor: "#E0C0C9",
+            bgcolor: "rgb(224, 192, 201,0.5)",
             mt: 4,
-            mb: 4,
             borderRadius: 40,
             ml: 1,
             mr: 1,
@@ -173,7 +172,7 @@ const Home = () => {
           md={12}
           sx={{
             paddingInline: bigScreen ? 35 : phone ? 0 : 5,
-            bgcolor: "#E0C0C9",
+            bgcolor: "rgb(224, 192, 201,0.5)",
             mt: 4,
             mb: 4,
             borderRadius: 40,
