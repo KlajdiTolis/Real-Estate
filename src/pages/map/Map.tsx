@@ -5,25 +5,29 @@ import {
   MarkerF,
   Autocomplete,
   InfoBox,
+  InfoWindowF,
 } from "@react-google-maps/api";
 import { Grid, Box } from "@mui/material";
 
 import Places from "./SearchPlace";
+import FiltersMap from "./FiltersMap";
 
-interface Props {
-  lat: any;
-  lng: any;
-}
+type MarkerType = {
+  id: number;
+  name: string;
+  lat: number;
+  lng: number;
+};
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type PanToHandler = (coords: LatLngLiteral) => void;
 
-const positions = [
-  { name: "Tirana", location: { lat: 41.3275, lng: 19.8187 } },
-  { name: "Vlore", location: { lat: 41.3353, lng: 19.818682 } },
-  { name: "Vlorsdds", location: { lat: 40.1501, lng: 19.8068 } },
-  { name: "Vlodsadre", location: { lat: 41.318432, lng: 19.801291 } },
-  { name: "Vlordsddddde", location: { lat: 41.329896, lng: 19.79288 } },
+const positions: MarkerType[] = [
+  { id: 0, name: "Tirana", lat: 41.3275, lng: 19.8187 },
+  { id: 1, name: "Vlore", lat: 41.3353, lng: 19.818682 },
+  { id: 2, name: "Vlorsdds", lat: 40.1501, lng: 19.8068 },
+  { id: 3, name: "Vlodsadre", lat: 41.318432, lng: 19.801291 },
+  { id: 4, name: "Vlordsddddde", lat: 41.329896, lng: 19.79288 },
 ];
 
 const center = {
@@ -31,21 +35,10 @@ const center = {
   lng: 19.8187,
 };
 
-const ccenter = {
-  lat: 41.3353,
-  lng: 19.818682,
-};
-
-const center1 = {
-  lat: 40.1501,
-  lng: 19.8068,
-};
-
 const Map = () => {
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
-  const [search, setSearch] = useState("");
-  const [selectedMarker, setSelectedMarker] = useState(null);
-  const [selected, setSelected] = useState(null);
+  const [activeMarker, setActiveMarker] = useState<MarkerType | null>(null);
+  const [infoWindow, setInfoWindow] = useState(null);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDpPgdrD1MiVVbGxQ5-O0_Sx3WxMK1vLOY",
@@ -53,10 +46,6 @@ const Map = () => {
   });
 
   const mapRef = useRef<google.maps.Map>();
-
-  // const onMapLoad = useCallback((map: GoogleMap) => {
-  //   mapRef.current = map;
-  // }, []);
 
   const onMapLoad = useCallback((map: any) => {
     mapRef.current = map;
@@ -69,14 +58,13 @@ const Map = () => {
     }
   }, []);
 
+  const handleMarkerClick = (marker: any) => {
+    setActiveMarker(marker);
+  };
+
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
-
-  // const panTo = useCallback(() => {
-  // }, [])
-
-  // console.log(lat)
 
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
@@ -84,12 +72,12 @@ const Map = () => {
         <Grid item xs={12} md={12}>
           <Box sx={{ textAlign: "center", pt: 2 }}>
             <Box sx={{ position: "relative", zIndex: 1 }}>
-              <Places panTo={redirectTo} />
+              <FiltersMap panTo={redirectTo} />
             </Box>
           </Box>
         </Grid>
         <Grid item xs={12} md={12}>
-          <Box sx={{ width: "100%", height: "100vh", pt: 10 }}>
+          <Box sx={{ width: "100%", height: "100vh", pt: 7 }}>
             {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}
             <GoogleMap
               zoom={13}
@@ -104,12 +92,33 @@ const Map = () => {
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
             >
-              <MarkerF position={center1}></MarkerF>
-
-              {selected && <MarkerF position={selected} />}
-              {/* {positions?.map((marker: any) => (
-            <MarkerF position={marker.location} onClick={() => SetSelectedMarker(marker.location)} />
-          ))}  */}
+              {positions.map((marker: any) => (
+                <MarkerF
+                  key={marker.id}
+                  position={{
+                    lat: marker.lat,
+                    lng: marker.lng,
+                  }}
+                  onClick={() => {
+                    handleMarkerClick(marker);
+                  }}
+                />
+              ))}
+              {activeMarker && (
+                <InfoWindowF
+                  key={activeMarker.id}
+                  position={{
+                    lat: activeMarker.lat,
+                    lng: activeMarker.lng,
+                  }}
+                  onCloseClick={() => setActiveMarker(null)}
+                >
+                  <Box>
+                    <Box sx={{ fontSize: 16 }}>{activeMarker.name}</Box>
+                    <Box>dsadsds</Box>
+                  </Box>
+                </InfoWindowF>
+              )}
             </GoogleMap>
           </Box>
         </Grid>

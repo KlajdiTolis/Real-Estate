@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import ApppBar from "../../layout/AppBar";
-import Map from "../map/MapSell";
+import Map from "../map/Map";
 import Post from "../posts/PostsCard";
 
-function Sell() {
+const Sell = () => {
   return (
     <>
       <ApppBar />
@@ -18,6 +18,6 @@ function Sell() {
       </Grid>
     </>
   );
-}
+};
 
 export default Sell;
