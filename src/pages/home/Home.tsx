@@ -121,7 +121,7 @@ const Home = () => {
           spacing={3}
           sx={{
             paddingInline: bigScreen ? 25 : phone ? 5 : 14,
-            bgcolor: "rgb(224, 192, 201,0.5)",
+            bgcolor: "rgb(223, 247, 229,0.5)",
             pb: 5,
             borderRadius: 40,
             marginInline: 1,
@@ -158,7 +158,7 @@ const Home = () => {
           sx={{
             pt: 5,
             pb: 5,
-            bgcolor: "rgb(224, 192, 201,0.5)",
+            bgcolor: "rgb(223, 247, 229,0.5)",
             mt: 4,
             borderRadius: 40,
             ml: 1,
@@ -172,7 +172,7 @@ const Home = () => {
           md={12}
           sx={{
             paddingInline: bigScreen ? 35 : phone ? 0 : 5,
-            bgcolor: "rgb(224, 192, 201,0.5)",
+            bgcolor: "rgb(223, 247, 229,0.5)",
             mt: 4,
             mb: 4,
             borderRadius: 40,
