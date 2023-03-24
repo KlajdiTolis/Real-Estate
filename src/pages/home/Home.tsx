@@ -121,8 +121,8 @@ const Home = () => {
           spacing={3}
           sx={{
             paddingInline: bigScreen ? 25 : phone ? 5 : 14,
-            bgcolor: "rgb(223, 247, 229,0.5)",
-            pb: 5,
+            bgcolor: "rgb(199, 199, 199,0.2)",
+            pb: 3,
             borderRadius: 40,
             marginInline: 1,
           }}
@@ -156,10 +156,9 @@ const Home = () => {
           item
           md={12}
           sx={{
-            pt: 5,
-            pb: 5,
-            bgcolor: "rgb(223, 247, 229,0.5)",
+            bgcolor: "rgb(199, 199, 199,0.2)",
             mt: 4,
+            mb: 4,
             borderRadius: 40,
             ml: 1,
             mr: 1,
@@ -172,12 +171,14 @@ const Home = () => {
           md={12}
           sx={{
             paddingInline: bigScreen ? 35 : phone ? 0 : 5,
-            bgcolor: "rgb(223, 247, 229,0.5)",
+            bgcolor: "rgb(199, 199, 199,0.2)",
             mt: 4,
             mb: 4,
             borderRadius: 40,
             ml: 1,
             mr: 1,
+            // pt: 3,
+            // pb: 3,
           }}
         >
           <Loan />

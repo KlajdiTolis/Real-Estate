@@ -8,7 +8,7 @@ import {
 } from "@react-google-maps/api";
 import { Grid, Box } from "@mui/material";
 
-import Places from "./Place";
+import Places from "./SearchPlace";
 
 interface Props {
   lat: any;
@@ -65,7 +65,7 @@ const Map = () => {
   const redirectTo: PanToHandler = useCallback(({ lat, lng }) => {
     if (mapRef.current) {
       mapRef.current.panTo({ lat, lng });
-      mapRef.current.setZoom(14);
+      mapRef.current.setZoom(13);
     }
   }, []);
 
@@ -82,7 +82,11 @@ const Map = () => {
     <Box sx={{ display: "flex", height: "100vh" }}>
       <Grid container>
         <Grid item xs={12} md={12}>
-          <Box>Filters</Box>
+          <Box sx={{ textAlign: "center", pt: 2 }}>
+            <Box sx={{ position: "relative", zIndex: 1 }}>
+              <Places panTo={redirectTo} />
+            </Box>
+          </Box>
         </Grid>
         <Grid item xs={12} md={12}>
           <Box sx={{ width: "100%", height: "100vh", pt: 10 }}>
@@ -101,11 +105,7 @@ const Map = () => {
               onLoad={onMapLoad}
             >
               <MarkerF position={center1}></MarkerF>
-              <Box sx={{ textAlign: "center", pt: 2 }}>
-                <Box sx={{ position: "relative", zIndex: 1 }}>
-                  <Places panTo={redirectTo} />
-                </Box>
-              </Box>
+
               {selected && <MarkerF position={selected} />}
               {/* {positions?.map((marker: any) => (
             <MarkerF position={marker.location} onClick={() => SetSelectedMarker(marker.location)} />

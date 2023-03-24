@@ -72,7 +72,7 @@ const Loan = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item md={6} xs={12} display={{ lg: "block" }} sx={{ pt: 10, p: 5 }}>
+      <Grid item md={6} xs={12} display={{ lg: "block" }} sx={{ p: 5 }}>
         <Box
           sx={{
             textAlign: "center",
