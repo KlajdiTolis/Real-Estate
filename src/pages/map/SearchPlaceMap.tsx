@@ -44,11 +44,88 @@ const options = [
   },
 ];
 
+const buy = [
+  {
+    id: 0,
+    price: "10000-20000",
+  },
+  {
+    id: 1,
+    price: "20000-30000",
+  },
+  {
+    id: 2,
+    price: "30000-40000",
+  },
+  {
+    id: 3,
+    price: "50000-60000",
+  },
+  {
+    id: 4,
+    price: "60000-70000",
+  },
+  {
+    id: 5,
+    price: "70000-80000",
+  },
+  {
+    id: 6,
+    price: "80000-90000",
+  },
+  {
+    id: 7,
+    price: "90000-100000",
+  },
+  {
+    id: 8,
+    price: "More than 100000",
+  },
+];
+
+const rent = [
+  {
+    id: 0,
+    price: "100-200",
+  },
+  {
+    id: 1,
+    price: "200-300",
+  },
+  {
+    id: 2,
+    price: "300-400",
+  },
+  {
+    id: 3,
+    price: "500-600",
+  },
+  {
+    id: 4,
+    price: "600-700",
+  },
+  {
+    id: 5,
+    price: "700-800",
+  },
+  {
+    id: 6,
+    price: "800-900",
+  },
+  {
+    id: 7,
+    price: "900-1000",
+  },
+  {
+    id: 8,
+    price: "More than 1000",
+  },
+];
+
 const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
   const [optionVal, setOptionVal] = useState<string>("");
-  const [price, setPrice] = useState<string>("");
-  const [minPrice, setMinPrice] = useState<string>("");
-  const [maxPrice, setMaxPrice] = useState<string>("");
+
+  console.log(optionVal);
 
   const {
     ready,
@@ -58,12 +135,22 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
     clearSuggestions,
   } = usePlacesAutocomplete();
 
-  console.log(maxPrice, "max");
-  console.log(minPrice, "min");
-  console.log(price, "price");
-
   return (
-    <Grid container sx={{ bgcolor: "gray", p: 1 }}>
+    <Grid
+      container
+      sx={{
+        bgcolor: "#fcfcfc",
+        pt: 1,
+        borderRadius: 3,
+        // borderTop: 1,
+        // borderLeft: 2,
+        // borderRight: 2,
+        borderBottom: 2,
+        borderColor: "#7a0000",
+        // mt: 0.2,
+        // mb: 0.2,
+      }}
+    >
       <Grid
         item
         md={4}
@@ -105,7 +192,11 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
           </ComboboxPopover>
         </Combobox>
       </Grid>
-      <Grid item md={4} sx={{ display: "flex", justifyContent: "left", pb: 1 }}>
+      <Grid
+        item
+        md={4}
+        sx={{ display: "flex", justifyContent: "center", pb: 2 }}
+      >
         <Box>
           <Autocomplete
             disablePortal
@@ -131,13 +222,49 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
       <Grid
         item
         md={4}
-        sx={{ display: "flex", justifyContent: "left", pb: 1, pr: 3 }}
+        sx={{ display: "flex", justifyContent: "center", pb: 2 }}
       >
-        <FormControl
-          sx={{ m: 1, minWidth: 120 }}
-          size="small"
-          variant="outlined"
-        ></FormControl>
+        {optionVal == "Buy" ? (
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={buy as any}
+            onChange={(event: any, value: any) => {
+              setOptionVal(value.price);
+              changeOptionInput(value.price.toLowerCase());
+            }}
+            getOptionLabel={(buy: any) => buy["price"]}
+            sx={{ width: 180 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Price Range"
+                variant="standard"
+                size="small"
+              />
+            )}
+          />
+        ) : (
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={rent as any}
+            onChange={(event: any, value: any) => {
+              setOptionVal(value.price);
+              changeOptionInput(value.price.toLowerCase());
+            }}
+            getOptionLabel={(rent: any) => rent["price"]}
+            sx={{ width: 180 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Price Range"
+                variant="standard"
+                size="small"
+              />
+            )}
+          />
+        )}
       </Grid>
     </Grid>
   );

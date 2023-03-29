@@ -26,8 +26,8 @@ type PanToHandler = (coords: LatLngLiteral) => void;
 const positions: MarkerType[] = [
   { id: 0, tag: "buy", name: "Tirana", lat: 41.3275, lng: 19.8187 },
   { id: 1, tag: "rent", name: "Vlore", lat: 41.3353, lng: 19.818682 },
-  { id: 2, tag: "rent", name: "Vlorsdds", lat: 40.1501, lng: 19.8068 },
-  { id: 3, tag: "rent", name: "Vlodsadre", lat: 41.318432, lng: 19.801291 },
+  { id: 2, tag: "rent", name: "Rent house", lat: 40.1501, lng: 19.8068 },
+  { id: 3, tag: "rent", name: "Rent house", lat: 41.318432, lng: 19.801291 },
   { id: 4, tag: "buy", name: "Vlordsddddde", lat: 41.329896, lng: 19.79288 },
   { id: 5, tag: "buy", name: "Tr", lat: 41.328778, lng: 19.834189 },
 ];
@@ -73,13 +73,11 @@ const Map = () => {
     setTagNme(data);
   };
 
-  console.log(tagName, "message");
-
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       <Grid container>
         <Grid item xs={12} md={12}>
-          <Box sx={{ textAlign: "center", pt: 1 }}>
+          <Box sx={{ textAlign: "center" }}>
             <Box sx={{ position: "relative", zIndex: 1 }}>
               <Places
                 panTo={redirectTo}
@@ -96,7 +94,8 @@ const Map = () => {
               center={center}
               mapContainerStyle={{
                 width: "100%",
-                height: "80vh",
+                height: "100vh",
+                borderRadius: 10,
               }}
               options={{
                 fullscreenControl: false,
