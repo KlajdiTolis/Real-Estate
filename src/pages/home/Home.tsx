@@ -18,7 +18,7 @@ import CardBuy from "./CardBuy";
 import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
-import Filters from "./components/Filters";
+import Filters from "./components/FiltersHome";
 import Favorites from "./components/Favorites";
 
 //import Image

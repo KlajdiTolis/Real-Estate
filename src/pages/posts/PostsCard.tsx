@@ -34,7 +34,7 @@ import Pagination from "../../layout/Pagination";
 //     );
 // }
 
-const cards = [1, 2];
+const cards = [1, 2, 3, 4];
 
 const theme = createTheme();
 
@@ -49,49 +49,64 @@ const Home = () => {
   const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container sx={{ py: 4, pt: 10 }} maxWidth="md">
-        {/* End hero unit */}
-        <Grid container spacing={1}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={12} md={12}>
-              <Card
-                sx={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <CardMedia
-                  component="img"
+    <Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          pt: 2,
+          pb: 2,
+          borderBottom: 2,
+          // borderTop: 2,
+          borderRadius: 2,
+          bgcolor: "#fcfcfc",
+        }}
+      >
+        <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
+      </Box>
+      <ThemeProvider theme={theme}>
+        <Container sx={{ py: 2 }} maxWidth="md">
+          {/* End hero unit */}
+          <Grid container spacing={1}>
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={12} md={6}>
+                <Card
                   sx={{
-                    // 16:9
-                    pt: "5%",
-                    pb: "5%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
-                  image="https://source.unsplash.com/random"
-                  alt="random"
-                  height={200}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Heading
-                  </Typography>
-                  <Typography>This is a media card ...</Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">
+                >
+                  <CardMedia
+                    component="img"
+                    sx={{
+                      // 16:9
+                      pt: "5%",
+                      pb: "5%",
+                    }}
+                    image="https://source.unsplash.com/random"
+                    alt="random"
+                    height={200}
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Heading
+                    </Typography>
+                    <Typography>This is a media card ...</Typography>
+                  </CardContent>
+                  <CardActions>
+                    {/* <Button size="small">
                     <ViewDialog />
-                  </Button>
-                  {/* <Link to='edit'><EditPost /></Link> */}
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-          {/* <Pagination/> */}
-        </Grid>
-      </Container>
-    </ThemeProvider>
+                  </Button> */}
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+            {/* <Pagination/> */}
+          </Grid>
+        </Container>
+      </ThemeProvider>
+    </Box>
   );
 };
 export default Home;
