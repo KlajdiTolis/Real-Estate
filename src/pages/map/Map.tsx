@@ -20,8 +20,12 @@ type MarkerType = {
   tag: string;
 };
 
-type LatLngLiteral = google.maps.LatLngLiteral;
-type PanToHandler = (coords: LatLngLiteral) => void;
+interface Props {
+  redirectTo: any;
+  changeOptionInput: any;
+  tagName: any;
+  onMapLoad: any;
+}
 
 const positions: MarkerType[] = [
   { id: 0, tag: "buy", name: "Tirana", lat: 41.3275, lng: 19.8187 },
@@ -37,29 +41,21 @@ const center = {
   lng: 19.8187,
 };
 
-const Map = () => {
+const Map: FC<Props> = ({
+  redirectTo,
+  changeOptionInput,
+  tagName,
+  onMapLoad,
+}) => {
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
   const [activeMarker, setActiveMarker] = useState<MarkerType | null>(null);
   const [infoWindow, setInfoWindow] = useState(null);
-  const [tagName, setTagNme] = useState<string>("buy");
+  // const [tagName, setTagNme] = useState<string>("buy");
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDpPgdrD1MiVVbGxQ5-O0_Sx3WxMK1vLOY",
     libraries: ["places"],
   });
-
-  const mapRef = useRef<google.maps.Map>();
-
-  const onMapLoad = useCallback((map: any) => {
-    mapRef.current = map;
-  }, []);
-
-  const redirectTo: PanToHandler = useCallback(({ lat, lng }) => {
-    if (mapRef.current) {
-      mapRef.current.panTo({ lat, lng });
-      mapRef.current.setZoom(13);
-    }
-  }, []);
 
   const handleMarkerClick = (marker: any) => {
     setActiveMarker(marker);
@@ -69,23 +65,9 @@ const Map = () => {
     return <div>Loading...</div>;
   }
 
-  const changeOptionInput = (data: any) => {
-    setTagNme(data);
-  };
-
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       <Grid container>
-        <Grid item xs={12} md={12}>
-          <Box sx={{ textAlign: "center" }}>
-            <Box sx={{ position: "relative", zIndex: 1 }}>
-              <Places
-                panTo={redirectTo}
-                changeOptionInput={changeOptionInput}
-              />
-            </Box>
-          </Box>
-        </Grid>
         <Grid item xs={12} md={12}>
           <Box sx={{ width: "100%", height: "100vh" }}>
             {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}

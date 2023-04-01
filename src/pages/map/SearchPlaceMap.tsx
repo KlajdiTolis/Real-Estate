@@ -27,6 +27,7 @@ import "@reach/combobox/styles.css";
 interface Props {
   panTo: any;
   changeOptionInput: any;
+  tagName: any;
 }
 
 const options = [
@@ -44,88 +45,114 @@ const options = [
   },
 ];
 
-const buy = [
+const prices = [
   {
-    id: 0,
-    price: "10000-20000",
+    type: "buy",
+    buy: [
+      {
+        id: 0,
+        price: "10000-20000",
+      },
+      {
+        id: 1,
+        price: "20000-30000",
+      },
+      {
+        id: 2,
+        price: "30000-40000",
+      },
+      {
+        id: 3,
+        price: "50000-60000",
+      },
+      {
+        id: 4,
+        price: "60000-70000",
+      },
+      {
+        id: 5,
+        price: "70000-80000",
+      },
+      {
+        id: 6,
+        price: "80000-90000",
+      },
+      {
+        id: 7,
+        price: "90000-100000",
+      },
+      {
+        id: 8,
+        price: "More than 100000",
+      },
+    ],
   },
   {
-    id: 1,
-    price: "20000-30000",
-  },
-  {
-    id: 2,
-    price: "30000-40000",
-  },
-  {
-    id: 3,
-    price: "50000-60000",
-  },
-  {
-    id: 4,
-    price: "60000-70000",
-  },
-  {
-    id: 5,
-    price: "70000-80000",
-  },
-  {
-    id: 6,
-    price: "80000-90000",
-  },
-  {
-    id: 7,
-    price: "90000-100000",
-  },
-  {
-    id: 8,
-    price: "More than 100000",
+    type: "rent",
+    rent: [
+      {
+        id: 0,
+        price: "100-200",
+      },
+      {
+        id: 1,
+        price: "200-300",
+      },
+      {
+        id: 2,
+        price: "300-400",
+      },
+      {
+        id: 3,
+        price: "500-600",
+      },
+      {
+        id: 4,
+        price: "600-700",
+      },
+      {
+        id: 5,
+        price: "700-800",
+      },
+      {
+        id: 6,
+        price: "800-900",
+      },
+      {
+        id: 7,
+        price: "900-1000",
+      },
+      {
+        id: 8,
+        price: "More than 1000",
+      },
+    ],
   },
 ];
 
-const rent = [
+const property = [
   {
     id: 0,
-    price: "100-200",
+    name: "home",
   },
   {
     id: 1,
-    price: "200-300",
+    name: "shop",
   },
   {
     id: 2,
-    price: "300-400",
-  },
-  {
-    id: 3,
-    price: "500-600",
-  },
-  {
-    id: 4,
-    price: "600-700",
-  },
-  {
-    id: 5,
-    price: "700-800",
-  },
-  {
-    id: 6,
-    price: "800-900",
-  },
-  {
-    id: 7,
-    price: "900-1000",
-  },
-  {
-    id: 8,
-    price: "More than 1000",
+    name: "apartament",
   },
 ];
 
-const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
+const PlacesAutocomplete: FC<Props> = ({
+  panTo,
+  changeOptionInput,
+  tagName,
+}) => {
   const [optionVal, setOptionVal] = useState<string>("");
 
-  console.log(optionVal);
+  console.log(optionVal, "optionVal");
 
   const {
     ready,
@@ -141,19 +168,14 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
       sx={{
         bgcolor: "#fcfcfc",
         pt: 1,
-        borderRadius: 3,
-        // borderTop: 1,
-        // borderLeft: 2,
-        // borderRight: 2,
+        // borderRadius: 3,
         borderBottom: 2,
         borderColor: "#7a0000",
-        // mt: 0.2,
-        // mb: 0.2,
       }}
     >
       <Grid
         item
-        md={4}
+        md={3}
         sx={{
           display: "flex",
           alignItems: "center",
@@ -169,7 +191,7 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
               const results = await getGeocode({ address });
               const { lat, lng } = await getLatLng(results[0]);
               panTo({ lat, lng });
-              console.log(address, "dsadsads");
+              console.log(lat, lng, "address");
             } catch (error) {
               console.log(error);
             }
@@ -180,7 +202,7 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
             onChange={(e) => setValue(e.target.value)}
             disabled={!ready}
             className="combobox-input"
-            placeholder="Search an address"
+            placeholder="Search an address" ///
           />
           <ComboboxPopover style={{ zIndex: 1 }}>
             <ComboboxList>
@@ -194,7 +216,7 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
       </Grid>
       <Grid
         item
-        md={4}
+        md={3}
         sx={{ display: "flex", justifyContent: "center", pb: 2 }}
       >
         <Box>
@@ -221,50 +243,50 @@ const PlacesAutocomplete: FC<Props> = ({ panTo, changeOptionInput }) => {
       </Grid>
       <Grid
         item
-        md={4}
+        md={3}
         sx={{ display: "flex", justifyContent: "center", pb: 2 }}
       >
-        {optionVal == "Buy" ? (
+        <FormControl variant="standard">
+          <InputLabel id="demo-simple-select-label">Price</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={optionVal}
+            label="Price"
+            size="small"
+            sx={{ minWidth: 180 }}
+            onChange={(e: any) => {
+              setOptionVal(e.target.value);
+            }}
+          >
+            {/* {prices
+              .filter((price) => price.type.includes(`${tagName}`))
+              .map((prices: any) => (
+                <MenuItem key={prices.rent.id} value={prices.rent.price}>
+                  {prices.rent.price}
+                </MenuItem>
+              ))} */}
+          </Select>
+        </FormControl>
+      </Grid>
+      <Grid md={3}>
+        <Box sx={{ pl: 6 }}>
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={buy as any}
-            onChange={(event: any, value: any) => {
-              setOptionVal(value.price);
-              changeOptionInput(value.price.toLowerCase());
-            }}
-            getOptionLabel={(buy: any) => buy["price"]}
+            options={property as any}
+            getOptionLabel={(option: any) => option["name"]}
             sx={{ width: 180 }}
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Price Range"
+                label="Propety Type"
                 variant="standard"
                 size="small"
               />
             )}
           />
-        ) : (
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={rent as any}
-            onChange={(event: any, value: any) => {
-              setOptionVal(value.price);
-              changeOptionInput(value.price.toLowerCase());
-            }}
-            getOptionLabel={(rent: any) => rent["price"]}
-            sx={{ width: 180 }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Price Range"
-                variant="standard"
-                size="small"
-              />
-            )}
-          />
-        )}
+        </Box>
       </Grid>
     </Grid>
   );
