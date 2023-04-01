@@ -50,23 +50,17 @@ const Home = () => {
 
   return (
     <Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          pt: 2,
-          pb: 2,
-          borderBottom: 2,
-          // borderTop: 2,
-          borderRadius: 2,
-          bgcolor: "#fcfcfc",
-        }}
-      >
-        <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
-      </Box>
       <ThemeProvider theme={theme}>
         <Container sx={{ py: 2 }} maxWidth="md">
-          {/* End hero unit */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "left",
+              pb: 2,
+            }}
+          >
+            <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
+          </Box>
           <Grid container spacing={1}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={12} md={6}>

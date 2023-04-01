@@ -1,14 +1,20 @@
 import React from "react";
+import { Grid, Box } from "@mui/material";
 import ApppBar from "../../layout/AppBar";
-// import Mapp from "../map/Map";
 
-function Blogs() {
+// import components
+import MapPage from "../map/MapPage";
+
+const Buy = () => {
   return (
-    <div>
-      <ApppBar />
-      {/* <Mapp /> */}
-    </div>
+    <Box>
+      <Grid container>
+        <Grid item md={12}>
+          <MapPage />
+        </Grid>
+      </Grid>
+    </Box>
   );
-}
+};
 
-export default Blogs;
+export default Buy;

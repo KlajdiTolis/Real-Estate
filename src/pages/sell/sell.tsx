@@ -1,3 +1,4 @@
+import { useState, useCallback, useRef } from "react";
 import { Box, Grid } from "@mui/material";
 import React from "react";
 import ApppBar from "../../layout/AppBar";
@@ -8,16 +9,15 @@ import SerachPlaces from "../map/SearchPlaceMap";
 //import Images
 import BgLogin from "../../assets/whitebg2.jpg";
 
+//import components
+import MapPage from "../map/MapPage";
+
 const Sell = () => {
   return (
-    <Box sx={{ backgroundImage: `url(${BgLogin})` }}>
-      <ApppBar />
-      <Grid container spacing={0}>
-        <Grid item xs={12} md={7}>
-          <Map />
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <Post />
+    <Box>
+      <Grid container>
+        <Grid item md={12}>
+          <MapPage />
         </Grid>
       </Grid>
     </Box>

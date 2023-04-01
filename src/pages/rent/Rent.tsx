@@ -1,10 +1,20 @@
-import React from 'react'
-import ApppBar from '../../layout/AppBar'
+import React from "react";
+import { Grid, Box } from "@mui/material";
+import ApppBar from "../../layout/AppBar";
 
-function Rent() {
-    return (
-        <div><ApppBar /></div>
-    )
-}
+// import components
+import MapPage from "../map/MapPage";
 
-export default Rent
+const Rent = () => {
+  return (
+    <Box>
+      <Grid container>
+        <Grid item md={12}>
+          <MapPage />
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
+
+export default Rent;
