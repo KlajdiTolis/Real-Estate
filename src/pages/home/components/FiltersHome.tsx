@@ -72,8 +72,24 @@ function Filters() {
   });
 
   return (
-    <Box>
-      <Stack
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        p: 1,
+        borderRadius: 15,
+        bgcolor: "white",
+      }}
+    >
+      <Box>
+        <Search />
+      </Box>
+      <Box sx={{ pl: 3, pt: 1 }}>
+        <Button variant="contained" sx={{ borderRadius: 5, bgcolor: "red" }}>
+          Submit
+        </Button>
+      </Box>
+      {/* <Stack
         direction="row"
         sx={{ p: 2, backgroundImage: `url(${BgLogin})`, borderRadius: 15 }}
       >
@@ -114,10 +130,6 @@ function Filters() {
               step={optionVal == "Rent" ? 10 : 1000}
               // getAriaValueText={valuetext}
             />
-            {/* <Box>
-                  <TextField sx={{ width: 100, bgcolor: "white" }} label="First Price" variant="standard" onChange={(e: any) => { setFirstVal(e.target.value) }} />
-                  <TextField sx={{ width: 100, ml: 6.5, bgcolor: "white" }} label="Second Price" variant="standard" onChange={(e: any) => { setSecondVal(e.target.value) }} />
-                </Box> */}
           </Stack>
         </Box>
         <Box sx={{ pl: 6 }}>
@@ -142,7 +154,7 @@ function Filters() {
             Submit
           </Button>
         </Box>
-      </Stack>
+      </Stack> */}
     </Box>
   );
 }

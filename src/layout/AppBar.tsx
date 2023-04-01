@@ -23,20 +23,39 @@ import UserSettings from "../assets/homeImage/setting.png";
 const pages = [
   {
     id: 0,
+    name: "Home",
+    to: "/",
+  },
+  {
+    id: 1,
     name: "Buy",
     to: "/buy",
   },
   {
-    id: 1,
+    id: 2,
     name: "Sell",
     to: "/sell",
   },
   {
-    id: 2,
+    id: 4,
     name: "Rent",
     to: "/rent",
   },
 ];
+
+const supportPage = [
+  {
+    id: 0,
+    name: "Loan",
+    to: "/loan",
+  },
+  {
+    id: 1,
+    name: "Contact",
+    to: "/contact",
+  },
+];
+
 const settings = [
   // {
   //   id: 0,
@@ -85,19 +104,20 @@ const ApppBar = () => {
     query: "(min-width: 1500px)",
   });
 
+  const moreThan1300 = useMediaQuery({
+    query: "(min-width: 1300px)",
+  });
+
   return (
     <AppBar
       position="sticky"
       sx={{
-        backgroundImage: "linear-gradient(to right, #87a194 , #988da8)",
-        // height: bigScreen ? 63 : 58,
-        // borderBottomLeftRadius: "50% 20%",
-        // borderBottomRightRadius: "50% 20%",
-        // bgcolor: "#988da8"
+        bgcolor: "white",
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* phone menu */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -129,17 +149,6 @@ const ApppBar = () => {
             >
               <MenuItem onClick={handleCloseNavMenu}>
                 <Stack direction="column">
-                  <Link
-                    to="/"
-                    style={{
-                      textDecoration: "none",
-                      color: "black",
-                      fontFamily: "monospace",
-                      fontSize: 16,
-                    }}
-                  >
-                    Home
-                  </Link>
                   {pages.map((page) => (
                     <Box>
                       <Link
@@ -176,33 +185,14 @@ const ApppBar = () => {
             }}
           >
             Real Estate
-            {/* <img src={RealEstateLogo} width={90} /> */}
           </Typography>
+          {/* screen size */}
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
-              // textAlign: "center",
-              justifyContent: "left",
             }}
           >
-            <Link
-              to="/"
-              style={{
-                marginLeft: 35,
-                paddingRight: 24,
-                color: "white",
-                fontSize: bigScreen ? 20 : 18,
-                fontWeight: "bold",
-                fontFamily: "monospace",
-                display: "flex",
-                textDecoration: "none",
-                textShadow: "2px 2px #000000",
-              }}
-            >
-              Home
-            </Link>
-
             {pages.map((page) => (
               <Box>
                 <Link
@@ -210,34 +200,50 @@ const ApppBar = () => {
                   key={page.id}
                   style={{
                     textDecoration: "none",
-                    color: "white",
-                    fontSize: bigScreen ? 20 : 18,
+                    color: "Black",
+                    fontSize: bigScreen ? 20 : 15,
                     fontWeight: "bold",
-                    fontFamily: "monospace",
-                    textShadow: "2px 2px #000000",
-                    paddingInline: 37,
+                    paddingInline: 30,
                   }}
                 >
                   {page.name}
                 </Link>
               </Box>
             ))}
-            <Link
-              to="/loan"
-              style={{
-                paddingLeft: 24,
-                color: "white",
-                fontSize: bigScreen ? 20 : 18,
-                fontWeight: "bold",
-                fontFamily: "monospace",
-                display: "flex",
-                textDecoration: "none",
-                textShadow: "2px 2px #000000",
-              }}
-            >
-              Loans
-            </Link>
-            {/* <Layout /> */}
+          </Box>
+          {moreThan1300 ? (
+            <img
+              style={{ marginRight: "26%" }}
+              src={RealEstateLogo}
+              width={100}
+            />
+          ) : (
+            ""
+          )}
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+            }}
+          >
+            <Stack direction="row">
+              {supportPage.map((page) => (
+                <Box>
+                  <Link
+                    to={page.to}
+                    key={page.id}
+                    style={{
+                      textDecoration: "none",
+                      color: "Black",
+                      fontSize: bigScreen ? 20 : 15,
+                      fontWeight: "bold",
+                      paddingInline: 30,
+                    }}
+                  >
+                    {page.name}
+                  </Link>
+                </Box>
+              ))}
+            </Stack>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Settings">
