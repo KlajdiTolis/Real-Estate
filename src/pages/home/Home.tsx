@@ -120,7 +120,7 @@ const Home = () => {
           item
           md={12}
           sx={{
-            bgcolor: "rgb(199, 199, 199,0.2)",
+            bgcolor: "rgb(175, 199, 185,0.3)",
             mb: 7,
             borderRadius: 40,
             pb: 3,
@@ -135,9 +135,11 @@ const Home = () => {
             }}
           >
             <Box sx={{ pt: 0.5, pr: 1 }}>
-              <FavoriteIcon />
+              <FavoriteIcon sx={{ color: "black" }} />
             </Box>
-            <Typography sx={{ fontSize: 23, fontWeight: "bold" }}>
+            <Typography
+              sx={{ fontSize: 23, fontWeight: "bold", color: "#326e4c" }}
+            >
               Favorite Properties
             </Typography>
           </Box>
