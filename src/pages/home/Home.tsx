@@ -26,6 +26,7 @@ import Favorites from "./components/Favorites";
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
 import HomeBg from "../../assets/homeImage/homebg4.jpg";
 import BgLogin from "../../assets/whitebg2.jpg";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -111,10 +112,37 @@ const Home = () => {
       <Grid
         container
         sx={{
-          pt: 8,
+          pt: 6,
           // bgcolor: "red",
         }}
       >
+        <Grid
+          item
+          md={12}
+          sx={{
+            bgcolor: "rgb(199, 199, 199,0.2)",
+            mb: 7,
+            borderRadius: 40,
+            pb: 3,
+            pt: 3,
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              pb: 2,
+            }}
+          >
+            <Box sx={{ pt: 0.5, pr: 1 }}>
+              <FavoriteIcon />
+            </Box>
+            <Typography sx={{ fontSize: 23, fontWeight: "bold" }}>
+              Favorite Properties
+            </Typography>
+          </Box>
+          <Favorites />
+        </Grid>
         <Grid
           container
           spacing={3}
@@ -155,20 +183,6 @@ const Home = () => {
           item
           md={12}
           sx={{
-            bgcolor: "rgb(199, 199, 199,0.2)",
-            mt: 4,
-            mb: 4,
-            borderRadius: 40,
-            ml: 1,
-            mr: 1,
-          }}
-        >
-          <Favorites />
-        </Grid>
-        <Grid
-          item
-          md={12}
-          sx={{
             paddingInline: bigScreen ? 35 : phone ? 0 : 5,
             bgcolor: "rgb(199, 199, 199,0.2)",
             mt: 4,
@@ -176,8 +190,6 @@ const Home = () => {
             borderRadius: 40,
             ml: 1,
             mr: 1,
-            // pt: 3,
-            // pb: 3,
           }}
         >
           <Loan />
@@ -185,7 +197,6 @@ const Home = () => {
       </Grid>
       <Box sx={{ pt: 0, pb: 2 }}></Box>
       <Footer />
-      {/* </ThemeProvider> */}
     </Box>
   );
 };

@@ -21,15 +21,16 @@ export default function TitlebarImageList() {
   return (
     <Box>
       <Grid container>
-        <Grid item md={6.5} sx={{ display: "flex", justifyContent: "right" }}>
+        <Grid item md={12} sx={{ display: "flex", justifyContent: "center" }}>
           <ImageList
-            sx={{ height: bigScreen ? 500 : 400, width: bigScreen ? 800 : 600 }}
+            gap={15}
+            rowHeight={300}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+            }}
           >
-            <ImageListItem key="Subheader" cols={2}>
-              <ListSubheader component="div">
-                Suggested Properties
-              </ListSubheader>
-            </ImageListItem>
+            <ImageListItem key="Subheader" cols={2}></ImageListItem>
             {itemData.map((item) => (
               <ImageListItem key={item.img}>
                 <img
@@ -53,51 +54,6 @@ export default function TitlebarImageList() {
               </ImageListItem>
             ))}
           </ImageList>
-        </Grid>
-        <Grid
-          item
-          md={5.5}
-          sx={{
-            display: "flex",
-            textAlign: "center",
-            alignItems: "center",
-            paddingInline: bigScreen ? 15 : 5,
-          }}
-        >
-          <Grid container>
-            <Grid item md={12}>
-              <Typography
-                sx={{
-                  fontSize: 16,
-                  fontWeight: "bold",
-                  fontFamily: "monospace",
-                }}
-              >
-                Browse our top real estate properties, featuring a stunning city
-                apartment with modern design and private balcony. Contact us
-                today to schedule a viewing and find your dream home.
-              </Typography>
-            </Grid>
-            <Grid item md={12}>
-              <Button
-                variant="contained"
-                sx={{
-                  fontSize: 16,
-                  paddingBlock: 1,
-                  borderRadius: 3,
-                  boxShadow: 5,
-                  bgcolor: "#5a6360",
-                  color: "white",
-                  fontFamily: "monospace",
-                  fontWeight: "bold",
-                  textShadow: "3px 2px #000000",
-                  mt: 4,
-                }}
-              >
-                Contact drejtorin
-              </Button>
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
     </Box>
@@ -124,33 +80,8 @@ const itemData = [
     author: "@helloimnik",
   },
   {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    author: "@nolanissac",
-    cols: 2,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    title: "Hats",
-    author: "@hjrc33",
-    cols: 2,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    title: "Honey",
-    author: "@arwinneil",
-    rows: 2,
-    cols: 2,
-    featured: true,
-  },
-  {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    title: "Basketball",
-    author: "@tjdragotta",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    title: "Fern",
-    author: "@katie_wasserman",
+    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    title: "Burger",
+    author: "@rollelflex_graphy726",
   },
 ];
