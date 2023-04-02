@@ -10,6 +10,7 @@ import {
   Typography,
   Container,
 } from "@mui/material";
+import Imgix from "react-imgix";
 import { useMediaQuery } from "react-responsive";
 
 //import components
@@ -70,24 +71,21 @@ const Home = () => {
       <Box
         sx={{
           backgroundImage: `url(${HomeBg})`,
-          pt: bigScreen ? 5 : 0,
-          backgroundPosition: "top",
+          backgroundPosition: "right",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           boxShadow: 10,
-          // borderBottomRightRadius: bigScreen ? 200 : phone ? 0 : 150,
-          // borderBottomLeftRadius: bigScreen ? 200 : phone ? 0 : 150,
-          height: bigScreen ? "43vh" : "45vh",
+          height: bigScreen ? 330 : 280,
         }}
       >
         <Container>
-          <Box sx={{ textAlign: "center" }}>
+          {/* <Box sx={{ textAlign: "center" }}>
             <img
               src={BGremoveLogo}
               width={bigScreen ? 120 : 100}
               height={bigScreen ? 100 : 80}
             />
-          </Box>
+          </Box> */}
           <Typography
             component="h1"
             variant="h3"
@@ -99,12 +97,13 @@ const Home = () => {
               textShadow: "3px 3px #000000",
               color: "white",
               pb: 1,
+              pt: 8,
               fontSize: bigScreen ? 40 : 35,
             }}
           >
             Find Your Dream House
           </Typography>
-          <Box>
+          <Box sx={{ display: "flex", justifyContent: "center", pt: 3 }}>
             <Filters />
           </Box>
         </Container>

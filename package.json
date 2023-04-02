@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
-    "@types/autosuggest-highlight": "^3.2.0"
+    "@types/autosuggest-highlight": "^3.2.0",
+    "@types/react-imgix": "^9.5.0"
   }
 }

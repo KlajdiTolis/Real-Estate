@@ -79,13 +79,18 @@ function Filters() {
         p: 1,
         borderRadius: 15,
         bgcolor: "white",
+        maxWidth: 500,
+        width: 400,
       }}
     >
       <Box>
         <Search />
       </Box>
-      <Box sx={{ pl: 3, pt: 1 }}>
-        <Button variant="contained" sx={{ borderRadius: 5, bgcolor: "red" }}>
+      <Box sx={{ pl: 3, pt: 1, pb: 1 }}>
+        <Button
+          variant="contained"
+          sx={{ borderRadius: 5, bgcolor: "#6A9190" }}
+        >
           Submit
         </Button>
       </Box>
