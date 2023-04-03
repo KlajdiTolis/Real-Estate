@@ -29,6 +29,8 @@
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.6.1",
     "react-scripts": "^5.0.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
     "typescript": "^4.9.4",
     "use-places-autocomplete": "^4.0.0",
@@ -58,6 +60,7 @@
   },
   "devDependencies": {
     "@types/autosuggest-highlight": "^3.2.0",
-    "@types/react-imgix": "^9.5.0"
+    "@types/react-imgix": "^9.5.0",
+    "@types/react-slick": "^0.23.10"
   }
 }

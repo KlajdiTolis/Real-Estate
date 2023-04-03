@@ -3,7 +3,7 @@ import {
   Stack,
   Autocomplete,
   TextField,
-  Slider,
+  // Slider,
   Button,
   Grid,
   Box,
@@ -20,7 +20,8 @@ import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
 import Filters from "./components/FiltersHome";
-import Favorites from "./components/Favorites";
+// import Favorites from "./components/Favorites";
+import Slider from "./components/Slider";
 
 //import Image
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
@@ -127,23 +128,8 @@ const Home = () => {
             pt: 3,
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              pb: 2,
-            }}
-          >
-            <Box sx={{ pt: 0.5, pr: 1 }}>
-              <FavoriteIcon sx={{ color: "black" }} />
-            </Box>
-            <Typography
-              sx={{ fontSize: 23, fontWeight: "bold", color: "#326e4c" }}
-            >
-              Favorite Properties
-            </Typography>
-          </Box>
-          <Favorites />
+          {/* <Favorites /> */}
+          <Slider />
         </Grid>
         <Grid
           container
