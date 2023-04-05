@@ -3,13 +3,14 @@ import {
   Stack,
   Autocomplete,
   TextField,
-  Slider,
+  // Slider,
   Button,
   Grid,
   Box,
   Typography,
   Container,
 } from "@mui/material";
+import Imgix from "react-imgix";
 import { useMediaQuery } from "react-responsive";
 
 //import components
@@ -19,12 +20,14 @@ import CardSell from "./CardSell";
 import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
 import Filters from "./components/FiltersHome";
-import Favorites from "./components/Favorites";
+// import Favorites from "./components/Favorites";
+import Slider from "./components/SlickSlider/SlickSlider";
 
 //import Image
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
 import HomeBg from "../../assets/homeImage/homebg4.jpg";
 import BgLogin from "../../assets/whitebg2.jpg";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -70,24 +73,22 @@ const Home = () => {
       <Box
         sx={{
           backgroundImage: `url(${HomeBg})`,
-          pt: bigScreen ? 5 : 0,
-          backgroundPosition: "top",
+          backgroundPosition: "right",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           boxShadow: 10,
-          // borderBottomRightRadius: bigScreen ? 200 : phone ? 0 : 150,
-          // borderBottomLeftRadius: bigScreen ? 200 : phone ? 0 : 150,
-          height: bigScreen ? "43vh" : "45vh",
+          height: bigScreen ? 330 : 280,
+          // height:"80vh"
         }}
       >
         <Container>
-          <Box sx={{ textAlign: "center" }}>
+          {/* <Box sx={{ textAlign: "center" }}>
             <img
               src={BGremoveLogo}
               width={bigScreen ? 120 : 100}
               height={bigScreen ? 100 : 80}
             />
-          </Box>
+          </Box> */}
           <Typography
             component="h1"
             variant="h3"
@@ -99,23 +100,40 @@ const Home = () => {
               textShadow: "3px 3px #000000",
               color: "white",
               pb: 1,
+              pt: 8,
               fontSize: bigScreen ? 40 : 35,
             }}
           >
             Find Your Dream House
           </Typography>
-          <Box>
+          <Box sx={{ display: "flex", justifyContent: "center", pt: 3 }}>
             <Filters />
           </Box>
+          {/* <Box sx={{ display: "flex", justifyContent: "center", pt: 10 }}>
+            <Slider />
+          </Box> */}
         </Container>
       </Box>
       <Grid
         container
         sx={{
-          pt: 8,
+          pt: 6,
           // bgcolor: "red",
         }}
       >
+        {/* <Grid
+          item
+          md={12}
+          sx={{
+            bgcolor: "rgb(175, 199, 185,0.3)",
+            mb: 7,
+            borderRadius: 40,
+            pb: 3,
+            pt: 3,
+          }}
+        >
+          <Slider />
+        </Grid> */}
         <Grid
           container
           spacing={3}
@@ -156,20 +174,6 @@ const Home = () => {
           item
           md={12}
           sx={{
-            bgcolor: "rgb(199, 199, 199,0.2)",
-            mt: 4,
-            mb: 4,
-            borderRadius: 40,
-            ml: 1,
-            mr: 1,
-          }}
-        >
-          <Favorites />
-        </Grid>
-        <Grid
-          item
-          md={12}
-          sx={{
             paddingInline: bigScreen ? 35 : phone ? 0 : 5,
             bgcolor: "rgb(199, 199, 199,0.2)",
             mt: 4,
@@ -177,8 +181,6 @@ const Home = () => {
             borderRadius: 40,
             ml: 1,
             mr: 1,
-            // pt: 3,
-            // pb: 3,
           }}
         >
           <Loan />
@@ -186,7 +188,6 @@ const Home = () => {
       </Grid>
       <Box sx={{ pt: 0, pb: 2 }}></Box>
       <Footer />
-      {/* </ThemeProvider> */}
     </Box>
   );
 };
