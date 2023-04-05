@@ -21,7 +21,7 @@ import CardRent from "./CardRent";
 import Footer from "../../layout/Footer";
 import Filters from "./components/FiltersHome";
 // import Favorites from "./components/Favorites";
-import Slider from "./components/Slider";
+import Slider from "./components/SlickSlider/SlickSlider";
 
 //import Image
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
@@ -78,6 +78,7 @@ const Home = () => {
           backgroundSize: "cover",
           boxShadow: 10,
           height: bigScreen ? 330 : 280,
+          // height:"80vh"
         }}
       >
         <Container>
@@ -108,6 +109,9 @@ const Home = () => {
           <Box sx={{ display: "flex", justifyContent: "center", pt: 3 }}>
             <Filters />
           </Box>
+          {/* <Box sx={{ display: "flex", justifyContent: "center", pt: 10 }}>
+            <Slider />
+          </Box> */}
         </Container>
       </Box>
       <Grid
@@ -117,7 +121,7 @@ const Home = () => {
           // bgcolor: "red",
         }}
       >
-        <Grid
+        {/* <Grid
           item
           md={12}
           sx={{
@@ -128,9 +132,8 @@ const Home = () => {
             pt: 3,
           }}
         >
-          {/* <Favorites /> */}
           <Slider />
-        </Grid>
+        </Grid> */}
         <Grid
           container
           spacing={3}
