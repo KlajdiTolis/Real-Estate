@@ -1,0 +1,13 @@
+.slick-slide img {
+    margin: auto;
+  }
+  
+  .slick-next:before {
+    background-color:  #6A9190;
+    border-radius: 50px;
+  }
+
+   .slick-prev:before {
+    background-color: #6A9190;
+    border-radius: 50px;
+  }
