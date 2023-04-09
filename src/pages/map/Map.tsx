@@ -53,7 +53,7 @@ const Map: FC<Props> = ({
   // const [tagName, setTagNme] = useState<string>("buy");
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDpPgdrD1MiVVbGxQ5-O0_Sx3WxMK1vLOY",
+    googleMapsApiKey: "AIzaSyB-aazp6NSDLQLqF1Y3drDJ9ERBHMTPSbg",
     libraries: ["places"],
   });
 
