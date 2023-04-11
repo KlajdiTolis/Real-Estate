@@ -8,6 +8,7 @@ import EditPost from "./pages/posts/EditPost";
 import Buy from "./pages/buy/Buy";
 import Sell from "./pages/sell/Sell";
 import Rent from "./pages/rent/Rent";
+import SignUp from "./layout/SignUp";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="rent" element={<Rent />} />
       <Route path="loan" element={<Rent />} />
       <Route path="dashboard/edit" element={<EditPost />} />
+      <Route path="signUp" element={<SignUp />} />
     </Routes>
   );
 };
