@@ -13,7 +13,7 @@ import { useMediaQuery } from "react-responsive";
 // import image
 import Real2 from "../assets/real-estate2.jpg";
 import GoogleIcon from "@mui/icons-material/Google";
-import BGremoveLogo from "../assets/buildings-removebg-preview.png";
+import BGremoveLogo from "../assets/logoNoBg.png";
 import BgLogin from "../assets/whitebg2.jpg";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
@@ -182,6 +182,9 @@ const App = () => {
             >
               Do not have any account?
             </Typography>
+            <Box>
+              <Button sx={{  }} onClick={() => { navigate("/registration") }}>Sign Up</Button>
+            </Box>
           </Grid>
         </Grid>
       </Grid>
