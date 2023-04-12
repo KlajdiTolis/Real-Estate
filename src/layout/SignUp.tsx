@@ -24,7 +24,7 @@ const SignUp = () => {
                         <TextField size='small' label="Phone Number" placeholder='Phone Number' InputLabelProps={{ shrink: true }} variant="outlined" />
                     </Box>
                     <Box sx={{ display: "center", justifyContent: "center", pt: 4, pb: 6 }}>
-                        <Button variant='contained' sx={{ bgcolor: "#558381" }}>SignUp</Button>
+                        <Button variant='contained' sx={{ bgcolor: "#558381" }}>Register</Button>
                     </Box>
                 </Box>
             </Grid>

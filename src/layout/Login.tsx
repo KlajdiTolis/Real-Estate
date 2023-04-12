@@ -183,7 +183,7 @@ const App = () => {
               Do not have any account?
             </Typography>
             <Box>
-              <Button sx={{  }} onClick={() => { navigate("/registration") }}>Sign Up</Button>
+              <Button sx={{ fontWeight: "bold" }} onClick={() => { navigate("/registration") }}>Sign Up</Button>
             </Box>
           </Grid>
         </Grid>
