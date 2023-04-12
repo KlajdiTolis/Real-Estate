@@ -20,7 +20,7 @@ const App = () => {
       <Route path="rent" element={<Rent />} />
       <Route path="loan" element={<Rent />} />
       <Route path="dashboard/edit" element={<EditPost />} />
-      <Route path="signUp" element={<SignUp />} />
+      <Route path="registration" element={<SignUp />} />
     </Routes>
   );
 };
