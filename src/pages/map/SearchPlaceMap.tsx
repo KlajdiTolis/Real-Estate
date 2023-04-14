@@ -133,15 +133,15 @@ const prices = [
 const property = [
   {
     id: 0,
-    name: "home",
+    name: "Home",
   },
   {
     id: 1,
-    name: "shop",
+    name: "Shop",
   },
   {
     id: 2,
-    name: "apartament",
+    name: "Apartament",
   },
 ];
 

@@ -113,7 +113,10 @@ const Map: FC<Props> = ({
                 >
                   <Box>
                     <Box sx={{ fontSize: 16 }}>{activeMarker.name}</Box>
-                    <Box>dsadsds</Box>
+                    <Box>
+                      dsadsds dsadsdsdsadsds dsadsdsdsadsds dsadsdsdsadsds
+                      dsadsds
+                    </Box>
                     <Button>
                       <ViewPost />
                     </Button>

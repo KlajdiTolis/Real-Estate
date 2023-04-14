@@ -1,4 +1,11 @@
-import * as React from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  useEffect,
+  useRef,
+} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -8,7 +15,7 @@ import Typography from "@mui/material/Typography";
 import parse from "autosuggest-highlight/parse";
 import { debounce } from "@mui/material/utils";
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyDpPgdrD1MiVVbGxQ5-O0_Sx3WxMK1vLOY";
+const GOOGLE_MAPS_API_KEY = "AIzaSyB-aazp6NSDLQLqF1Y3drDJ9ERBHMTPSbg";
 
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
@@ -39,10 +46,10 @@ interface PlaceType {
 }
 
 export default function GoogleMaps() {
-  const [value, setValue] = React.useState<PlaceType | null>(null);
-  const [inputValue, setInputValue] = React.useState("");
-  const [options, setOptions] = React.useState<readonly PlaceType[]>([]);
-  const loaded = React.useRef(false);
+  const [value, setValue] = useState<PlaceType | null>(null);
+  const [inputValue, setInputValue] = useState("");
+  const [options, setOptions] = useState<readonly PlaceType[]>([]);
+  const loaded = useRef(false);
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
@@ -56,7 +63,7 @@ export default function GoogleMaps() {
     loaded.current = true;
   }
 
-  const fetch = React.useMemo(
+  const fetch = useMemo(
     () =>
       debounce(
         (
@@ -73,7 +80,7 @@ export default function GoogleMaps() {
     []
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     let active = true;
 
     if (!autocompleteService.current && (window as any).google) {
