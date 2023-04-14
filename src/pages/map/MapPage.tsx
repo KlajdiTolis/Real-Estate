@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useContext } from "react";
 import { Box, Grid } from "@mui/material";
 import React from "react";
 import ApppBar from "../../layout/AppBar";
@@ -20,7 +20,7 @@ type MarkerType = {
 type LatLngLiteral = google.maps.LatLngLiteral;
 type PanToHandler = (coords: LatLngLiteral) => void;
 
-const Sell = () => {
+const MapPage = () => {
   const [tagName, setTagNme] = useState<string>("buy");
 
   const mapRef = useRef<google.maps.Map>();
@@ -68,4 +68,4 @@ const Sell = () => {
   );
 };
 
-export default Sell;
+export default MapPage;
