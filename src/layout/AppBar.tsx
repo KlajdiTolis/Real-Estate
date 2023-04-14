@@ -17,7 +17,7 @@ import { Stack } from "@mui/material";
 
 //import logo
 import UserLogo from "../assets/homeImage/user.png";
-import RealEstateLogo from "../assets/buildings-removebg-preview.png";
+import RealEstateLogo from "../assets/logoNoBg.png";
 import UserSettings from "../assets/homeImage/setting.png";
 
 const pages = [
