@@ -6,9 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import Buyy from "../../assets/buy-house.webp";
-import Rentt from "../../assets/rent-house.jpg";
-import HomeRent from "../../assets/homeImage/HomeRent.jpg";
+import HomeRent from "../../assets/BuySellRent/rent.jpg";
 
 export default function MultiActionAreaCard() {
   const navigate = useNavigate();
@@ -23,6 +21,7 @@ export default function MultiActionAreaCard() {
           height="220"
           image={HomeRent}
           alt="green iguana"
+          sx={{ position: "top ", height: 400 }}
         />
         <CardContent>
           <Typography

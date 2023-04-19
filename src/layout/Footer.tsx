@@ -38,9 +38,9 @@ const Footer = () => {
         textAlign: "center",
         height: bigScreen && minHeight ? "30vh" : "35vh",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        borderTopLeftRadius: bigScreen ? "50% 30%" : "",
-        borderTopRightRadius: bigScreen ? "50% 25%" : "",
+        // backgroundSize: "cover",
+        borderTopLeftRadius: bigScreen ? "50% 40%" : "",
+        borderTopRightRadius: bigScreen ? "50% 40%" : "",
       }}
     >
       <Grid container>

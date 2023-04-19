@@ -25,9 +25,8 @@ import Slider from "./components/SlickSlider/SlickSlider";
 
 //import Image
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
-import HomeBg from "../../assets/homeImage/homebg4.jpg";
+import HomeBg from "../../assets/real-estate2.jpg";
 import BgLogin from "../../assets/whitebg2.jpg";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -72,13 +71,15 @@ const Home = () => {
     >
       <Box
         sx={{
-          backgroundImage: `url(${HomeBg})`,
-          backgroundPosition: "right",
+          // backgroundColor: "#87a194",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          // backgroundImage: `url(${HomeBg})`,
+          height: bigScreen ? 390 : 280,
+          borderBottomLeftRadius: bigScreen ? "50% 75%" : "",
+          borderBottomRightRadius: bigScreen ? "50% 75%" : "",
+          backgroundColor: "rgba(135, 161, 148, 0.7)",
           boxShadow: 10,
-          height: bigScreen ? 330 : 280,
-          // height:"80vh"
         }}
       >
         <Container>
@@ -125,11 +126,12 @@ const Home = () => {
           item
           md={12}
           sx={{
-            bgcolor: "rgb(175, 199, 185,0.3)",
+            // bgcolor: "rgb(175, 199, 185,0.3)",
             mb: 7,
             borderRadius: 40,
             pb: 3,
             pt: 3,
+            paddingInline:30
           }}
         >
           <Slider />
@@ -139,7 +141,7 @@ const Home = () => {
           spacing={3}
           sx={{
             paddingInline: bigScreen ? 25 : phone ? 5 : 14,
-            bgcolor: "rgb(199, 199, 199,0.2)",
+            // bgcolor: "rgb(199, 199, 199,0.2)",
             pb: 3,
             borderRadius: 40,
             marginInline: 1,
@@ -175,7 +177,7 @@ const Home = () => {
           md={12}
           sx={{
             paddingInline: bigScreen ? 35 : phone ? 0 : 5,
-            bgcolor: "rgb(199, 199, 199,0.2)",
+            // bgcolor: "rgb(199, 199, 199,0.2)",
             mt: 4,
             mb: 4,
             borderRadius: 40,
