@@ -7,14 +7,14 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import Buyy from "../../assets/buy-house.jpg";
-import HomeBuy from "../../assets/homeImage/HomeBuy.jpg";
+import HomeBuy from "../../assets/BuySellRent/buy.jpg";
 
 export default function MultiActionAreaCard() {
   const navigate = useNavigate();
 
   return (
     <Card
-      sx={{ maxWidth: 450, borderRadius: 3, boxShadow: 13, maxHeight: 600 }}
+      sx={{ maxWidth: 450, borderRadius: 3, boxShadow: 13, maxHeight: 550 }}
     >
       <CardActionArea>
         <CardMedia
@@ -22,7 +22,7 @@ export default function MultiActionAreaCard() {
           height="220"
           image={HomeBuy}
           alt="green iguana"
-          sx={{ position: "top " }}
+          sx={{ position: "top ", height: 400 }}
         />
         <CardContent>
           <Typography
@@ -35,16 +35,16 @@ export default function MultiActionAreaCard() {
               fontFamily: "monospace",
             }}
           >
-            Buy
+            Buy your next house
           </Typography>
-          <Typography
+          {/* <Typography
             sx={{ textAlign: "center" }}
             variant="body2"
             color="text.secondary"
           >
             Lizards are a widespread group of squamate reptiles, with odsad asd
             sadsad asddasdsad sdsadsadsdsdsads ad sad dasdsad dsad asd sad
-          </Typography>
+          </Typography> */}
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ display: "flex", justifyContent: "center" }}>
@@ -60,7 +60,6 @@ export default function MultiActionAreaCard() {
             textShadow: "2px 1px #000000",
             paddingBlock: 1,
             borderRadius: 10,
-            mt: 1,
             mb: 2,
             boxShadow: 5,
             bgcolor: "#335959",
