@@ -10,10 +10,11 @@ import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { useNavigate, Outlet, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Stack } from "@mui/material";
+import { logout } from "../firebase/Firebase";
 
 //import logo
 import UserLogo from "../assets/homeImage/user.png";
@@ -80,6 +81,11 @@ const ApppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>();
 
   const navigate = useNavigate();
+
+  const LogoutButton = async () => {
+    await logout();
+    await navigate("/login");
+  };
 
   const handleOpenNavMenu = (event: any) => {
     setAnchorElNav(event.currentTarget);
@@ -271,7 +277,7 @@ const ApppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                   <Box>
                     <a
@@ -287,7 +293,8 @@ const ApppBar = () => {
                     </a>
                   </Box>
                 </MenuItem>
-              ))}
+              ))} */}
+              <Button onClick={LogoutButton}>Logout</Button>
             </Menu>
           </Box>
         </Toolbar>

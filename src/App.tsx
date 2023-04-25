@@ -9,6 +9,7 @@ import Buy from "./pages/buy/Buy";
 import Sell from "./pages/sell/Sell";
 import Rent from "./pages/rent/Rent";
 import SignUp from "./layout/SignUp";
+import Contact from "./pages/contact/Contact";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="sell" element={<Sell />} />
       <Route path="rent" element={<Rent />} />
       <Route path="loan" element={<Rent />} />
+      <Route path="contact" element={<Contact />} />
       <Route path="dashboard/edit" element={<EditPost />} />
       <Route path="registration" element={<SignUp />} />
     </Routes>
