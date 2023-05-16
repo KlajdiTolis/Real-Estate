@@ -12,7 +12,9 @@ import {
   orderBy,
   startAfter,
   limit,
+  where,
 } from "firebase/firestore";
+import { async } from "q";
 
 const Contact = () => {
   const [todos, setTodos] = useState<any>([]);
@@ -37,15 +39,6 @@ const Contact = () => {
     // }
   };
 
-  const test = async () => {
-    const first = query(collection(db, "home"), orderBy("price"), limit(4));
-    const documentSnapshots = await getDocs(first);
-   const mappp = documentSnapshots.docs.map((data:any)=>(
-    data.data()
-   ))
-    console.log(mappp, "todos");
-  };
-
   const addData = async () => {
     const docRef = await addDoc(collection(db, "user"), {
       name: "Klajdi",
@@ -65,11 +58,26 @@ const Contact = () => {
     });
   };
 
+  const filterBy = async () => {
+    const citiesRef = collection(db, "user");
+    const q = query(citiesRef, where("name", "==", "klajdi"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.docs.map((doc: any) => console.log(doc.data()));
+  };
+
+  const orderByy = async () => {
+    const first = query(collection(db, "home"), orderBy("desc"), limit(2));
+    const documentSnapshots = await getDocs(first);
+    const mappp = documentSnapshots.docs.map((data: any) => data.data());
+    console.log(mappp, "todos");
+  };
+
   useEffect(() => {
-    fetchData();
+    // fetchData();
     // addData();
-    updataData();
-    test();
+    // updataData();
+    orderByy();
+    // filterBy();
   }, []);
 
   return (
