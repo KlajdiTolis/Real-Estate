@@ -90,7 +90,9 @@ const sendPasswordReset = async (email:any) => {
   }
 };
 const logout = () => {
-  signOut(auth);
+  return (
+    signOut(auth)
+  )
 };
 export {
   auth,

@@ -88,20 +88,33 @@ const Map: FC<Props> = ({
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
             >
-              {positions
-                .filter((marker) => marker.tag.includes(`${tagName}`))
-                .map((marker: any) => (
-                  <MarkerF
-                    key={marker.id}
-                    position={{
-                      lat: marker.lat,
-                      lng: marker.lng,
-                    }}
-                    onClick={() => {
-                      handleMarkerClick(marker);
-                    }}
-                  />
-                ))}
+              {tagName == "all"
+                ? positions.map((pos: any) => (
+                    <MarkerF
+                      key={pos.id}
+                      position={{
+                        lat: pos.lat,
+                        lng: pos.lng,
+                      }}
+                      onClick={() => {
+                        handleMarkerClick(pos);
+                      }}
+                    />
+                  ))
+                : positions
+                    .filter((marker) => marker.tag.includes(`${tagName}`))
+                    .map((marker: any) => (
+                      <MarkerF
+                        key={marker.id}
+                        position={{
+                          lat: marker.lat,
+                          lng: marker.lng,
+                        }}
+                        onClick={() => {
+                          handleMarkerClick(marker);
+                        }}
+                      />
+                    ))}
               {activeMarker && (
                 <InfoWindowF
                   key={activeMarker.id}

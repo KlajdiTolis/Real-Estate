@@ -33,12 +33,12 @@ interface Props {
 const options = [
   {
     id: 0,
+    name: "All",
+  },
+  {
+    id: 1,
     name: "Buy",
   },
-  // {
-  //   id: 1,
-  //   name: "Sell"
-  // },
   {
     id: 2,
     name: "Rent",
@@ -152,7 +152,7 @@ const PlacesAutocomplete: FC<Props> = ({
 }) => {
   const [optionVal, setOptionVal] = useState<string>("");
 
-  console.log(optionVal, "optionVal");
+  // console.log(optionVal, "optionVal");
 
   const {
     ready,
@@ -161,6 +161,8 @@ const PlacesAutocomplete: FC<Props> = ({
     suggestions: { status, data },
     clearSuggestions,
   } = usePlacesAutocomplete();
+
+  console.log(tagName, "tagnameeee");
 
   return (
     <Grid
@@ -269,7 +271,7 @@ const PlacesAutocomplete: FC<Props> = ({
           </Select>
         </FormControl>
       </Grid>
-      <Grid md={3}>
+      <Grid item md={3}>
         <Box sx={{ pl: 6 }}>
           <Autocomplete
             disablePortal
