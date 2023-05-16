@@ -9,6 +9,9 @@ import {
   updateDoc,
   doc,
   getDocs,
+  orderBy,
+  startAfter,
+  limit,
 } from "firebase/firestore";
 
 const Contact = () => {
@@ -34,7 +37,14 @@ const Contact = () => {
     // }
   };
 
-  console.log(todos, "todos");
+  const test = async () => {
+    const first = query(collection(db, "home"), orderBy("price"), limit(4));
+    const documentSnapshots = await getDocs(first);
+   const mappp = documentSnapshots.docs.map((data:any)=>(
+    data.data()
+   ))
+    console.log(mappp, "todos");
+  };
 
   const addData = async () => {
     const docRef = await addDoc(collection(db, "user"), {
@@ -59,6 +69,7 @@ const Contact = () => {
     fetchData();
     // addData();
     updataData();
+    test();
   }, []);
 
   return (
