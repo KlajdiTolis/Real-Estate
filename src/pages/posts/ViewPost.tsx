@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import { Grid, Box, Typography,Button,Dialog,DialogTitle,IconButton,DialogContent } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { Grid, Box, Typography } from "@mui/material";
 
 import Carusel from "./Carusel";
 
@@ -62,7 +57,7 @@ function CustomizedDialogs() {
   return (
     <div>
       <Button
-        sx={{ bgcolor: "#fffeca", color: "black" }}
+        sx={{ bgcolor: "#335959", color: "white" }}
         variant="contained"
         onClick={handleClickOpen}
       >

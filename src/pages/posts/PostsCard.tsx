@@ -1,50 +1,53 @@
-import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-// import Link from '@mui/material/Link';
+import React, { useEffect, useState } from "react";
+import { AppBar, Button, Card, CardActions, CardMedia, CardContent, CssBaseline, Grid, Stack, Box, Toolbar, Typography, Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db, auth } from "../../firebase/Firebase";
+import {
+  collection,
+  getDoc,
+  query,
+  addDoc,
+  updateDoc,
+  doc,
+  getDocs,
+} from "firebase/firestore";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import VerticalTabs from "../home/Home";
 import ViewDialog from "./ViewPost";
 import EditPost from "./EditPost";
 import Pagination from "../../layout/Pagination";
 
-// const Copyright = () => {
-//     return (
-//         <Typography variant="body2" color="text.secondary" align="center">
-//             {'Copyright © '}
-//             <Link color="inherit" href="https://mui.com/">
-//                 Your Website
-//             </Link>{' '}
-//             {new Date().getFullYear()}
-//             {'.'}
-//         </Typography>
-//     );
-// }
-
-const cards = [1, 2, 3, 4];
-
 const theme = createTheme();
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(2);
+  const [porpertyData, setPorpertyData] = useState<any>([]);
+  const [user, error, isloading] = useAuthState(auth);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = cards.slice(indexOfFirstPost, indexOfLastPost);
+  const navigate = useNavigate()
+
+  const fetchData = async () => {
+    const doc = await getDocs(collection(db, "home"));
+    setPorpertyData(
+      doc.docs.map((docc: any) => ({
+        ...docc.data(),
+        id: docc.id,
+      }))
+    );
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  // console.log(porpertyData,"sdsadsadasd");
+
+  // const indexOfLastPost = currentPage * postsPerPage;
+  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // const currentPosts = cards.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
@@ -62,8 +65,8 @@ const Home = () => {
             <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
           </Box>
           <Grid container spacing={1}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={12} md={6}>
+            {porpertyData.map((data: any, index: any) => (
+              <Grid item key={index} xs={12} sm={12} md={6}>
                 <Card
                   sx={{
                     height: "100%",
@@ -84,14 +87,15 @@ const Home = () => {
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {data?.name}
                     </Typography>
-                    <Typography>This is a media card ...</Typography>
+                    <Typography>{data?.desc}</Typography>
                   </CardContent>
-                  <CardActions>
-                    {/* <Button size="small">
+                  <CardActions sx={{ display: "flex", justifyContent: "right" }}>
+                    <Button size="small" onClick={() => { navigate(`/${data.id}`) }}>
+                      Edit
+                    </Button>
                     <ViewDialog />
-                  </Button> */}
                   </CardActions>
                 </Card>
               </Grid>
