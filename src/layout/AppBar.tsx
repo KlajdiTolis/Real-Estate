@@ -1,6 +1,19 @@
 import * as React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Button, Grid, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Tooltip, MenuItem, Stack } from "@mui/material";
+import {
+  Button,
+  Grid,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Tooltip,
+  MenuItem,
+  Stack,
+} from "@mui/material";
 import { useNavigate, Outlet, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { logout } from "../firebase/Firebase";
@@ -47,21 +60,15 @@ const supportPage = [
 ];
 
 const settings = [
-  // {
-  //   id: 0,
-  //   name: "Profil",
-  //   to: "/profil"
-  // },
-  // {
-  //   id: 1,
-  //   name: "Account",
-  //   to: "/account"
-  // }
-  //   ,
   {
-    id: 2,
-    name: "Logout",
-    to: "/login",
+    id: 0,
+    name: "Profil",
+    to: "/profil",
+  },
+  {
+    id: 1,
+    name: "Account",
+    to: "/account",
   },
 ];
 
@@ -208,11 +215,9 @@ const ApppBar = () => {
             ))}
           </Box>
           {moreThan1300 ? (
-            <img
-              style={{ marginRight: "26%" }}
-              src={RealEstateLogo}
-              width={100}
-            />
+            <a style={{ marginRight: "27%" }} href="/">
+              <img src={RealEstateLogo} width={100} />
+            </a>
           ) : (
             ""
           )}
@@ -266,7 +271,7 @@ const ApppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {/* {settings.map((setting) => (
+              {settings.map((setting) => (
                 <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                   <Box>
                     <a
@@ -276,14 +281,25 @@ const ApppBar = () => {
                         fontFamily: "monospace",
                         fontSize: 16,
                       }}
-                      href="/login"
+                      href={setting.to}
                     >
                       {setting.name}
                     </a>
                   </Box>
                 </MenuItem>
-              ))} */}
-              <Button onClick={LogoutButton}>Logout</Button>
+              ))}
+              <Button
+                sx={{
+                  pl: 2,
+                  textDecoration: "none",
+                  color: "black",
+                  fontFamily: "monospace",
+                  fontSize: 16,
+                }}
+                onClick={LogoutButton}
+              >
+                Logout
+              </Button>
             </Menu>
           </Box>
         </Toolbar>
