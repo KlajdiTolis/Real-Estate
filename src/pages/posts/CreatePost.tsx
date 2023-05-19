@@ -1,7 +1,69 @@
-import React from "react";
-import { Box, Grid, TextField } from "@mui/material";
+import { useState, useEffect } from "react";
+import {
+  Box,
+  Grid,
+  TextField,
+  Button,
+  Autocomplete,
+  InputAdornment,
+} from "@mui/material";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db, auth } from "../../firebase/Firebase";
+import {
+  collection,
+  getDoc,
+  query,
+  addDoc,
+  updateDoc,
+  doc,
+  getDocs,
+  orderBy,
+  startAfter,
+  limit,
+  endBefore,
+  startAt,
+  endAt,
+} from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+
+//import comp
+import CreatePostMap from "./CreatePostMap"
+
+const propertyType = [
+  { label: "House", id: 0 },
+  { label: "Shop", id: 1 },
+  { label: "Apartament", id: 2 },
+];
+
+const options = [
+  { label: "Buy", id: 0 },
+  { label: "Sell", id: 1 },
+  { label: "Rent", id: 2 },
+];
 
 const Create = () => {
+  const navigate = useNavigate();
+
+  const [propName, setPropName] = useState<string>();
+  const [propType, setPropType] = useState<any>();
+  const [type, setType] = useState<any>();
+  const [desc, setDesc] = useState<any>();
+  const [price, setPrice] = useState<number>();
+  const [lat, setLat] = useState<any>();
+  const [lng, setLng] = useState<any>();
+
+  const addData = async () => {
+    const docRef = await addDoc(collection(db, "home"), {
+      porperty_name: propName,
+      desc: desc,
+      location: { _lat: 32.32, _long: 32.3213 },
+      price: price,
+      property_type: propType,
+      type: type,
+    });
+    navigate("/sell");
+  };
+
   return (
     <>
       <Grid container sx={{}}>
@@ -19,72 +81,138 @@ const Create = () => {
             Create New Property
           </Box>
         </Grid>
-        <Grid item md={7} sx={{ height: "100vh" }}>
-          <Grid container spacing={2} sx={{ pt: 3, pl: 7, pb: 5 }}>
-            <Grid
-              item
-              md={10}
-              sx={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <TextField
-                id="standard-basic"
-                label="Property Name"
-                variant="standard"
-                placeholder="Enter Property Name"
-                InputLabelProps={{ shrink: true }}
-                // sx={{ m: 2 }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Description"
-                variant="standard"
-                placeholder="Enter Description"
-                InputLabelProps={{ shrink: true }}
-                // sx={{ m: 2 }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Location"
-                variant="standard"
-                placeholder="Enter Location"
-                InputLabelProps={{ shrink: true }}
-                // sx={{ m: 2 }}
-              />
+        <Grid item md={6} sx={{ height: "90vh" }}>
+          <form onSubmit={addData}>
+            <Grid container spacing={4} sx={{ pt: 3, pl: 7, pb: 5 }}>
+              <Grid item md={3}>
+                <TextField
+                  id="standard-basic"
+                  label="Property Name"
+                  variant="outlined"
+                  placeholder="Enter Property Name"
+                  InputLabelProps={{ shrink: true,}}
+                  onChange={(e: any) => {
+                    setPropName(e.target.value);
+                  }}
+                  // sx={{ m: 2 }}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Autocomplete
+                  disablePortal
+                  id="combo-box-demo"
+                  options={propertyType}
+                  getOptionLabel={(option: any) => option["label"]}
+                  isOptionEqualToValue={(option, value) =>
+                    option.id === value.id
+                  }
+                  onChange={(event: any, value: any) =>
+                    setPropType(value.label)
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Property Type"
+                      placeholder="Enter Property Type"
+                      InputLabelProps={{ shrink: true }}
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Autocomplete
+                  disablePortal
+                  id="combo-box-demo"
+                  options={options}
+                  getOptionLabel={(option: any) => option["label"]}
+                  onChange={(event: any, value: any) => setType(value.label)}
+                  isOptionEqualToValue={(option, value) =>
+                    option.id === value.id
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Type"
+                      placeholder="Enter Type"
+                      InputLabelProps={{ shrink: true }}
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item md={9}>
+                <TextField
+                  id="standard-basic"
+                  label="Description"
+                  variant="outlined"
+                  placeholder="Enter Description"
+                  InputLabelProps={{ shrink: true }}
+                  onChange={(e: any) => {
+                    setDesc(e.target.value);
+                  }}
+                  // sx={{ m: 2 }}
+                  fullWidth
+                  multiline
+                  rows={6}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <TextField
+                  id="price"
+                  label="Price*"
+                  placeholder="Enter Price"
+                  InputLabelProps={{ shrink: true }}
+                  onChange={(e: any) => {
+                    setPrice(e.target.value);
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment style={{ marginTop: 3 }} position="end">
+                        €
+                      </InputAdornment>
+                    ),
+                  }}
+                  type="number"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item md={3}>
+                <TextField
+                  id="standard-basic"
+                  label="Lat"
+                  variant="outlined"
+                  placeholder="Enter Lat"
+                  InputLabelProps={{ shrink: true }}
+                  onChange={(e: any) => {
+                    setLat(e.target.value);
+                  }}
+                  // sx={{ m: 2 }}
+                />
+              </Grid>
+              <Grid item md={3}>
+                <TextField
+                  id="standard-basic"
+                  label="Lng"
+                  variant="outlined"
+                  placeholder="Enter Lng"
+                  InputLabelProps={{ shrink: true }}
+                  onChange={(e: any) => {
+                    setLng(e.target.value);
+                  }}
+                  // sx={{ m: 2 }}
+                />
+              </Grid>
+              <Grid item md={12}>
+                <Button variant="contained" sx={{ p: 1 }} onClick={addData}>
+                  Submit
+                </Button>
+              </Grid>
             </Grid>
-            <Grid
-              item
-              md={10}
-              sx={{ display: "flex", justifyContent: "space-between", mt: 5 }}
-            >
-              <TextField
-                id="standard-basic"
-                label="Type"
-                variant="standard"
-                placeholder="Enter Type"
-                InputLabelProps={{ shrink: true }}
-                // sx={{ m: 2 }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Price"
-                variant="standard"
-                placeholder="Enter Price"
-                InputLabelProps={{ shrink: true }}
-                // sx={{ m: 2 }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Property Type"
-                variant="standard"
-                placeholder="Enter Property Type"
-                InputLabelProps={{ shrink: true }}
-                // sx={{ m: 2 }}
-              />
-            </Grid>
-          </Grid>
+          </form>
         </Grid>
-        <Grid item md={5} spacing={3} sx={{ height: "100vh" }}>
-          Map
+        <Grid item md={6} sx={{ height: "90vh" }}>
+          <CreatePostMap />
         </Grid>
       </Grid>
     </>
