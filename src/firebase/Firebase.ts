@@ -26,7 +26,7 @@ const firebaseConfig = {
   appId: "1:962413766966:web:a6b319c1ec2b9edb5b6b97",
 };
 
-const app = initializeApp(firebaseConfig); 
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
@@ -45,26 +45,30 @@ const signInWithGoogle = async () => {
         email: user.email,
       });
     }
-  } catch (err:any) {
+  } catch (err: any) {
     console.error(err);
     alert(err.message);
   }
 };
 
-const logInWithEmailAndPassword = async ( email: any, password:any) => {
+const logInWithEmailAndPassword = async (email: any, password: any) => {
   try {
     await signInWithEmailAndPassword(auth, email, password).then(
       (userCredential) => {
         const user = userCredential.user;
       }
     );
-  } catch (err:any) {
+  } catch (err: any) {
     console.error(err);
     alert("User Not Found");
   }
 };
 
-const registerWithEmailAndPassword = async (name:any, email:any, password:any) => {
+const registerWithEmailAndPassword = async (
+  name: any,
+  email: any,
+  password: any
+) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -73,26 +77,25 @@ const registerWithEmailAndPassword = async (name:any, email:any, password:any) =
       name,
       authProvider: "local",
       email,
+      tag: "user",
     });
-  } catch (err:any) {
+  } catch (err: any) {
     console.error(err);
     alert(err.message);
   }
 };
 
-const sendPasswordReset = async (email:any) => {
+const sendPasswordReset = async (email: any) => {
   try {
     await sendPasswordResetEmail(auth, email);
     alert("Password reset link sent!");
-  } catch (err:any) {
+  } catch (err: any) {
     console.error(err);
     alert(err.message);
   }
 };
 const logout = () => {
-  return (
-    signOut(auth)
-  )
+  return signOut(auth);
 };
 export {
   auth,

@@ -12,12 +12,15 @@ import {
   orderBy,
   startAfter,
   limit,
-  where,
+  endBefore,
+  startAt,
+  endAt,
 } from "firebase/firestore";
 import { async } from "q";
 
 const Contact = () => {
   const [todos, setTodos] = useState<any>([]);
+  const [data, setData] = useState<any>([]);
   const [user, error, isloading] = useAuthState(auth);
 
   const fetchData = async () => {
@@ -39,16 +42,33 @@ const Contact = () => {
     // }
   };
 
+  const test = async () => {
+    const first = query(collection(db, "home"), orderBy("price"), limit(5));
+    const documentSnapshots = await getDocs(first);
+    const mappp = documentSnapshots.docs.map((data: any) => data.data());
+    setData(mappp);
+    console.log(data[data.length - 1].price, "todosss");
+
+    query(
+      collection(db, "home"),
+      orderBy("price"),
+      startAfter(data[data.length - 1].price),
+      limit(5)
+    );
+  };
+  // console.log(data, "todosss");
+
   const addData = async () => {
-    const docRef = await addDoc(collection(db, "user"), {
-      name: "Klajdi",
-      country: "vloree",
+    const docRef = await addDoc(collection(db, "home"), {
+      desc: "vlore",
+      location: { _lat: 32.32, _long: 32.3213 },
+      name: "vlore",
+      price: 200000,
     });
   };
 
   const updataData = async () => {
     const updateProperty = doc(db, "home", "NiVYg7LBkfWxLlWhiDLA");
-
     // Set the "capital" field of the city 'DC'
     await updateDoc(updateProperty, {
       desc: "Klajdiiii",
@@ -58,12 +78,12 @@ const Contact = () => {
     });
   };
 
-  const filterBy = async () => {
-    const citiesRef = collection(db, "user");
-    const q = query(citiesRef, where("name", "==", "klajdi"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.docs.map((doc: any) => console.log(doc.data()));
-  };
+  // const filterBy = async () => {
+  //   const citiesRef = collection(db, "user");
+  //   const q = query(citiesRef, where("name", "==", "klajdi"));
+  //   const querySnapshot = await getDocs(q);
+  //   querySnapshot.docs.map((doc: any) => console.log(doc.data()));
+  // };
 
   const orderByy = async () => {
     const first = query(collection(db, "home"), orderBy("desc"), limit(2));
@@ -82,7 +102,7 @@ const Contact = () => {
 
   return (
     <div>
-      {todos?.map((dataa: any, index: any) => (
+      {data?.map((dataa: any, index: any) => (
         <div key={index}>{dataa.desc}</div>
       ))}
     </div>
