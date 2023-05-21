@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { Box, MobileStepper, Paper, Typography, Button } from '@mui/material';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
@@ -65,21 +61,21 @@ function SwipeableTextMobileStepper() {
       >
         <Typography>{images[activeStep].label}</Typography>
       </Paper>
-        {images?.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 0 ? (
-              <Box
-                component="img"
-                sx={{
-                  width: 'fit-content',
-                  maxWidth: '100%',
+      {images?.map((step, index) => (
+        <div key={step.label}>
+          {Math.abs(activeStep - index) <= 0 ? (
+            <Box
+              component="img"
+              sx={{
+                width: 'fit-content',
+                maxWidth: '100%',
               }}
-                src={step.imgPath}
-                alt={step.label}
-              />
-            ) : null}
-          </div>
-        ))}
+              src={step.imgPath}
+              alt={step.label}
+            />
+          ) : null}
+        </div>
+      ))}
       <MobileStepper
         steps={maxSteps}
         position="static"

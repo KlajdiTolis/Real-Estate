@@ -21,7 +21,7 @@ type LatLngLiteral = google.maps.LatLngLiteral;
 type PanToHandler = (coords: LatLngLiteral) => void;
 
 const MapPage = () => {
-  const [tagName, setTagNme] = useState<string>("buy");
+  const [tagName, setTagNme] = useState<string>("all");
 
   const mapRef = useRef<google.maps.Map>();
 

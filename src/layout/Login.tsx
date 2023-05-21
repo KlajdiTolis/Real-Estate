@@ -9,6 +9,12 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import {
+  auth,
+  logInWithEmailAndPassword,
+  signInWithGoogle,
+} from "../firebase/Firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 // import image
 import Real2 from "../assets/real-estate2.jpg";
@@ -23,10 +29,21 @@ const App = () => {
   const navigate = useNavigate();
 
   const [showHidePassword, setShowHidePassword] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<any>("");
+  const [user, loading, error] = useAuthState(auth);
 
   const handleShowHide = (e: any) => {
     setShowHidePassword(!showHidePassword);
   };
+
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (user) navigate("/");
+  }, [user, loading]);
 
   const bigScreen = useMediaQuery({
     query: "(min-width: 1300px)",
@@ -86,8 +103,11 @@ const App = () => {
               sx={{ input: { color: "black" }, boxShadow: 1 }}
               fullWidth
               color="success"
-              label="Name"
-              placeholder="Name"
+              label="Email"
+              placeholder="Enter Email"
+              onChange={(e: any) => {
+                setEmail(e.target.value);
+              }}
               variant="outlined"
             />
           </Grid>
@@ -98,6 +118,9 @@ const App = () => {
               color="success"
               label="Password"
               placeholder="Password"
+              onChange={(e: any) => {
+                setPassword(e.target.value);
+              }}
               variant="outlined"
               type={showHidePassword ? "password" : "text"}
             />
@@ -141,7 +164,7 @@ const App = () => {
           </Grid>
           <Grid item md={12}>
             <Button
-              onClick={() => navigate("/")}
+              onClick={() => logInWithEmailAndPassword(email, password)}
               variant="contained"
               size="medium"
               sx={{
@@ -183,7 +206,14 @@ const App = () => {
               Do not have any account?
             </Typography>
             <Box>
-              <Button sx={{ fontWeight: "bold" }} onClick={() => { navigate("/registration") }}>Sign Up</Button>
+              <Button
+                sx={{ fontWeight: "bold" }}
+                onClick={() => {
+                  navigate("/registration");
+                }}
+              >
+                Sign Up
+              </Button>
             </Box>
           </Grid>
         </Grid>

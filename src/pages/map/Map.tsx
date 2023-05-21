@@ -65,6 +65,13 @@ const Map: FC<Props> = ({
     return <div>Loading...</div>;
   }
 
+  const findCoordinatesOnClick = (event: any) => {
+    let lat = event.latLng.lat(),
+      lng = event.latLng.lng();
+    console.log(lat, "lat");
+    console.log(lng, "lng");
+  };
+
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       <Grid container>
@@ -85,23 +92,37 @@ const Map: FC<Props> = ({
                 mapTypeControl: false,
                 disableDefaultUI: false,
               }}
+              onClick={(e) => findCoordinatesOnClick(e)}
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
             >
-              {positions
-                .filter((marker) => marker.tag.includes(`${tagName}`))
-                .map((marker: any) => (
-                  <MarkerF
-                    key={marker.id}
-                    position={{
-                      lat: marker.lat,
-                      lng: marker.lng,
-                    }}
-                    onClick={() => {
-                      handleMarkerClick(marker);
-                    }}
-                  />
-                ))}
+              {tagName == "all"
+                ? positions.map((pos: any) => (
+                    <MarkerF
+                      key={pos.id}
+                      position={{
+                        lat: pos.lat,
+                        lng: pos.lng,
+                      }}
+                      onClick={() => {
+                        handleMarkerClick(pos);
+                      }}
+                    />
+                  ))
+                : positions
+                    .filter((marker) => marker.tag.includes(`${tagName}`))
+                    .map((marker: any) => (
+                      <MarkerF
+                        key={marker.id}
+                        position={{
+                          lat: marker.lat,
+                          lng: marker.lng,
+                        }}
+                        onClick={() => {
+                          handleMarkerClick(marker);
+                        }}
+                      />
+                    ))}
               {activeMarker && (
                 <InfoWindowF
                   key={activeMarker.id}

@@ -1,19 +1,22 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { Grid } from "@mui/material";
+import {
+  Button,
+  Grid,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Tooltip,
+  MenuItem,
+  Stack,
+} from "@mui/material";
 import { useNavigate, Outlet, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { Stack } from "@mui/material";
+import { logout } from "../firebase/Firebase";
 
 //import logo
 import UserLogo from "../assets/homeImage/user.png";
@@ -57,21 +60,15 @@ const supportPage = [
 ];
 
 const settings = [
-  // {
-  //   id: 0,
-  //   name: "Profil",
-  //   to: "/profil"
-  // },
-  // {
-  //   id: 1,
-  //   name: "Account",
-  //   to: "/account"
-  // }
-  //   ,
   {
-    id: 2,
-    name: "Logout",
-    to: "/login",
+    id: 0,
+    name: "Profil",
+    to: "/profil",
+  },
+  {
+    id: 1,
+    name: "Account",
+    to: "/account",
   },
 ];
 
@@ -80,6 +77,11 @@ const ApppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>();
 
   const navigate = useNavigate();
+
+  const LogoutButton = async () => {
+    await logout();
+    await navigate("/login");
+  };
 
   const handleOpenNavMenu = (event: any) => {
     setAnchorElNav(event.currentTarget);
@@ -213,11 +215,9 @@ const ApppBar = () => {
             ))}
           </Box>
           {moreThan1300 ? (
-            <img
-              style={{ marginRight: "26%" }}
-              src={RealEstateLogo}
-              width={100}
-            />
+            <a style={{ marginRight: "27%" }} href="/">
+              <img src={RealEstateLogo} width={100} />
+            </a>
           ) : (
             ""
           )}
@@ -281,13 +281,25 @@ const ApppBar = () => {
                         fontFamily: "monospace",
                         fontSize: 16,
                       }}
-                      href="/login"
+                      href={setting.to}
                     >
                       {setting.name}
                     </a>
                   </Box>
                 </MenuItem>
               ))}
+              <Button
+                sx={{
+                  pl: 2,
+                  textDecoration: "none",
+                  color: "black",
+                  fontFamily: "monospace",
+                  fontSize: 16,
+                }}
+                onClick={LogoutButton}
+              >
+                Logout
+              </Button>
             </Menu>
           </Box>
         </Toolbar>
