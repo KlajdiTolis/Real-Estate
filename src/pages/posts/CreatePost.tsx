@@ -7,6 +7,7 @@ import {
   Autocomplete,
   InputAdornment,
   Divider,
+  Typography,
 } from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../../firebase/Firebase";
@@ -26,9 +27,11 @@ import {
   endAt,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 //import comp
 import CreatePostMap from "./CreatePostMap";
+import ApppBar from "../../layout/AppBar";
 
 const propertyType = [
   { label: "House", id: 0 },
@@ -54,18 +57,16 @@ const Create = () => {
   const [lng, setLng] = useState<any>();
 
   const addData = async () => {
-    const docRef = await addDoc(collection(db, "home"), {
+    await addDoc(collection(db, "home"), {
       porperty_name: propName,
       desc: desc,
-      location: { _lat: 32.32, _long: 32.3213 },
+      location: { _lat: lat, _long: lng },
       price: price,
       property_type: propType,
       type: type,
     });
-    navigate("/sell");
+    navigate("/buy");
   };
-  console.log(lat, "lattttttttttttt");
-  console.log(lng, "lngggggggggg");
 
   const latData = (data: any) => {
     setLat(data);
@@ -75,15 +76,20 @@ const Create = () => {
     setLng(data);
   };
 
+  const bigScreen = useMediaQuery({
+    query: "(max-width: 900px)",
+  });
+
   return (
     <>
-      <Grid container sx={{}}>
-        <Grid item md={12}>
+      <Grid container spacing={0}>
+        <ApppBar />
+        <Grid item md={12} xs={12}>
           <Box
             sx={{
-              pt: 3,
+              mt: 2,
               pl: 7,
-              pb: 5,
+              pb: 1,
               fontSize: 20,
               fontWeight: "bold",
               fontFamily: "monospace",
@@ -92,10 +98,10 @@ const Create = () => {
             Create New Property
           </Box>
         </Grid>
-        <Grid item md={6} sx={{ height: "90vh" }}>
+        <Grid item md={6} xs={12} sx={{ height: "90vh" }}>
           <form onSubmit={addData}>
             <Grid container spacing={4} sx={{ pt: 3, pl: 7, pb: 5 }}>
-              <Grid item md={3}>
+              <Grid item md={3} xs={12}>
                 <TextField
                   id="standard-basic"
                   label="Property Name"
@@ -108,7 +114,7 @@ const Create = () => {
                   // sx={{ m: 2 }}
                 />
               </Grid>
-              <Grid item md={4}>
+              <Grid item md={4} xs={9}>
                 <Autocomplete
                   disablePortal
                   id="combo-box-demo"
@@ -131,7 +137,7 @@ const Create = () => {
                   )}
                 />
               </Grid>
-              <Grid item md={4}>
+              <Grid item md={4} xs={9}>
                 <Autocomplete
                   disablePortal
                   id="combo-box-demo"
@@ -152,7 +158,7 @@ const Create = () => {
                   )}
                 />
               </Grid>
-              <Grid item md={9}>
+              <Grid item md={9} xs={11}>
                 <TextField
                   id="standard-basic"
                   label="Description"
@@ -168,7 +174,7 @@ const Create = () => {
                   rows={6}
                 />
               </Grid>
-              <Grid item md={4}>
+              <Grid item md={4} xs={6.5}>
                 <TextField
                   id="price"
                   label="Price*"
@@ -188,7 +194,7 @@ const Create = () => {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item md={3}>
+              <Grid item md={3} xs={9}>
                 <TextField
                   id="standard-basic"
                   label="Lat"
@@ -202,7 +208,7 @@ const Create = () => {
                   // sx={{ m: 2 }}
                 />
               </Grid>
-              <Grid item md={3}>
+              <Grid item md={3} xs={9}>
                 <TextField
                   id="standard-basic"
                   label="Lng"
@@ -216,11 +222,8 @@ const Create = () => {
                   // sx={{ m: 2 }}
                 />
               </Grid>
-              <Grid item md={12}>
-                <Divider
-                  variant="middle"
-                  sx={{ bgcolor: "black", width: 400, height: 2 }}
-                />
+              <Grid item md={9} xs={9}>
+                <Divider variant="middle" sx={{ bgcolor: "black" }} />
                 <Button
                   variant="contained"
                   color="success"
@@ -233,7 +236,22 @@ const Create = () => {
             </Grid>
           </form>
         </Grid>
-        <Grid item md={6} sx={{ height: "90vh" }}>
+        <Grid
+          item
+          md={6}
+          xs={12}
+          sx={{ height: "80vh", mt: bigScreen ? 8 : 0 }}
+        >
+          <Typography
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              fontSize: 20,
+              pb: 3,
+            }}
+          >
+            {bigScreen ? "Find Your Property Location" : ""}
+          </Typography>
           <CreatePostMap lngData={lngData} latData={latData} />
         </Grid>
       </Grid>

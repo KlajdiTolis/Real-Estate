@@ -111,15 +111,20 @@ const Home = () => {
                         pt: "5%",
                         pb: "5%",
                       }}
-                      image="https://source.unsplash.com/random"
+                      image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
                       alt="random"
                       height={200}
                     />
                     <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {data?.name}
+                      <Typography gutterBottom variant="h5" component="h3">
+                        {data?.porperty_name}
                       </Typography>
                       <Typography>{data?.desc}</Typography>
+                      <Typography
+                        sx={{ display: "flex", justifyContent: "right" }}
+                      >
+                        Price: {data?.price}
+                      </Typography>
                     </CardContent>
                     <CardActions
                       sx={{ display: "flex", justifyContent: "right" }}
