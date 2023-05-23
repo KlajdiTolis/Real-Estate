@@ -39,7 +39,7 @@ const Map: FC<Prop> = ({ latData, lngData }) => {
 
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyB-aazp6NSDLQLqF1Y3drDJ9ERBHMTPSbg",
+    googleMapsApiKey: `${process.env.REACT_APP_MAP_API_KEY}`,
     libraries: ["places"],
   });
 
