@@ -11,23 +11,10 @@ import {
 } from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../../firebase/Firebase";
-import {
-  collection,
-  getDoc,
-  query,
-  addDoc,
-  updateDoc,
-  doc,
-  getDocs,
-  orderBy,
-  startAfter,
-  limit,
-  endBefore,
-  startAt,
-  endAt,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { v4 as uuidv4 } from "uuid";
 
 //import comp
 import CreatePostMap from "./CreatePostMap";
@@ -64,6 +51,7 @@ const Create = () => {
       price: price,
       property_type: propType,
       type: type,
+      id: uuidv4(),
     });
     navigate("/buy");
   };

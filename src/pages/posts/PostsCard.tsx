@@ -50,12 +50,7 @@ const Home = () => {
   const fetchData = async () => {
     const data = query(collection(db, "home"), orderBy("price"), limit(4));
     const doc = await getDocs(data);
-    setPorpertyData(
-      doc.docs.map((docc: any) => ({
-        ...docc.data(),
-        id: docc.id,
-      }))
-    );
+    setPorpertyData(doc.docs.map((docc: any) => docc.data()));
   };
 
   useEffect(() => {

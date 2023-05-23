@@ -200,6 +200,14 @@ const PlacesAutocomplete: FC<Props> = ({
           }}
         >
           <ComboboxInput
+           style={{
+            padding: 5,
+            paddingLeft: 10,
+            paddingRight: 30,
+            borderRadius: 15,
+            // borderColor: "#adacac",
+            opacity: 0.9,
+          }}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             disabled={!ready}

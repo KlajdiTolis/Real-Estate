@@ -44,6 +44,9 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
+//import image
+import BgLogin from "../../assets/whitebg2.jpg";
+
 //import comp
 import ApppBar from "../../layout/AppBar";
 import CreatePostMap from "./CreatePostMap";
@@ -64,8 +67,9 @@ const Create = () => {
   const navigate = useNavigate();
   const { idpost } = useParams();
 
-  const [data, setData] = useState<any>([]);
+  const [porpertyData, setPorpertyData] = useState<any>([]);
   const [propName, setPropName] = useState<string>();
+  const [getPropName, setGetPropName] = useState<string>();
   const [propType, setPropType] = useState<any>();
   const [type, setType] = useState<any>();
   const [desc, setDesc] = useState<any>();
@@ -93,11 +97,19 @@ const Create = () => {
     navigate("/buy");
   };
 
-  console.log(data);
+  const fetchData = async () => {
+    const q = query(collection(db, "home"), where("id", "==", `${idpost}`));
+    const documentSnapshots = await getDocs(q);
+    const map = documentSnapshots.docs.map((data: any) =>
+      setPorpertyData(data.data())
+    );
+  };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  console.log(porpertyData, "todos");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const bigScreen = useMediaQuery({
     query: "(max-width: 900px)",
@@ -105,7 +117,15 @@ const Create = () => {
 
   return (
     <>
-      <Grid container spacing={0}>
+      <Grid
+        container
+        spacing={0}
+        sx={{
+          backgroundImage: `url(${BgLogin})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         <ApppBar />
         <Grid item md={12} xs={12}>
           <Box
@@ -129,8 +149,8 @@ const Create = () => {
                   id="standard-basic"
                   label="Property Name"
                   variant="outlined"
-                  value={data.porperty_name}
                   placeholder="Enter Property Name"
+                  // value={porpertyData?.porperty_name}
                   InputLabelProps={{ shrink: true }}
                   onChange={(e: any) => {
                     setPropName(e.target.value);
@@ -188,6 +208,7 @@ const Create = () => {
                   label="Description"
                   variant="outlined"
                   placeholder="Enter Description"
+                  // value={porpertyData?.desc}
                   InputLabelProps={{ shrink: true }}
                   onChange={(e: any) => {
                     setDesc(e.target.value);
