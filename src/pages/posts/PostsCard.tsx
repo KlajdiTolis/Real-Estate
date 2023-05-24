@@ -116,7 +116,7 @@ const Home = () => {
                         </Typography>
                         <Typography>{data?.desc}</Typography>
                         <Typography
-                          sx={{ display: "flex", justifyContent: "right" }}
+                          sx={{ display: "flex", justifyContent: "right",fontSize:15 }}
                         >
                           Price: {data?.price}
                         </Typography>
