@@ -19,7 +19,6 @@ type MarkerType = {
   lng: number;
   tag: string;
 };
-
 interface Props {
   redirectTo: any;
   changeOptionInput: any;
@@ -47,10 +46,10 @@ const Map: FC<Props> = ({
   tagName,
   onMapLoad,
 }) => {
+
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
   const [activeMarker, setActiveMarker] = useState<MarkerType | null>(null);
   const [infoWindow, setInfoWindow] = useState(null);
-  // const [tagName, setTagNme] = useState<string>("buy");
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${process.env.REACT_APP_MAP_API_KEY}`,
@@ -71,9 +70,6 @@ const Map: FC<Props> = ({
     console.log(lat, "lat");
     console.log(lng, "lng");
   };
-
-  console.log(process.env.REACT_APP_MAP_API_KEY);
-  
 
   return (
     <Box sx={{ display: "flex", height: "90vh" }}>

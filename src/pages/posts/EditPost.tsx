@@ -1,17 +1,3 @@
-// import React from 'react'
-// import { Routes, Route, useParams } from 'react-router-dom';
-
-// const EditPost = () => {
-//   const { idpost } = useParams();
-
-//   console.log(idpost,"idpost")
-
-//   return (
-//     <div>EditPost</div>
-//   )
-// }
-
-// export default EditPost
 import { useState, useEffect } from "react";
 import {
   Box,
@@ -23,24 +9,8 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../../firebase/Firebase";
-import {
-  collection,
-  getDoc,
-  query,
-  addDoc,
-  updateDoc,
-  doc,
-  getDocs,
-  orderBy,
-  startAfter,
-  limit,
-  endBefore,
-  startAt,
-  endAt,
-  where,
-} from "firebase/firestore";
+import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
@@ -49,7 +19,7 @@ import BgLogin from "../../assets/whitebg2.jpg";
 
 //import comp
 import ApppBar from "../../layout/AppBar";
-import CreatePostMap from "./CreatePostMap";
+import CreatePostMap from "./PostMap";
 
 const propertyType = [
   { label: "House", id: 0 },
@@ -80,10 +50,10 @@ const Create = () => {
   }, []);
 
   const [propName, setPropName] = useState<string>();
-  const [propType, setPropType] = useState<any>();
-  const [type, setType] = useState<any>();
-  const [desc, setDesc] = useState<any>();
-  const [price, setPrice] = useState<number>();
+  const [propType, setPropType] = useState<string>();
+  const [type, setType] = useState<string>();
+  const [desc, setDesc] = useState<string>();
+  const [price, setPrice] = useState<any>();
   const [lat, setLat] = useState<any>();
   const [lng, setLng] = useState<any>();
 
@@ -118,8 +88,6 @@ const Create = () => {
     });
     navigate("/buy");
   };
-
-  console.log(type, "typetypetype");
 
   const bigScreen = useMediaQuery({
     query: "(max-width: 900px)",
@@ -173,7 +141,7 @@ const Create = () => {
                   disablePortal
                   id="combo-box-demo"
                   options={propertyType}
-                  value={propType}
+                  value={{ id: -1, label: propType }}
                   getOptionLabel={(option: any) => option["label"]}
                   isOptionEqualToValue={(option, value) =>
                     option.id === value.id
@@ -197,9 +165,11 @@ const Create = () => {
                   disablePortal
                   id="combo-box-demo"
                   options={options}
-                  value={type}
+                  value={{ id: -1, label: type }}
                   getOptionLabel={(option: any) => option["label"]}
-                  onChange={(event: any, value: any) => setType(value.label)}
+                  onChange={(event: any, value: any) =>
+                    setType(value ? value.label : "")
+                  }
                   isOptionEqualToValue={(option, value) =>
                     option.id === value.id
                   }
@@ -225,7 +195,6 @@ const Create = () => {
                   onChange={(e: any) => {
                     setDesc(e.target.value);
                   }}
-                  // sx={{ m: 2 }}
                   fullWidth
                   multiline
                   rows={6}
@@ -263,7 +232,6 @@ const Create = () => {
                   onChange={(e: any) => {
                     setLat(e.target.value);
                   }}
-                  // sx={{ m: 2 }}
                 />
               </Grid>
               <Grid item md={3} xs={9}>
@@ -277,7 +245,6 @@ const Create = () => {
                   onChange={(e: any) => {
                     setLng(e.target.value);
                   }}
-                  // sx={{ m: 2 }}
                 />
               </Grid>
               <Grid item md={9} xs={9}>
@@ -287,6 +254,17 @@ const Create = () => {
                   color="success"
                   sx={{ p: 1, mt: 3, bgcolor: "#335959", pl: 2, pr: 2 }}
                   onClick={updateData}
+                  disabled={
+                    propName == "" ||
+                    desc == "" ||
+                    lat == "" ||
+                    lng == "" ||
+                    price == "" ||
+                    propType == "" ||
+                    type == ""
+                      ? true
+                      : false
+                  }
                 >
                   Submit
                 </Button>

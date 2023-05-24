@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
-  AppBar,
   Button,
   Card,
   CardActions,
   CardMedia,
   CardContent,
-  CssBaseline,
   Grid,
   Stack,
   Box,
-  Toolbar,
   Typography,
   Container,
   CardActionArea,
@@ -20,14 +17,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../../firebase/Firebase";
 import {
   collection,
-  getDoc,
   query,
-  addDoc,
-  updateDoc,
-  doc,
   getDocs,
   orderBy,
-  startAfter,
   limit,
 } from "firebase/firestore";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -54,7 +46,8 @@ const Home = () => {
   // };
 
   const fetchData = async () => {
-    const doc = await getDocs(collection(db, "home"));
+    const data = query(collection(db, "home"), orderBy("price"), limit(4));
+    const doc = await getDocs(data);
     setPorpertyData(
       doc.docs.map((docc: any) => ({
         ...docc.data(),
@@ -66,10 +59,6 @@ const Home = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  console.log(user);
-
-  // console.log(porpertyData,"sdsadsadasd");
 
   // const indexOfLastPost = currentPage * postsPerPage;
   // const indexOfFirstPost = indexOfLastPost - postsPerPage;

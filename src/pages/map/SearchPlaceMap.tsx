@@ -152,8 +152,6 @@ const PlacesAutocomplete: FC<Props> = ({
 }) => {
   const [optionVal, setOptionVal] = useState<string>("");
 
-  // console.log(optionVal, "optionVal");
-
   const {
     ready,
     value,
@@ -161,8 +159,6 @@ const PlacesAutocomplete: FC<Props> = ({
     suggestions: { status, data },
     clearSuggestions,
   } = usePlacesAutocomplete();
-
-  console.log(tagName, "tagnameeee");
 
   return (
     <Grid

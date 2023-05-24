@@ -17,7 +17,7 @@ import { useMediaQuery } from "react-responsive";
 import { v4 as uuidv4 } from "uuid";
 
 //import comp
-import CreatePostMap from "./CreatePostMap";
+import CreatePostMap from "./PostMap";
 import ApppBar from "../../layout/AppBar";
 
 const propertyType = [
@@ -36,9 +36,9 @@ const Create = () => {
   const navigate = useNavigate();
 
   const [propName, setPropName] = useState<string>();
-  const [propType, setPropType] = useState<any>();
-  const [type, setType] = useState<any>();
-  const [desc, setDesc] = useState<any>();
+  const [propType, setPropType] = useState<string>();
+  const [type, setType] = useState<string>();
+  const [desc, setDesc] = useState<string>();
   const [price, setPrice] = useState<number>();
   const [lat, setLat] = useState<any>();
   const [lng, setLng] = useState<any>();
@@ -99,7 +99,6 @@ const Create = () => {
                   onChange={(e: any) => {
                     setPropName(e.target.value);
                   }}
-                  // sx={{ m: 2 }}
                 />
               </Grid>
               <Grid item md={4} xs={9}>

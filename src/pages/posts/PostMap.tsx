@@ -36,6 +36,8 @@ type PanToHandler = (coords: LatLngLiteral) => void;
 
 const Map: FC<Prop> = ({ latData, lngData }) => {
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
+  // const [latt, setLatt] = useState<any>();
+  // const [lngg, setLngg] = useState<any>();
 
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
@@ -67,6 +69,8 @@ const Map: FC<Prop> = ({ latData, lngData }) => {
   const findCoordinatesOnClick = (event: any) => {
     let lat = event.latLng.lat(),
       lng = event.latLng.lng();
+    // setLatt(lat);
+    // setLngg(lng);
     latData(lat);
     lngData(lng);
   };
@@ -148,7 +152,15 @@ const Map: FC<Prop> = ({ latData, lngData }) => {
               onClick={(e) => findCoordinatesOnClick(e)}
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
-            ></GoogleMap>
+            >
+              {/* <MarkerF
+                key={1}
+                position={{
+                  lat: latt,
+                  lng: lngg,
+                }}
+              /> */}
+            </GoogleMap>
           </Box>
         </Grid>
       </Grid>
