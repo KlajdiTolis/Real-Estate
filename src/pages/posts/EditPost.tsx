@@ -68,14 +68,36 @@ const Create = () => {
   const { idpost } = useParams();
 
   const [porpertyData, setPorpertyData] = useState<any>([]);
+
+  const fetchData = async () => {
+    const docRef = doc(db, "home", `${idpost}`);
+    const docSnap = await getDoc(docRef);
+    setPorpertyData(docSnap.data());
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const [propName, setPropName] = useState<string>();
-  const [getPropName, setGetPropName] = useState<string>();
   const [propType, setPropType] = useState<any>();
   const [type, setType] = useState<any>();
   const [desc, setDesc] = useState<any>();
   const [price, setPrice] = useState<number>();
   const [lat, setLat] = useState<any>();
   const [lng, setLng] = useState<any>();
+
+  useEffect(() => {
+    if (porpertyData) {
+      setPropName(porpertyData?.porperty_name);
+      setPropType(porpertyData?.property_type);
+      setType(porpertyData?.type);
+      setDesc(porpertyData?.desc);
+      setPrice(porpertyData?.price);
+      setLat(porpertyData?.location?._lat);
+      setLng(porpertyData?.location?._long);
+    }
+  }, [porpertyData]);
 
   const latData = (data: any) => {
     setLat(data);
@@ -97,19 +119,7 @@ const Create = () => {
     navigate("/buy");
   };
 
-  const fetchData = async () => {
-    const q = query(collection(db, "home"), where("id", "==", `${idpost}`));
-    const documentSnapshots = await getDocs(q);
-    const map = documentSnapshots.docs.map((data: any) =>
-      setPorpertyData(data.data())
-    );
-  };
-
-  console.log(porpertyData, "todos");
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  console.log(type, "typetypetype");
 
   const bigScreen = useMediaQuery({
     query: "(max-width: 900px)",
@@ -138,7 +148,7 @@ const Create = () => {
               fontFamily: "monospace",
             }}
           >
-            Create New Property
+            Edit Property
           </Box>
         </Grid>
         <Grid item md={6} xs={12} sx={{ height: "90vh" }}>
@@ -150,7 +160,7 @@ const Create = () => {
                   label="Property Name"
                   variant="outlined"
                   placeholder="Enter Property Name"
-                  // value={porpertyData?.porperty_name}
+                  value={propName}
                   InputLabelProps={{ shrink: true }}
                   onChange={(e: any) => {
                     setPropName(e.target.value);
@@ -163,6 +173,7 @@ const Create = () => {
                   disablePortal
                   id="combo-box-demo"
                   options={propertyType}
+                  value={propType}
                   getOptionLabel={(option: any) => option["label"]}
                   isOptionEqualToValue={(option, value) =>
                     option.id === value.id
@@ -186,6 +197,7 @@ const Create = () => {
                   disablePortal
                   id="combo-box-demo"
                   options={options}
+                  value={type}
                   getOptionLabel={(option: any) => option["label"]}
                   onChange={(event: any, value: any) => setType(value.label)}
                   isOptionEqualToValue={(option, value) =>
@@ -208,7 +220,7 @@ const Create = () => {
                   label="Description"
                   variant="outlined"
                   placeholder="Enter Description"
-                  // value={porpertyData?.desc}
+                  value={desc}
                   InputLabelProps={{ shrink: true }}
                   onChange={(e: any) => {
                     setDesc(e.target.value);
@@ -224,6 +236,7 @@ const Create = () => {
                   id="price"
                   label="Price*"
                   placeholder="Enter Price"
+                  value={price}
                   InputLabelProps={{ shrink: true }}
                   onChange={(e: any) => {
                     setPrice(e.target.value);

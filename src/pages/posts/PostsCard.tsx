@@ -47,10 +47,20 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  // const fetchData = async () => {
+  //   const data = query(collection(db, "home"), orderBy("price"), limit(4));
+  //   const doc = await getDocs(data);
+  //   setPorpertyData(doc.docs.map((docc: any) => docc.data()));
+  // };
+
   const fetchData = async () => {
-    const data = query(collection(db, "home"), orderBy("price"), limit(4));
-    const doc = await getDocs(data);
-    setPorpertyData(doc.docs.map((docc: any) => docc.data()));
+    const doc = await getDocs(collection(db, "home"));
+    setPorpertyData(
+      doc.docs.map((docc: any) => ({
+        ...docc.data(),
+        id: docc.id,
+      }))
+    );
   };
 
   useEffect(() => {
@@ -89,57 +99,58 @@ const Home = () => {
             )}
           </Stack>
           <Grid container spacing={1}>
-            {porpertyData.map((data: any, index: any) => (
-              <Grid item key={index} xs={12} sm={12} md={6}>
-                <Card
-                  sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      sx={{
-                        // 16:9
-                        pt: "5%",
-                        pb: "5%",
-                      }}
-                      image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-                      alt="random"
-                      height={200}
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h3">
-                        {data?.porperty_name}
-                      </Typography>
-                      <Typography>{data?.desc}</Typography>
-                      <Typography
+            {porpertyData &&
+              porpertyData.map((data: any, index: any) => (
+                <Grid item key={index} xs={12} sm={12} md={6}>
+                  <Card
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        sx={{
+                          // 16:9
+                          pt: "5%",
+                          pb: "5%",
+                        }}
+                        image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+                        alt="random"
+                        height={200}
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}>
+                        <Typography gutterBottom variant="h5" component="h3">
+                          {data?.porperty_name}
+                        </Typography>
+                        <Typography>{data?.desc}</Typography>
+                        <Typography
+                          sx={{ display: "flex", justifyContent: "right" }}
+                        >
+                          Price: {data?.price}
+                        </Typography>
+                      </CardContent>
+                      <CardActions
                         sx={{ display: "flex", justifyContent: "right" }}
                       >
-                        Price: {data?.price}
-                      </Typography>
-                    </CardContent>
-                    <CardActions
-                      sx={{ display: "flex", justifyContent: "right" }}
-                    >
-                      {user?.email == "klajdi.tolis08@gmail.com" && (
-                        <Button
-                          size="small"
-                          onClick={() => {
-                            navigate(`/${data.id}`);
-                          }}
-                        >
-                          Edit
-                        </Button>
-                      )}
-                      <ViewDialog />
-                    </CardActions>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
+                        {user?.email == "klajdi.tolis08@gmail.com" && (
+                          <Button
+                            size="small"
+                            onClick={() => {
+                              navigate(`/${data.id}`);
+                            }}
+                          >
+                            Edit
+                          </Button>
+                        )}
+                        <ViewDialog />
+                      </CardActions>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              ))}
             {/* <Pagination/> */}
           </Grid>
         </Container>
