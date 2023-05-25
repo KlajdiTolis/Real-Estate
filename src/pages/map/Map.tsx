@@ -19,7 +19,6 @@ type MarkerType = {
   lng: number;
   tag: string;
 };
-
 interface Props {
   redirectTo: any;
   changeOptionInput: any;
@@ -47,13 +46,13 @@ const Map: FC<Props> = ({
   tagName,
   onMapLoad,
 }) => {
+
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
   const [activeMarker, setActiveMarker] = useState<MarkerType | null>(null);
   const [infoWindow, setInfoWindow] = useState(null);
-  // const [tagName, setTagNme] = useState<string>("buy");
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyB-aazp6NSDLQLqF1Y3drDJ9ERBHMTPSbg",
+    googleMapsApiKey: `${process.env.REACT_APP_MAP_API_KEY}`,
     libraries: ["places"],
   });
 
@@ -73,17 +72,17 @@ const Map: FC<Props> = ({
   };
 
   return (
-    <Box sx={{ display: "flex", height: "100vh" }}>
+    <Box sx={{ display: "flex", height: "90vh" }}>
       <Grid container>
         <Grid item xs={12} md={12}>
-          <Box sx={{ width: "100%", height: "100vh" }}>
+          <Box sx={{ width: "100%", height: "80vh" }}>
             {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}
             <GoogleMap
               zoom={13}
               center={center}
               mapContainerStyle={{
                 width: "100%",
-                height: "100vh",
+                height: "83vh",
                 borderRadius: 10,
               }}
               options={{

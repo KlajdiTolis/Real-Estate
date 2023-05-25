@@ -42,7 +42,7 @@ const App = () => {
       <Route path="contact" element={<Contact />} />
 
       <Route path="dashboard/edit" element={<EditPost />} />
-      <Route path="property/create" element={<CreateProperty />} />
+      <Route path="buy/property/create" element={<CreateProperty />} />
       <Route path=":idpost" element={<EditPost />} />
     </Routes>
   );
