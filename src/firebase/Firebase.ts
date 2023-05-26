@@ -18,12 +18,12 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDKjf1AoSY8BYxFjEK2YvwDco7ihXb7rF4",
-  authDomain: "real-estate-project-e4129.firebaseapp.com",
-  projectId: "real-estate-project-e4129",
-  storageBucket: "real-estate-project-e4129.appspot.com",
-  messagingSenderId: "962413766966",
-  appId: "1:962413766966:web:a6b319c1ec2b9edb5b6b97",
+  apiKey: `${process.env.REACT_APP_MAP_FIREBASE_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_MAP_FIREBASE_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_MAP_FIREBASE_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_MAP_FIREBASE_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MAP_FIREBASE_MESSAGES_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_MAP_FIREBASE_APP_ID}`,
 };
 
 const app = initializeApp(firebaseConfig);

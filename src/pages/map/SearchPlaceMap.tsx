@@ -196,14 +196,17 @@ const PlacesAutocomplete: FC<Props> = ({
           }}
         >
           <ComboboxInput
-           style={{
-            padding: 5,
-            paddingLeft: 10,
-            paddingRight: 30,
-            borderRadius: 15,
-            // borderColor: "#adacac",
-            opacity: 0.9,
-          }}
+            style={{
+              padding: 5,
+              paddingLeft: 20,
+              paddingRight: 30,
+              borderRadius: 5,
+              // borderTop: "none",
+              // borderLeft: "none",
+              // borderRight:"none",
+              borderColor: "#adacac",
+              opacity: 0.9,
+            }}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             disabled={!ready}
@@ -240,6 +243,8 @@ const PlacesAutocomplete: FC<Props> = ({
               <TextField
                 {...params}
                 label="Options"
+                // placeholder="Select your option"
+                // InputLabelProps={{ shrink: true }}
                 variant="standard"
                 size="small"
               />
