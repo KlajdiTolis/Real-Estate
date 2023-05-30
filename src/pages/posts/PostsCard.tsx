@@ -21,6 +21,7 @@ import {
   getDocs,
   orderBy,
   limit,
+  where,
 } from "firebase/firestore";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -36,8 +37,16 @@ const Home = () => {
   const [postsPerPage] = useState(2);
   const [porpertyData, setPorpertyData] = useState<any>([]);
   const [user, error, isloading] = useAuthState(auth);
+  const [userEmail, setUserEmail] = useState("");
 
   const navigate = useNavigate();
+
+  const fetchAdminUsers = async () => {
+    const dataB = collection(db, "user");
+    const q = query(dataB, where("tag", "==", "admin"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.docs.map((doc: any) => setUserEmail(doc.data().email));
+  };
 
   // const fetchData = async () => {
   //   const data = query(collection(db, "home"), orderBy("price"), limit(4));
@@ -58,6 +67,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
+    fetchAdminUsers();
   }, []);
 
   // const indexOfLastPost = currentPage * postsPerPage;
@@ -76,7 +86,7 @@ const Home = () => {
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
             <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
-            {user?.email == "klajdi.tolis08@gmail.com" && (
+            {user?.email == userEmail && (
               <Button
                 size="small"
                 onClick={() => {
@@ -116,7 +126,11 @@ const Home = () => {
                         </Typography>
                         <Typography>{data?.desc}</Typography>
                         <Typography
-                          sx={{ display: "flex", justifyContent: "right",fontSize:15 }}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "right",
+                            fontSize: 15,
+                          }}
                         >
                           Price: {data?.price}
                         </Typography>
@@ -124,7 +138,7 @@ const Home = () => {
                       <CardActions
                         sx={{ display: "flex", justifyContent: "right" }}
                       >
-                        {user?.email == "klajdi.tolis08@gmail.com" && (
+                        {user?.email == userEmail && (
                           <Button
                             size="small"
                             onClick={() => {
