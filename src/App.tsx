@@ -58,6 +58,7 @@ const App = () => {
 
             {user?.email == userEmail && (
               <>
+                <Route path="property/create" element={<CreateProperty />} />
                 <Route
                   path="buy/property/create"
                   element={<CreateProperty />}

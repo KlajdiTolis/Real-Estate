@@ -1,4 +1,12 @@
-import { memo, useMemo, useState, useCallback, FC, useRef } from "react";
+import {
+  memo,
+  useMemo,
+  useState,
+  useCallback,
+  FC,
+  useRef,
+  useEffect,
+} from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -8,6 +16,16 @@ import {
   InfoWindowF,
 } from "@react-google-maps/api";
 import { Grid, Box, Button } from "@mui/material";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db, auth } from "../../firebase/Firebase";
+import {
+  collection,
+  query,
+  getDocs,
+  orderBy,
+  limit,
+  where,
+} from "firebase/firestore";
 
 import Places from "./SearchPlaceMap";
 import ViewPost from "../posts/ViewPost";
@@ -46,10 +64,10 @@ const Map: FC<Props> = ({
   tagName,
   onMapLoad,
 }) => {
-
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
   const [activeMarker, setActiveMarker] = useState<MarkerType | null>(null);
   const [infoWindow, setInfoWindow] = useState(null);
+  const [porpertyData, setPorpertyData] = useState<any>([]);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${process.env.REACT_APP_MAP_API_KEY}`,
@@ -60,9 +78,20 @@ const Map: FC<Props> = ({
     setActiveMarker(marker);
   };
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+  const fetchData = async () => {
+    const data = query(collection(db, "home"), orderBy("price"), limit(4));
+    const doc = await getDocs(data);
+    setPorpertyData(
+      doc.docs.map((docc: any) => ({
+        ...docc.data(),
+        id: docc.id,
+      }))
+    );
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const findCoordinatesOnClick = (event: any) => {
     let lat = event.latLng.lat(),
@@ -70,6 +99,10 @@ const Map: FC<Props> = ({
     console.log(lat, "lat");
     console.log(lng, "lng");
   };
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Box sx={{ display: "flex", height: "90vh" }}>
@@ -95,33 +128,18 @@ const Map: FC<Props> = ({
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
             >
-              {tagName == "all"
-                ? positions.map((pos: any) => (
-                    <MarkerF
-                      key={pos.id}
-                      position={{
-                        lat: pos.lat,
-                        lng: pos.lng,
-                      }}
-                      onClick={() => {
-                        handleMarkerClick(pos);
-                      }}
-                    />
-                  ))
-                : positions
-                    .filter((marker) => marker.tag.includes(`${tagName}`))
-                    .map((marker: any) => (
-                      <MarkerF
-                        key={marker.id}
-                        position={{
-                          lat: marker.lat,
-                          lng: marker.lng,
-                        }}
-                        onClick={() => {
-                          handleMarkerClick(marker);
-                        }}
-                      />
-                    ))}
+              {porpertyData.map((pos: any) => (
+                <MarkerF
+                  key={pos.id}
+                  position={{
+                    lat: pos?.location?._lat,
+                    lng: pos?.location?._long,
+                  }}
+                  onClick={() => {
+                    handleMarkerClick(pos);
+                  }}
+                />
+              ))}
               {activeMarker && (
                 <InfoWindowF
                   key={activeMarker.id}

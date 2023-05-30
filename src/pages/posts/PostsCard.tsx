@@ -23,7 +23,7 @@ import {
   limit,
   where,
 } from "firebase/firestore";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import VerticalTabs from "../home/Home";
 import ViewDialog from "./ViewPost";
@@ -86,16 +86,6 @@ const Home = () => {
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
             <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
-            {user?.email == userEmail && (
-              <Button
-                size="small"
-                onClick={() => {
-                  navigate("property/create");
-                }}
-              >
-                Create
-              </Button>
-            )}
           </Stack>
           <Grid container spacing={1}>
             {porpertyData &&
