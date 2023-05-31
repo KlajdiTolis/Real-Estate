@@ -33,7 +33,7 @@ import Pagination from "../../layout/Pagination";
 
 const theme = createTheme();
 
-const Home = () => {
+const PostsCard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(2);
   const [porpertyData, setPorpertyData] = useState<any>([]);
@@ -54,7 +54,7 @@ const Home = () => {
       collection(db, "home"),
       orderBy("price"),
       startAfter(3),
-      limit(6)
+      limit(4)
     );
     const doc = await getDocs(data);
     // console.log(lastVisible,"lastVisible");
@@ -83,15 +83,17 @@ const Home = () => {
         <Container sx={{ py: 2 }} maxWidth="md">
           <Stack
             direction="row"
-            spacing={2}
+            spacing={0}
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
-            <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
+            <Typography sx={{ fontSize: 22, pb: 1 }}>
+              Property Listing
+            </Typography>
           </Stack>
           <Grid container spacing={1}>
             {porpertyData &&
               porpertyData.map((data: any, index: any) => (
-                <Grid item key={index} xs={12} sm={12} md={4}>
+                <Grid item key={index} xs={12} sm={12} md={6}>
                   <Card
                     sx={{
                       height: "100%",
@@ -104,18 +106,23 @@ const Home = () => {
                         component="img"
                         sx={{
                           // 16:9
-                          pt: "5%",
-                          pb: "5%",
+                          pt: "2%",
+                          // pb: "5%",
                         }}
                         image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
                         alt="random"
                         height={170}
                       />
                       <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography gutterBottom>
+                        <Typography
+                          gutterBottom
+                          sx={{ fontSize: 14, fontWeight: "bold" }}
+                        >
                           {data?.porperty_name}
                         </Typography>
-                        <Typography>{data?.desc}</Typography>
+                        <Typography sx={{ fontSize: 12 }}>
+                          {data?.desc}
+                        </Typography>
                         <Typography
                           sx={{
                             display: "flex",
@@ -131,6 +138,7 @@ const Home = () => {
                       >
                         {user?.email == userEmail && (
                           <Button
+                            sx={{ fontSize: 12 }}
                             size="small"
                             onClick={() => {
                               navigate(`/${data.id}`);
@@ -145,11 +153,11 @@ const Home = () => {
                   </Card>
                 </Grid>
               ))}
-            {/* <Pagination/> */}
+            {/* <Pagination /> */}
           </Grid>
         </Container>
       </ThemeProvider>
     </Box>
   );
 };
-export default Home;
+export default PostsCard;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db, auth } from "./firebase/Firebase";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, redirect } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
   collection,

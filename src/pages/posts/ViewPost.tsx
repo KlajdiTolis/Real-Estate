@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Grid, Box, Typography,Button,Dialog,DialogTitle,IconButton,DialogContent } from "@mui/material";
+import {
+  Grid,
+  Box,
+  Typography,
+  Button,
+  Dialog,
+  DialogTitle,
+  IconButton,
+  DialogContent,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -57,7 +66,7 @@ function CustomizedDialogs() {
   return (
     <div>
       <Button
-        sx={{ bgcolor: "#335959", color: "white" }}
+        sx={{ bgcolor: "#335959", color: "white", fontSize: 12 }}
         variant="contained"
         onClick={handleClickOpen}
       >

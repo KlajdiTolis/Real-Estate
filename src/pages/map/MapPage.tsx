@@ -52,7 +52,7 @@ const MapPage = () => {
             tagName={tagName}
           />
         </Grid>
-        <Grid item xs={12} md={6.5}>
+        <Grid item xs={12} md={8}>
           <Map
             changeOptionInput={changeOptionInput}
             redirectTo={redirectTo}
@@ -60,7 +60,7 @@ const MapPage = () => {
             onMapLoad={onMapLoad}
           />
         </Grid>
-        <Grid item xs={12} md={5.5}>
+        <Grid item xs={12} md={4}>
           <Post />
         </Grid>
       </Grid>
