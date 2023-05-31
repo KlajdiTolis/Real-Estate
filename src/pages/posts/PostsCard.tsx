@@ -22,6 +22,7 @@ import {
   orderBy,
   limit,
   where,
+  startAfter,
 } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -48,15 +49,15 @@ const Home = () => {
     querySnapshot.docs.map((doc: any) => setUserEmail(doc.data().email));
   };
 
-  // const fetchData = async () => {
-  //   const data = query(collection(db, "home"), orderBy("price"), limit(4));
-  //   const doc = await getDocs(data);
-  //   setPorpertyData(doc.docs.map((docc: any) => docc.data()));
-  // };
-
   const fetchData = async () => {
-    const data = query(collection(db, "home"), orderBy("price"), limit(4));
+    const data = query(
+      collection(db, "home"),
+      orderBy("price"),
+      startAfter(3),
+      limit(6)
+    );
     const doc = await getDocs(data);
+    // console.log(lastVisible,"lastVisible");
     setPorpertyData(
       doc.docs.map((docc: any) => ({
         ...docc.data(),
@@ -90,7 +91,7 @@ const Home = () => {
           <Grid container spacing={1}>
             {porpertyData &&
               porpertyData.map((data: any, index: any) => (
-                <Grid item key={index} xs={12} sm={12} md={6}>
+                <Grid item key={index} xs={12} sm={12} md={4}>
                   <Card
                     sx={{
                       height: "100%",
@@ -108,10 +109,10 @@ const Home = () => {
                         }}
                         image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
                         alt="random"
-                        height={200}
+                        height={170}
                       />
                       <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h3">
+                        <Typography gutterBottom>
                           {data?.porperty_name}
                         </Typography>
                         <Typography>{data?.desc}</Typography>
@@ -119,7 +120,7 @@ const Home = () => {
                           sx={{
                             display: "flex",
                             justifyContent: "right",
-                            fontSize: 15,
+                            fontSize: 13,
                           }}
                         >
                           Price: {data?.price}

@@ -300,7 +300,7 @@ const ApppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {user?.email == userEmail && (
-                <>
+                <Box>
                   {settings.map((setting) => (
                     <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                       <Box>
@@ -318,7 +318,7 @@ const ApppBar = () => {
                       </Box>
                     </MenuItem>
                   ))}
-                </>
+                </Box>
               )}
               <Button
                 sx={{

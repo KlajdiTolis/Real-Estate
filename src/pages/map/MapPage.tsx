@@ -43,6 +43,7 @@ const MapPage = () => {
   return (
     <Box sx={{ backgroundImage: `url(${BgLogin})` }}>
       <ApppBar />
+      {/* position fixed per ta bere faqen statike */}
       <Grid container spacing={0}>
         <Grid item xs={12} md={12}>
           <SerachPlaces
@@ -51,7 +52,7 @@ const MapPage = () => {
             tagName={tagName}
           />
         </Grid>
-        <Grid item xs={12} md={7}>
+        <Grid item xs={12} md={6.5}>
           <Map
             changeOptionInput={changeOptionInput}
             redirectTo={redirectTo}
@@ -59,7 +60,7 @@ const MapPage = () => {
             onMapLoad={onMapLoad}
           />
         </Grid>
-        <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={5.5}>
           <Post />
         </Grid>
       </Grid>
