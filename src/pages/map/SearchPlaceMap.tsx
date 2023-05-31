@@ -230,6 +230,7 @@ const PlacesAutocomplete: FC<Props> = ({
             disablePortal
             id="combo-box-demo"
             options={options as any}
+            disableClearable={true}
             onChange={(event: any, value: any) => {
               setOptionVal(value.name);
               changeOptionInput(value.name.toLowerCase());
@@ -281,6 +282,7 @@ const PlacesAutocomplete: FC<Props> = ({
             disablePortal
             id="combo-box-demo"
             options={property as any}
+            disableClearable={true}
             getOptionLabel={(option: any) => option["name"]}
             sx={{ width: 180 }}
             renderInput={(params) => (
