@@ -178,7 +178,6 @@ const PlacesAutocomplete: FC<Props> = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          zIndex: 1,
         }}
       >
         <Combobox
@@ -210,7 +209,7 @@ const PlacesAutocomplete: FC<Props> = ({
             className="combobox-input"
             placeholder="Search an address" ///
           />
-          <ComboboxPopover style={{ zIndex: 1 }}>
+          <ComboboxPopover style={{ zIndex: 5 }}>
             <ComboboxList>
               {status === "OK" &&
                 data.map(({ place_id, description }) => (

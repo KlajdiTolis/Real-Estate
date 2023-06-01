@@ -41,18 +41,59 @@ const MapPage = () => {
   };
 
   return (
-    <Box sx={{ backgroundImage: `url(${BgLogin})` }}>
-      <ApppBar />
+    <Box
+      sx={{
+        backgroundImage: `url(${BgLogin})`,
+      }}
+    >
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1,
+        }}
+      >
+        <ApppBar />
+      </Box>
       {/* position fixed per ta bere faqen statike */}
       <Grid container spacing={0}>
-        <Grid item xs={12} md={12}>
+        <Grid
+          item
+          xs={12}
+          md={12}
+          sx={{
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            mt: 8,
+            zIndex: 2,
+          }}
+        >
           <SerachPlaces
             panTo={redirectTo}
             changeOptionInput={changeOptionInput}
             tagName={tagName}
           />
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid
+          item
+          xs={12}
+          md={8}
+          sx={{
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            mt: 17,
+            zIndex: 3,
+          }}
+        >
           <Map
             changeOptionInput={changeOptionInput}
             redirectTo={redirectTo}
@@ -60,7 +101,19 @@ const MapPage = () => {
             onMapLoad={onMapLoad}
           />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          item
+          xs={12}
+          md={4}
+          sx={{
+            position: "relative",
+            top: 0,
+            bottom: 0,
+            left: "67vw",
+            right: 0,
+            mt: 17,
+          }}
+        >
           <Post />
         </Grid>
       </Grid>

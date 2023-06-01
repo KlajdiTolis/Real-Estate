@@ -323,7 +323,7 @@ const ApppBar = () => {
               <Button
                 sx={{
                   pl: 2,
-                  pr: 2,
+                  pr: 12,
                   textDecoration: "none",
                   color: "black",
                   fontFamily: "monospace",

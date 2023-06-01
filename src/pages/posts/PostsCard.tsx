@@ -54,7 +54,7 @@ const PostsCard = () => {
       collection(db, "home"),
       orderBy("price"),
       startAfter(3),
-      limit(4)
+      limit(8)
     );
     const doc = await getDocs(data);
     // console.log(lastVisible,"lastVisible");
