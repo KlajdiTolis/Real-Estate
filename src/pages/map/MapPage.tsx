@@ -109,7 +109,7 @@ const MapPage = () => {
             position: "fixed",
             top: 0,
             bottom: 0,
-            left: "66vw",
+            left: "67vw",
             right: 0,
             mt: 17,
             zIndex: 2,

@@ -32,13 +32,6 @@ import ViewPost from "../posts/ViewPost";
 
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
-type MarkerType = {
-  id: number;
-  name: string;
-  _lat: number;
-  _long: number;
-  tag: string;
-};
 interface Props {
   redirectTo: any;
   changeOptionInput: any;
@@ -74,7 +67,7 @@ const Map: FC<Props> = ({
   console.log(activeMarker, "activeMarkeractiveMarkeractiveMarker");
 
   const fetchData = async () => {
-    const data = query(collection(db, "home"), orderBy("price"),);
+    const data = query(collection(db, "home"), orderBy("price"));
     const doc = await getDocs(data);
     setPorpertyData(
       doc.docs.map((docc: any) => ({
@@ -123,7 +116,7 @@ const Map: FC<Props> = ({
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
             >
-              {porpertyData.map((pos: any) => (
+              {porpertyData.map((pos: any, index: any) => (
                 <MarkerF
                   key={pos.id}
                   label={`${pos.price}k`}
@@ -157,7 +150,7 @@ const Map: FC<Props> = ({
                       {activeMarker.desc}
                     </Box>
                     <Button>
-                      <ViewPost />
+                      <ViewPost data={activeMarker} />
                     </Button>
                   </Box>
                 </InfoWindowF>
