@@ -78,7 +78,7 @@ const PostsCard = () => {
   // const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   return (
-    <Box>
+    <Box sx={{ maxHeight: 1000, overflowY: "scroll" }}>
       <ThemeProvider theme={theme}>
         <Container sx={{ py: 2 }} maxWidth="md">
           <Stack

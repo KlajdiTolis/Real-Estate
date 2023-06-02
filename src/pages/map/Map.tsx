@@ -74,7 +74,7 @@ const Map: FC<Props> = ({
   console.log(activeMarker, "activeMarkeractiveMarkeractiveMarker");
 
   const fetchData = async () => {
-    const data = query(collection(db, "home"), orderBy("price"), limit(4));
+    const data = query(collection(db, "home"), orderBy("price"),);
     const doc = await getDocs(data);
     setPorpertyData(
       doc.docs.map((docc: any) => ({

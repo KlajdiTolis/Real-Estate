@@ -168,6 +168,7 @@ const PlacesAutocomplete: FC<Props> = ({
         pt: 1,
         // borderRadius: 3,
         borderBottom: 2,
+        borderTop: 2,
         borderColor: "#7a0000",
       }}
     >

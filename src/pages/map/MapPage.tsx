@@ -90,7 +90,7 @@ const MapPage = () => {
             bottom: 0,
             left: 0,
             right: 0,
-            mt: 17,
+            mt: 17.2,
             zIndex: 3,
           }}
         >
@@ -106,12 +106,13 @@ const MapPage = () => {
           xs={12}
           md={4}
           sx={{
-            position: "relative",
+            position: "fixed",
             top: 0,
             bottom: 0,
-            left: "67vw",
+            left: "66vw",
             right: 0,
             mt: 17,
+            zIndex: 2,
           }}
         >
           <Post />
