@@ -21,8 +21,10 @@ import {
   getDocs,
   orderBy,
   limit,
+  where,
+  startAfter,
 } from "firebase/firestore";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import VerticalTabs from "../home/Home";
 import ViewDialog from "./ViewPost";
@@ -31,23 +33,31 @@ import Pagination from "../../layout/Pagination";
 
 const theme = createTheme();
 
-const Home = () => {
+const PostsCard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(2);
   const [porpertyData, setPorpertyData] = useState<any>([]);
   const [user, error, isloading] = useAuthState(auth);
+  const [userEmail, setUserEmail] = useState("");
 
   const navigate = useNavigate();
 
-  // const fetchData = async () => {
-  //   const data = query(collection(db, "home"), orderBy("price"), limit(4));
-  //   const doc = await getDocs(data);
-  //   setPorpertyData(doc.docs.map((docc: any) => docc.data()));
-  // };
+  const fetchAdminUsers = async () => {
+    const dataB = collection(db, "user");
+    const q = query(dataB, where("tag", "==", "admin"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.docs.map((doc: any) => setUserEmail(doc.data().email));
+  };
 
   const fetchData = async () => {
-    const data = query(collection(db, "home"), orderBy("price"), limit(4));
+    const data = query(
+      collection(db, "home"),
+      orderBy("price"),
+      startAfter(3),
+      limit(8)
+    );
     const doc = await getDocs(data);
+    // console.log(lastVisible,"lastVisible");
     setPorpertyData(
       doc.docs.map((docc: any) => ({
         ...docc.data(),
@@ -58,6 +68,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
+    fetchAdminUsers();
   }, []);
 
   // const indexOfLastPost = currentPage * postsPerPage;
@@ -67,25 +78,17 @@ const Home = () => {
   // const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   return (
-    <Box>
+    <Box sx={{ maxHeight: 1000, overflowY: "scroll" }}>
       <ThemeProvider theme={theme}>
         <Container sx={{ py: 2 }} maxWidth="md">
           <Stack
             direction="row"
-            spacing={2}
+            spacing={0}
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
-            <Typography sx={{ fontSize: 22 }}>Property Listing</Typography>
-            {user?.email == "klajdi.tolis08@gmail.com" && (
-              <Button
-                size="small"
-                onClick={() => {
-                  navigate("property/create");
-                }}
-              >
-                Create
-              </Button>
-            )}
+            <Typography sx={{ fontSize: 22, pb: 1 }}>
+              Property Listing
+            </Typography>
           </Stack>
           <Grid container spacing={1}>
             {porpertyData &&
@@ -103,20 +106,29 @@ const Home = () => {
                         component="img"
                         sx={{
                           // 16:9
-                          pt: "5%",
-                          pb: "5%",
+                          pt: "2%",
+                          // pb: "5%",
                         }}
                         image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
                         alt="random"
-                        height={200}
+                        height={170}
                       />
                       <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h3">
+                        <Typography
+                          gutterBottom
+                          sx={{ fontSize: 14, fontWeight: "bold" }}
+                        >
                           {data?.porperty_name}
                         </Typography>
-                        <Typography>{data?.desc}</Typography>
+                        <Typography sx={{ fontSize: 12 }}>
+                          {data?.desc}
+                        </Typography>
                         <Typography
-                          sx={{ display: "flex", justifyContent: "right",fontSize:15 }}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "right",
+                            fontSize: 13,
+                          }}
                         >
                           Price: {data?.price}
                         </Typography>
@@ -124,8 +136,9 @@ const Home = () => {
                       <CardActions
                         sx={{ display: "flex", justifyContent: "right" }}
                       >
-                        {user?.email == "klajdi.tolis08@gmail.com" && (
+                        {user?.email == userEmail && (
                           <Button
+                            sx={{ fontSize: 12 }}
                             size="small"
                             onClick={() => {
                               navigate(`/${data.id}`);
@@ -140,11 +153,11 @@ const Home = () => {
                   </Card>
                 </Grid>
               ))}
-            {/* <Pagination/> */}
+            {/* <Pagination /> */}
           </Grid>
         </Container>
       </ThemeProvider>
     </Box>
   );
 };
-export default Home;
+export default PostsCard;

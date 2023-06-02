@@ -168,6 +168,7 @@ const PlacesAutocomplete: FC<Props> = ({
         pt: 1,
         // borderRadius: 3,
         borderBottom: 2,
+        borderTop: 2,
         borderColor: "#7a0000",
       }}
     >
@@ -178,7 +179,6 @@ const PlacesAutocomplete: FC<Props> = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          zIndex: 1,
         }}
       >
         <Combobox
@@ -213,7 +213,7 @@ const PlacesAutocomplete: FC<Props> = ({
             className="combobox-input"
             placeholder="Search an address" ///
           />
-          <ComboboxPopover style={{ zIndex: 1 }}>
+          <ComboboxPopover style={{ zIndex: 5 }}>
             <ComboboxList>
               {status === "OK" &&
                 data.map(({ place_id, description }) => (
@@ -233,6 +233,7 @@ const PlacesAutocomplete: FC<Props> = ({
             disablePortal
             id="combo-box-demo"
             options={options as any}
+            disableClearable={true}
             onChange={(event: any, value: any) => {
               setOptionVal(value.name);
               changeOptionInput(value.name.toLowerCase());
@@ -286,6 +287,7 @@ const PlacesAutocomplete: FC<Props> = ({
             disablePortal
             id="combo-box-demo"
             options={property as any}
+            disableClearable={true}
             getOptionLabel={(option: any) => option["name"]}
             sx={{ width: 180 }}
             renderInput={(params) => (

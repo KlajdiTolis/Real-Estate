@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   Button,
@@ -14,6 +14,21 @@ import {
   MenuItem,
   Stack,
 } from "@mui/material";
+import { db, auth } from "../firebase/Firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  collection,
+  getDoc,
+  query,
+  addDoc,
+  updateDoc,
+  doc,
+  getDocs,
+  orderBy,
+  startAfter,
+  limit,
+  where,
+} from "firebase/firestore";
 import { useNavigate, Outlet, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { logout } from "../firebase/Firebase";
@@ -62,8 +77,8 @@ const supportPage = [
 const settings = [
   {
     id: 0,
-    name: "Profil",
-    to: "/profil",
+    name: "Create Property",
+    to: "/property/create",
   },
   {
     id: 1,
@@ -73,10 +88,23 @@ const settings = [
 ];
 
 const ApppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>();
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>();
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>();
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>();
+  const [user, error, isloading] = useAuthState(auth);
+  const [userEmail, setUserEmail] = useState("");
 
   const navigate = useNavigate();
+
+  const fetchAdminUsers = async () => {
+    const dataB = collection(db, "user");
+    const q = query(dataB, where("tag", "==", "admin"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.docs.map((doc: any) => setUserEmail(doc.data().email));
+  };
+
+  useEffect(() => {
+    fetchAdminUsers();
+  }, []);
 
   const LogoutButton = async () => {
     await logout();
@@ -271,26 +299,31 @@ const ApppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
-                  <Box>
-                    <a
-                      style={{
-                        textDecoration: "none",
-                        color: "black",
-                        fontFamily: "monospace",
-                        fontSize: 16,
-                      }}
-                      href={setting.to}
-                    >
-                      {setting.name}
-                    </a>
-                  </Box>
-                </MenuItem>
-              ))}
+              {user?.email == userEmail && (
+                <Box>
+                  {settings.map((setting) => (
+                    <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                      <Box>
+                        <a
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            fontFamily: "monospace",
+                            fontSize: 16,
+                          }}
+                          href={setting.to}
+                        >
+                          {setting.name}
+                        </a>
+                      </Box>
+                    </MenuItem>
+                  ))}
+                </Box>
+              )}
               <Button
                 sx={{
                   pl: 2,
+                  pr: 12,
                   textDecoration: "none",
                   color: "black",
                   fontFamily: "monospace",
