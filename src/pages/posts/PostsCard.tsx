@@ -78,12 +78,18 @@ const PostsCard = () => {
   // const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   return (
-    <Box sx={{ maxHeight: "82vh", overflowY: "scroll" }}>
+    <Box sx={{ maxHeight: "80vh", overflowY: "scroll" }}>
       <ThemeProvider theme={theme}>
-        <Container sx={{ py: 2 }} maxWidth="md">
+        <Container
+          sx={{
+            py: 2,
+            // bgcolor: "#F9F5F6"
+          }}
+          maxWidth="md"
+        >
           <Stack
             direction="row"
-            spacing={0}
+            spacing={1}
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
             <Typography sx={{ fontSize: 22, pb: 1 }}>
@@ -99,6 +105,8 @@ const PostsCard = () => {
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
+                      // bgcolor: "#E3F4F4",
+                      // border: 1,
                     }}
                   >
                     <CardActionArea>
@@ -108,6 +116,8 @@ const PostsCard = () => {
                           // 16:9
                           pt: "2%",
                           // pb: "5%",
+                          borderRadius: 6,
+                          paddingInline: 0.5,
                         }}
                         image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
                         alt="random"
@@ -121,7 +131,7 @@ const PostsCard = () => {
                           {data?.porperty_name}
                         </Typography>
                         <Typography sx={{ fontSize: 12 }}>
-                          {`${data?.desc.substring(0, 30)} ${
+                          {`${data?.desc.substring(0, 20)} ${
                             data?.desc.length > 29 ? "..." : ""
                           }`}
                         </Typography>
@@ -143,9 +153,16 @@ const PostsCard = () => {
                             <Grid item md={12}>
                               <Button
                                 fullWidth
-                                sx={{ fontSize: 12 }}
+                                sx={{
+                                  fontSize: 12,
+                                  // bgcolor: "#f0c781",
+                                  p: 0.7,
+                                  borderColor: "#f0c781",
+                                  color: "black",
+                                }}
                                 size="small"
-                                variant="contained"
+                                // color="success"
+                                variant="outlined"
                                 onClick={() => {
                                   navigate(`/${data.id}`);
                                 }}
