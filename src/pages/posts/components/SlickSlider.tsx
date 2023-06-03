@@ -7,10 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 import "./SlickSlider.css";
 
 //import images
-import Test from "../../../../assets/buildings.jpg";
-import Sell from "../../../../assets/sell-house.webp";
-import Buy from "../../../../assets/buy-house.jpg";
-import Rent from "../../../../assets/rent-house.jpg";
+import Test from "../../../assets/buildings.jpg";
+import Sell from "../../../assets/sell-house.webp";
+import Buy from "../../../assets/buy-house.jpg";
+import Rent from "../../../assets/rent-house.jpg";
 
 const MySlider = () => {
   const settings = {
@@ -18,30 +18,30 @@ const MySlider = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     speed: 500,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     cssEase: "linear",
   };
 
   const bigScreen = useMediaQuery({
-    query: "(min-width: 1600px)",
+    query: "(min-width: 1300px)",
   });
 
   return (
-    <Grid container>
+    <Grid container sx={{ paddingInline: 3 }}>
       <Grid item md={12}>
         <Box sx={{ paddingInline: 6, paddingBlock: 3 }}>
           {/* <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <h2> Multiple items </h2>
+            <h2> Property Photo </h2>
           </Box> */}
           <Slider {...settings}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <img
                 src={Test}
                 alt="hello"
-                width={bigScreen ? 500 : 200}
-                height={bigScreen ? 400 : 250}
+                width={bigScreen ? 500 : 400}
+                height={bigScreen ? 400 : 350}
                 style={{ borderRadius: 10, position: "relative", zIndex: 1 }}
               />
             </Box>
@@ -49,8 +49,8 @@ const MySlider = () => {
               <img
                 src={Sell}
                 alt="hello"
-                width={bigScreen ? 500 : 200}
-                height={bigScreen ? 400 : 250}
+                width={bigScreen ? 500 : 400}
+                height={bigScreen ? 400 : 350}
                 style={{ borderRadius: 10 }}
               />
             </Box>
@@ -58,8 +58,8 @@ const MySlider = () => {
               <img
                 src={Buy}
                 alt="hello"
-                width={bigScreen ? 500 : 200}
-                height={bigScreen ? 400 : 250}
+                width={bigScreen ? 500 : 400}
+                height={bigScreen ? 400 : 350}
                 style={{ borderRadius: 10 }}
               />
             </Box>
@@ -67,8 +67,8 @@ const MySlider = () => {
               <img
                 src={Rent}
                 alt="hello"
-                width={bigScreen ? 500 : 200}
-                height={bigScreen ? 400 : 250}
+                width={bigScreen ? 500 : 400}
+                height={bigScreen ? 400 : 350}
                 style={{ borderRadius: 10 }}
               />
             </Box>
