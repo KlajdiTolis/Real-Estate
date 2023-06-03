@@ -53,8 +53,8 @@ const PostsCard = () => {
     const data = query(
       collection(db, "home"),
       orderBy("price"),
-      startAfter(3),
-      limit(8)
+      startAfter(3)
+      // limit(8)
     );
     const doc = await getDocs(data);
     // console.log(lastVisible,"lastVisible");
@@ -78,12 +78,18 @@ const PostsCard = () => {
   // const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   return (
-    <Box sx={{ maxHeight: 1000, overflowY: "scroll" }}>
+    <Box sx={{ maxHeight: "80vh", overflowY: "scroll" }}>
       <ThemeProvider theme={theme}>
-        <Container sx={{ py: 2 }} maxWidth="md">
+        <Container
+          sx={{
+            py: 2,
+            // bgcolor: "#F9F5F6"
+          }}
+          maxWidth="md"
+        >
           <Stack
             direction="row"
-            spacing={0}
+            spacing={1}
             sx={{ display: "flex", justifyContent: "space-between" }}
           >
             <Typography sx={{ fontSize: 22, pb: 1 }}>
@@ -99,6 +105,8 @@ const PostsCard = () => {
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
+                      // bgcolor: "#E3F4F4",
+                      // border: 1,
                     }}
                   >
                     <CardActionArea>
@@ -108,6 +116,8 @@ const PostsCard = () => {
                           // 16:9
                           pt: "2%",
                           // pb: "5%",
+                          borderRadius: 6,
+                          paddingInline: 0.5,
                         }}
                         image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
                         alt="random"
@@ -121,7 +131,9 @@ const PostsCard = () => {
                           {data?.porperty_name}
                         </Typography>
                         <Typography sx={{ fontSize: 12 }}>
-                          {data?.desc}
+                          {`${data?.desc.substring(0, 20)} ${
+                            data?.desc.length > 29 ? "..." : ""
+                          }`}
                         </Typography>
                         <Typography
                           sx={{
@@ -136,18 +148,33 @@ const PostsCard = () => {
                       <CardActions
                         sx={{ display: "flex", justifyContent: "right" }}
                       >
-                        {user?.email == userEmail && (
-                          <Button
-                            sx={{ fontSize: 12 }}
-                            size="small"
-                            onClick={() => {
-                              navigate(`/${data.id}`);
-                            }}
-                          >
-                            Edit
-                          </Button>
-                        )}
-                        <ViewDialog />
+                        <Grid container spacing={1}>
+                          {user?.email == userEmail && (
+                            <Grid item md={12}>
+                              <Button
+                                fullWidth
+                                sx={{
+                                  fontSize: 12,
+                                  // bgcolor: "#f0c781",
+                                  p: 0.7,
+                                  borderColor: "#f0c781",
+                                  color: "black",
+                                }}
+                                size="small"
+                                // color="success"
+                                variant="outlined"
+                                onClick={() => {
+                                  navigate(`/${data.id}`);
+                                }}
+                              >
+                                Edit
+                              </Button>
+                            </Grid>
+                          )}
+                          <Grid item md={12}>
+                            <ViewDialog data={data} />
+                          </Grid>
+                        </Grid>
                       </CardActions>
                     </CardActionArea>
                   </Card>
