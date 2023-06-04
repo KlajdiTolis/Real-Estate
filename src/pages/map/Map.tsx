@@ -36,8 +36,10 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 interface Props {
   redirectTo: any;
   changeOptionInput: any;
-  tagName: any;
+  propStatus: any;
   onMapLoad: any;
+  propType: any;
+  changePropType: any;
 }
 
 const center = {
@@ -48,13 +50,16 @@ const center = {
 const Map: FC<Props> = ({
   redirectTo,
   changeOptionInput,
-  tagName,
+  propStatus,
   onMapLoad,
+  propType,
+  changePropType,
 }) => {
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
   const [activeMarker, setActiveMarker] = useState<any>(null);
   const [infoWindow, setInfoWindow] = useState(null);
   const [porpertyData, setPorpertyData] = useState<any>([]);
+  // const [type, setType] = useState<any>("");
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${process.env.REACT_APP_MAP_API_KEY}`,
@@ -65,10 +70,14 @@ const Map: FC<Props> = ({
     setActiveMarker(marker);
   };
 
-  console.log(activeMarker, "activeMarkeractiveMarkeractiveMarker");
-
   const fetchData = async () => {
-    const data = query(collection(db, "home"), orderBy("price"));
+    const data = await query(
+      collection(db, "home"),
+      where("type", "==", `${propStatus}`),
+      where("property_type", "==", `${propType}`)
+
+      // orderBy("price")
+    );
     const doc = await getDocs(data);
     setPorpertyData(
       doc.docs.map((docc: any) => ({
@@ -78,9 +87,11 @@ const Map: FC<Props> = ({
     );
   };
 
+  console.log(porpertyData, "porpertyDataporpertyDataporpertyData");
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [propStatus, propType]);
 
   const findCoordinatesOnClick = (event: any) => {
     let lat = event.latLng.lat(),
@@ -100,6 +111,9 @@ const Map: FC<Props> = ({
   return (
     <Box sx={{ display: "flex", height: "90vh" }}>
       <Grid container>
+        {/* <Grid item xs={12} md={12}>
+          <Button onClick={() => setType("Buy")}>Click</Button>
+        </Grid> */}
         <Grid item xs={12} md={12}>
           <Box sx={{ width: "100%", height: "80vh" }}>
             {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}

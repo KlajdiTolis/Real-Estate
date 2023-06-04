@@ -23,7 +23,9 @@ type LatLngLiteral = google.maps.LatLngLiteral;
 type PanToHandler = (coords: LatLngLiteral) => void;
 
 const MapPage = () => {
-  const [tagName, setTagNme] = useState<string>("all");
+  const [propStatus, setPropStatus] = useState<string>("Buy");
+  const [propType, setPropType] = useState<string>("");
+  // const [propType, setPropType] = useState<string>("Buy");
 
   const mapRef = useRef<google.maps.Map>();
 
@@ -39,7 +41,10 @@ const MapPage = () => {
   }, []);
 
   const changeOptionInput = (data: any) => {
-    setTagNme(data);
+    setPropStatus(data);
+  };
+  const changePropType = (data: any) => {
+    setPropType(data);
   };
 
   const bigScreen = useMediaQuery({
@@ -83,7 +88,9 @@ const MapPage = () => {
           <SerachPlaces
             panTo={redirectTo}
             changeOptionInput={changeOptionInput}
-            tagName={tagName}
+            propStatus={propStatus}
+            propType={propType}
+            changePropType={changePropType}
           />
         </Grid>
         <Grid
@@ -103,8 +110,10 @@ const MapPage = () => {
           <Map
             changeOptionInput={changeOptionInput}
             redirectTo={redirectTo}
-            tagName={tagName}
+            propStatus={propStatus}
             onMapLoad={onMapLoad}
+            propType={propType}
+            changePropType={changePropType}
           />
         </Grid>
         <Grid
