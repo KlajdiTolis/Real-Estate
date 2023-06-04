@@ -10,6 +10,7 @@ import {
   Select,
   MenuItem,
   Stack,
+  Popper,
 } from "@mui/material";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -164,12 +165,12 @@ const PlacesAutocomplete: FC<Props> = ({
     <Grid
       container
       sx={{
-        bgcolor: "#fcfcfc",
+        bgcolor: "RGB(77, 135, 106,0.5)",
         pt: 1,
         // borderRadius: 3,
         borderBottom: 2,
         borderTop: 2,
-        borderColor: "#7a0000",
+        borderColor: "#186e15",
       }}
     >
       <Grid
@@ -201,6 +202,7 @@ const PlacesAutocomplete: FC<Props> = ({
               paddingLeft: 20,
               paddingRight: 30,
               borderRadius: 5,
+              // backgroundColor: "RGB(77, 135, 106,0.2)",
               // borderTop: "none",
               // borderLeft: "none",
               // borderRight:"none",
@@ -239,7 +241,16 @@ const PlacesAutocomplete: FC<Props> = ({
               changeOptionInput(value.name.toLowerCase());
             }}
             getOptionLabel={(option: any) => option["name"]}
-            sx={{ width: 180 }}
+            sx={{
+              width: 180,
+              // "& + .MuiAutocomplete-popper .MuiAutocomplete-option": {
+              //   backgroundColor: "red",
+              //   zIndex: 10,
+              // },
+            }}
+            // PopoverProps={{
+            //   style: { zIndex: 5 },
+            // }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -289,7 +300,9 @@ const PlacesAutocomplete: FC<Props> = ({
             options={property as any}
             disableClearable={true}
             getOptionLabel={(option: any) => option["name"]}
-            sx={{ width: 180 }}
+            sx={{
+              width: 180,
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}

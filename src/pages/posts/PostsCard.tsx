@@ -85,7 +85,7 @@ const PostsCard = () => {
             py: 2,
             // bgcolor: "#F9F5F6"
           }}
-          maxWidth="md"
+          // maxWidth="xl"
         >
           <Stack
             direction="row"
@@ -119,7 +119,7 @@ const PostsCard = () => {
                           borderRadius: 6,
                           paddingInline: 0.5,
                         }}
-                        image="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+                        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXnC3fwMwkbIt3ejGRIw3NmbDyUtgS5g2jA&usqp=CAU"
                         alt="random"
                         height={170}
                       />
@@ -139,10 +139,12 @@ const PostsCard = () => {
                           sx={{
                             display: "flex",
                             justifyContent: "right",
-                            fontSize: 13,
+                            fontSize: 16,
+                            // fontWeight: "bold",
+                            fontStyle: "italic",
                           }}
                         >
-                          Price: {data?.price}
+                          {data?.price} $
                         </Typography>
                       </CardContent>
                       <CardActions
@@ -157,7 +159,7 @@ const PostsCard = () => {
                                   fontSize: 12,
                                   // bgcolor: "#f0c781",
                                   p: 0.7,
-                                  borderColor: "#f0c781",
+                                  borderColor: "#4d876a",
                                   color: "black",
                                 }}
                                 size="small"

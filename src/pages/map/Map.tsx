@@ -15,7 +15,7 @@ import {
   InfoBox,
   InfoWindowF,
 } from "@react-google-maps/api";
-import { Grid, Box, Button } from "@mui/material";
+import { Grid, Box, Button, Typography } from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../../firebase/Firebase";
 import {
@@ -26,6 +26,7 @@ import {
   limit,
   where,
 } from "firebase/firestore";
+import { useMediaQuery } from "react-responsive";
 
 import Places from "./SearchPlaceMap";
 import ViewPost from "../posts/ViewPost";
@@ -88,6 +89,10 @@ const Map: FC<Props> = ({
     console.log(lng, "lng");
   };
 
+  const bigScreen = useMediaQuery({
+    query: "(min-width: 1500px)",
+  });
+
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
@@ -103,7 +108,7 @@ const Map: FC<Props> = ({
               center={center}
               mapContainerStyle={{
                 width: "100%",
-                height: "83vh",
+                height: bigScreen ? "83vh" : "77vh",
                 borderRadius: 10,
               }}
               options={{
@@ -142,16 +147,16 @@ const Map: FC<Props> = ({
                   }}
                   onCloseClick={() => setActiveMarker(null)}
                 >
-                  <Box sx={{ p: 1 }}>
+                  <Box sx={{ p: 1, border: 1, borderRadius: 5, ml: 1 }}>
                     <Box sx={{ fontSize: 18, p: 1, fontWeight: "bold" }}>
-                      {activeMarker.property_type}
+                      Price : {activeMarker.price} $
                     </Box>
                     <Box sx={{ fontSize: 12, pl: 1, pb: 1 }}>
-                      {activeMarker.desc}
+                      Property Type : {activeMarker.property_type}
                     </Box>
-                    <Button>
+                    <Box sx={{ p: 1.5 }}>
                       <ViewPost data={activeMarker} />
-                    </Button>
+                    </Box>
                   </Box>
                 </InfoWindowF>
               )}
