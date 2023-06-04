@@ -1,6 +1,8 @@
 import { useState, useCallback, useRef, useContext } from "react";
 import { Box, Grid } from "@mui/material";
-import React from "react";
+import { useMediaQuery } from "react-responsive";
+
+//components
 import ApppBar from "../../layout/AppBar";
 import Map from "./Map";
 import Post from "../posts/PostsCard";
@@ -40,6 +42,10 @@ const MapPage = () => {
     setTagNme(data);
   };
 
+  const bigScreen = useMediaQuery({
+    query: "(min-width: 1500px)",
+  });
+
   return (
     <Box
       sx={{
@@ -65,13 +71,13 @@ const MapPage = () => {
           xs={12}
           md={12}
           sx={{
-            position: "fixed",
+            position: "relative",
             top: 0,
             bottom: 0,
             left: 0,
             right: 0,
-            mt: 8,
-            zIndex: 2,
+            mt: 8.7,
+            zIndex: 4,
           }}
         >
           <SerachPlaces
@@ -83,14 +89,14 @@ const MapPage = () => {
         <Grid
           item
           xs={12}
-          md={8}
+          md={bigScreen ? 7 : 6}
           sx={{
             position: "fixed",
             top: 0,
             bottom: 0,
-            left: 0,
+            left: 1,
             right: 0,
-            mt: 17.2,
+            mt: 17.9,
             zIndex: 3,
           }}
         >
@@ -104,14 +110,14 @@ const MapPage = () => {
         <Grid
           item
           xs={12}
-          md={4}
+          md={bigScreen ? 5 : 6}
           sx={{
             position: "fixed",
             top: 0,
             bottom: 0,
-            left: "67vw",
+            left: bigScreen ? "58.5vw" : "50vw",
             right: 0,
-            mt: 17,
+            mt: 17.9,
             zIndex: 2,
           }}
         >
