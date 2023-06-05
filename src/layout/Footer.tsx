@@ -9,7 +9,8 @@ import Insta from "../assets/socialMedia/instagram.png";
 import Twitter from "../assets/socialMedia/twitter.png";
 import Linkedin from "../assets/socialMedia/linkedin.png";
 import RealEstateSketch from "../assets/footer/realEstateSketch.png";
-import FooterBuidingsRemoveBG from "../assets/footer/footer-removebg.png"
+import FooterBuidingsRemoveBG from "../assets/footer/footer-removebg1.png";
+import LogoNoBg from "../assets/logoNoBg.png";
 
 //logo
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -27,179 +28,42 @@ const Footer = () => {
   });
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        backgroundImage: `url(${FooterBuidingsRemoveBG})`,
-        backgroundRepeat: "repeat",
-        backgroundSize: "cover",
-        color: "white",
-        textAlign: "center",
-        height: bigScreen && minHeight ? "30vh" : "35vh",
-        // backgroundRepeat: "no-repeat",
-        // backgroundSize: "cover",
-        borderTopLeftRadius: bigScreen ? "50% 40%" : "",
-        borderTopRightRadius: bigScreen ? "50% 40%" : "",
-
-      }}
-    >
+    <Box sx={{}}>
       <Grid container>
-        {/* <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
-          <Typography sx={{ fontSize: bigScreen ? 21 : 18, fontWeight: "bold", color: "Black", fontFamily: "monospace", fontStyle: "italic" }}> What we offer</Typography>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1}>
-            <Box sx={{ border: 1, pl: 3, borderRadius: 20, paddingBlock: 0.4, mt: 2, borderColor: "#8dc1e0" }}>
-              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 14, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/buy'>Buy</Link>
+        <Grid item md={12} sx={{ display: "flex", justifyContent: "center" }}>
+          <Stack direction="row">
+            <Box sx={{}}>
+              <img src={LogoNoBg} width={130} height={90} />
             </Box>
-            <Box sx={{ border: 1, pl: 3, borderRadius: 20, paddingBlock: 0.4, borderColor: "#8dc1e0" }}>
-              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 14, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/sell'>Sell</Link>
+            <Box sx={{ mt: 5.4, ml: 2, fontWeight: "bold", fontSize: 16 }}>
+              Follow US :{" "}
             </Box>
-            <Box sx={{ border: 1, pl: 3, borderRadius: 20, paddingBlock: 0.4, borderColor: "#8dc1e0" }}>
-              <Link style={{ paddingRight: 24, color: "white", fontSize: bigScreen ? 17 : 14, fontWeight: "bold", fontFamily: "monospace", display: "flex", textDecoration: "none", textShadow: "2px 2px #000000" }} to='/rent'>Rent</Link>
-            </Box>
-          </Stack>
-        </Grid> */}
-        <Grid item md={bigScreen ? 1.5 : 0.5}></Grid>
-        <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1}
-          >
-            <Typography
-              sx={{
-                fontSize: bigScreen ? 21 : 18,
-                fontWeight: "bold",
-                color: "black",
-                fontFamily: "monospace",
-                fontStyle: "italic",
-                textShadow: "2px 2px #659469",
-              }}
-            >
-              {" "}
-              Short Discription
-            </Typography>
-            <Box>
-              <img src={RealEstateSketch} width={bigScreen ? 140 : 110} />
-            </Box>
-            {bigScreen ? (
-              <Box
-                sx={{
-                  textAlign: "left",
-                  paddingInline: 5,
-                  pt: 1,
-                  fontSize: 13,
-                  color: "black",
-                  fontFamily: "monospace",
-                }}
-              >
-                Here you can find your future property,can sell your actuale one
-                or rent it with the best prices.
+            <Stack direction="row" sx={{ mt: 4.9, ml: 2 }}>
+              <Box sx={{ paddingInline: 0.5 }}>
+                <img src={Facebook} width={30} height={30} />
               </Box>
-            ) : (
-              <Box
-                sx={{
-                  textAlign: "left",
-                  paddingInline: 5,
-                  pt: 1,
-                  fontSize: 13,
-                  color: "black",
-                }}
-              >
-                tronicsd asdsdsad asdsadsa dsadsaadsvdv sd sdfdsa dsadsad
+              <Box sx={{ paddingInline: 0.5 }}>
+                <img src={Insta} width={34} height={34} />
               </Box>
-            )}
+              <Box sx={{ pt: 0.2, paddingInline: 0.5 }}>
+                <img src={Twitter} width={30} height={30} />
+              </Box>
+              <Box sx={{ pt: 0.4, paddingInline: 0.5 }}>
+                <img src={Linkedin} width={30} height={30} />
+              </Box>
+            </Stack>
           </Stack>
         </Grid>
-        <Grid item md={bigScreen ? 3 : 5} xs={12} sx={{ pt: 4 }}>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1}
-          >
-            <Typography
-              sx={{
-                fontSize: bigScreen ? 21 : 18,
-                fontWeight: "bold",
-                color: "black",
-                fontFamily: "monospace",
-                fontStyle: "italic",
-                textShadow: "2px 2px #659469",
-              }}
-            >
-              Contact
-            </Typography>
-            <Box
-              sx={{
-                textAlign: "left",
-                paddingInline: 12,
-                pt: 1,
-                fontSize: 13,
-                color: "black",
-                fontWeight: "bold",
-              }}
-            >
-              <Box>
-                <LocationOnIcon sx={{ mr: 1 }} />
-                Pallati me shigjeta, Kavaja Street, Tirana
-              </Box>
-              <Box sx={{ pt: 1 }}>
-                <MailIcon sx={{ mr: 1 }} />
-                Klajdi.tolis08@gmail.com
-              </Box>
-              <Box sx={{ pt: 1 }}>
-                <LocalPhoneIcon sx={{ mr: 1 }} />
-                +355 693350203
-              </Box>
-              <Box sx={{ pt: 1 }}>
-                <InfoIcon sx={{ mr: 1 }} />
-                Realestate@info.com
-              </Box>
-            </Box>
-          </Stack>
+        <Grid item md={12}>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <img
+              src={FooterBuidingsRemoveBG}
+              alt="footer"
+              width="80%"
+              height="350"
+            />
+          </Box>
         </Grid>
-        <Grid item md={3} sx={{ pt: 6, display: { xs: "none", md: "block" } }}>
-          <Typography
-            sx={{
-              fontSize: bigScreen ? 21 : 18,
-              fontWeight: "bold",
-              color: "Black",
-              fontFamily: "monospace",
-              fontStyle: "italic",
-              pb: 3,
-              textShadow: "2px 2px #8d7ea3",
-            }}
-          >
-            Follow us
-          </Typography>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
-          >
-            {/* <Box sx={{ textAlign: "center", paddingInline: 10, fontSize: 13 }}> */}
-            <Box>
-              <img src={Facebook} width={30} height={30} />
-            </Box>
-            <Box sx={{ pt: 0.5 }}>
-              <img src={Insta} width={30} height={30} />
-            </Box>
-            <Box sx={{ pt: 0.5 }}>
-              <img src={Twitter} width={30} height={30} />
-            </Box>
-            <Box sx={{ pt: 0.5 }}>
-              <img src={Linkedin} width={30} height={30} />
-            </Box>
-            {/* </Box> */}
-          </Stack>
-        </Grid>
-        <Grid item md={1.5}></Grid>
       </Grid>
     </Box>
   );

@@ -60,7 +60,7 @@ const Loan = () => {
                 borderRadius: 3,
                 mt: 2,
                 boxShadow: 5,
-                bgcolor: "#5a6360",
+                bgcolor: "#6A9190",
                 color: "white",
                 fontFamily: "monospace",
                 fontWeight: "bold",

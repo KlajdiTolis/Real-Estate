@@ -26,7 +26,7 @@ import Slider from "./components/SlickSlider/SlickSlider";
 //import Image
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
 import HomeBg from "../../assets/real-estate2.jpg";
-import HomeBackGround from "../../assets/realEstatee.jpg"
+import HomeBackGround from "../../assets/realEstatee.jpg";
 import BgLogin from "../../assets/whitebg2.jpg";
 
 interface TabPanelProps {
@@ -76,13 +76,12 @@ const Home = () => {
           backgroundSize: "cover",
           backgroundImage: `url(${HomeBackGround})`,
           height: bigScreen ? 470 : 280,
-          // borderBottomLeftRadius: bigScreen ? "50% 75%" : "",
-          // borderBottomRightRadius: bigScreen ? "50% 75%" : "",
+          borderBottomLeftRadius: bigScreen ? "40% 35%" : "",
+          borderBottomRightRadius: bigScreen ? "40% 35%" : "",
           // backgroundColor: "rgba(135, 161, 148, 0.7)",
           boxShadow: 20,
         }}
       >
-
         <Container>
           <Typography
             component="h1"
