@@ -40,6 +40,10 @@ interface Props {
   onMapLoad: any;
   propType: any;
   changePropType: any;
+  changeStartTime: any;
+  changeEndTime: any;
+  startPrice: any;
+  endPrice: any;
 }
 
 const center = {
@@ -54,11 +58,15 @@ const Map: FC<Props> = ({
   onMapLoad,
   propType,
   changePropType,
+  changeEndTime,
+  changeStartTime,
+  startPrice,
+  endPrice,
 }) => {
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
   const [activeMarker, setActiveMarker] = useState<any>(null);
   const [infoWindow, setInfoWindow] = useState(null);
-  const [porpertyData, setPorpertyData] = useState<any>([]);
+  const [propertyData, setPropertyData] = useState<any>([]);
   // const [type, setType] = useState<any>("");
 
   const { isLoaded } = useLoadScript({
@@ -71,15 +79,26 @@ const Map: FC<Props> = ({
   };
 
   const fetchData = async () => {
-    const data = await query(
-      collection(db, "home"),
-      where("type", "==", `${propStatus}`),
-      where("property_type", "==", `${propType}`)
+    let data = query(collection(db, "home"));
 
-      // orderBy("price")
-    );
+    if (propStatus) {
+      data = query(data, where("type", "==", propStatus));
+    }
+
+    if (propType) {
+      data = query(data, where("property_type", "==", propType));
+    }
+
+    if (Number(startPrice)) {
+      data = query(data, where("price", ">=", Number(startPrice)));
+    }
+
+    if (Number(endPrice)) {
+      data = query(data, where("price", "<=", Number(endPrice)));
+    }
+
     const doc = await getDocs(data);
-    setPorpertyData(
+    setPropertyData(
       doc.docs.map((docc: any) => ({
         ...docc.data(),
         id: docc.id,
@@ -87,11 +106,11 @@ const Map: FC<Props> = ({
     );
   };
 
-  console.log(porpertyData, "porpertyDataporpertyDataporpertyData");
+  console.log(propertyData, "porpertyDataporpertyDataporpertyData");
 
   useEffect(() => {
     fetchData();
-  }, [propStatus, propType]);
+  }, [propStatus, propType, startPrice, endPrice]);
 
   const findCoordinatesOnClick = (event: any) => {
     let lat = event.latLng.lat(),
@@ -135,7 +154,7 @@ const Map: FC<Props> = ({
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
             >
-              {porpertyData.map((pos: any, index: any) => (
+              {propertyData.map((pos: any, index: any) => (
                 <MarkerF
                   key={pos.id}
                   label={`${pos.price}k`}

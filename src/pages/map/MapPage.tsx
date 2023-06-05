@@ -23,8 +23,10 @@ type LatLngLiteral = google.maps.LatLngLiteral;
 type PanToHandler = (coords: LatLngLiteral) => void;
 
 const MapPage = () => {
-  const [propStatus, setPropStatus] = useState<string>("Buy");
+  const [propStatus, setPropStatus] = useState<string>("");
   const [propType, setPropType] = useState<string>("");
+  const [startPrice, setStartPrice] = useState<number>();
+  const [endPrice, setEndPrice] = useState<number>();
   // const [propType, setPropType] = useState<string>("Buy");
 
   const mapRef = useRef<google.maps.Map>();
@@ -45,6 +47,14 @@ const MapPage = () => {
   };
   const changePropType = (data: any) => {
     setPropType(data);
+  };
+
+   const changeStartTime = (data: any) => {
+    setStartPrice(data);
+  };
+
+  const changeEndTime = (data: any) => {
+    setEndPrice(data);
   };
 
   const bigScreen = useMediaQuery({
@@ -91,6 +101,10 @@ const MapPage = () => {
             propStatus={propStatus}
             propType={propType}
             changePropType={changePropType}
+            changeStartTime={changeStartTime}
+            changeEndTime={changeEndTime}
+            endPrice={endPrice}
+            startPrice={startPrice}
           />
         </Grid>
         <Grid
@@ -114,6 +128,10 @@ const MapPage = () => {
             onMapLoad={onMapLoad}
             propType={propType}
             changePropType={changePropType}
+            changeStartTime={changeStartTime}
+            changeEndTime={changeEndTime}
+            endPrice={endPrice}
+            startPrice={startPrice}
           />
         </Grid>
         <Grid
