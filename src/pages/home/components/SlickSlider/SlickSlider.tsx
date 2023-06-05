@@ -16,7 +16,7 @@ const MySlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     // autoplay: true,
     speed: 500,
