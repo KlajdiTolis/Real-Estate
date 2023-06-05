@@ -67,7 +67,7 @@ const Loan = () => {
                 textShadow: "3px 2px #000000",
               }}
             >
-              Contact drejtorin
+              Contact Us
             </Button>
           </Grid>
         </Grid>

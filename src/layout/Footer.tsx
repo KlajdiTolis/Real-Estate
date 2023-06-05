@@ -9,6 +9,7 @@ import Insta from "../assets/socialMedia/instagram.png";
 import Twitter from "../assets/socialMedia/twitter.png";
 import Linkedin from "../assets/socialMedia/linkedin.png";
 import RealEstateSketch from "../assets/footer/realEstateSketch.png";
+import FooterBuidingsRemoveBG from "../assets/footer/footer-removebg.png"
 
 //logo
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -28,19 +29,18 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        position: "relative",
-        left: 0,
-        bottom: 0,
         width: "100%",
-        // backgroundImage: "linear-gradient(to right, #988da8 , #87a194)",
-        bgcolor:"#87a194",
+        backgroundImage: `url(${FooterBuidingsRemoveBG})`,
+        backgroundRepeat: "repeat",
+        backgroundSize: "cover",
         color: "white",
         textAlign: "center",
         height: bigScreen && minHeight ? "30vh" : "35vh",
-        backgroundRepeat: "no-repeat",
+        // backgroundRepeat: "no-repeat",
         // backgroundSize: "cover",
         borderTopLeftRadius: bigScreen ? "50% 40%" : "",
         borderTopRightRadius: bigScreen ? "50% 40%" : "",
+
       }}
     >
       <Grid container>

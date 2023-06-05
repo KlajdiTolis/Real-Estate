@@ -10,6 +10,11 @@ import Loan1 from "../../assets/loan/lowInteres.jpg"
 import Loan2 from "../../assets/loan/supportLoan.jpg"
 import Loan3 from "../../assets/loan/longTerm.jpg"
 
+// import Loan1 from "../../assets/loan/easyLoan.jpg"
+// import Loan2 from "../../assets/loan/loan.jpg"
+// import Loan3 from "../../assets/loan/lowInteress (1).jpg"
+
+
 function UncontrolledExample() {
   //     const isXSmall = useMediaQuery((theme: Theme) =>
   //     theme.breakpoints.down('sm')
@@ -34,6 +39,7 @@ function UncontrolledExample() {
           src={Loan2}
           alt="Second slide"
           height={400}
+          width={800}
         />
         <Carousel.Caption>
           <h5>Second slide label</h5>
