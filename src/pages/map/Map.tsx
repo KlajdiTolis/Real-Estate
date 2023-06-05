@@ -36,8 +36,14 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 interface Props {
   redirectTo: any;
   changeOptionInput: any;
-  tagName: any;
+  propStatus: any;
   onMapLoad: any;
+  propType: any;
+  changePropType: any;
+  changeStartTime: any;
+  changeEndTime: any;
+  startPrice: any;
+  endPrice: any;
 }
 
 const center = {
@@ -48,13 +54,20 @@ const center = {
 const Map: FC<Props> = ({
   redirectTo,
   changeOptionInput,
-  tagName,
+  propStatus,
   onMapLoad,
+  propType,
+  changePropType,
+  changeEndTime,
+  changeStartTime,
+  startPrice,
+  endPrice,
 }) => {
   const [map, setMap] = useState(/** @type google.maps.Map */ null);
   const [activeMarker, setActiveMarker] = useState<any>(null);
   const [infoWindow, setInfoWindow] = useState(null);
-  const [porpertyData, setPorpertyData] = useState<any>([]);
+  const [propertyData, setPropertyData] = useState<any>([]);
+  // const [type, setType] = useState<any>("");
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${process.env.REACT_APP_MAP_API_KEY}`,
@@ -65,12 +78,27 @@ const Map: FC<Props> = ({
     setActiveMarker(marker);
   };
 
-  console.log(activeMarker, "activeMarkeractiveMarkeractiveMarker");
-
   const fetchData = async () => {
-    const data = query(collection(db, "home"), orderBy("price"));
+    let data = query(collection(db, "home"));
+
+    if (propStatus) {
+      data = query(data, where("type", "==", propStatus));
+    }
+
+    if (propType) {
+      data = query(data, where("property_type", "==", propType));
+    }
+
+    if (Number(startPrice)) {
+      data = query(data, where("price", ">=", Number(startPrice)));
+    }
+
+    if (Number(endPrice)) {
+      data = query(data, where("price", "<=", Number(endPrice)));
+    }
+
     const doc = await getDocs(data);
-    setPorpertyData(
+    setPropertyData(
       doc.docs.map((docc: any) => ({
         ...docc.data(),
         id: docc.id,
@@ -78,9 +106,11 @@ const Map: FC<Props> = ({
     );
   };
 
+  console.log(propertyData, "porpertyDataporpertyDataporpertyData");
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [propStatus, propType, startPrice, endPrice]);
 
   const findCoordinatesOnClick = (event: any) => {
     let lat = event.latLng.lat(),
@@ -100,6 +130,9 @@ const Map: FC<Props> = ({
   return (
     <Box sx={{ display: "flex", height: "90vh" }}>
       <Grid container>
+        {/* <Grid item xs={12} md={12}>
+          <Button onClick={() => setType("Buy")}>Click</Button>
+        </Grid> */}
         <Grid item xs={12} md={12}>
           <Box sx={{ width: "100%", height: "80vh" }}>
             {/* <button onClick={() => (map as any).panTo(selectedMarker)}>GOO</button> */}
@@ -121,7 +154,7 @@ const Map: FC<Props> = ({
               // onLoad={(map: any) => setMap(map)}
               onLoad={onMapLoad}
             >
-              {porpertyData.map((pos: any, index: any) => (
+              {propertyData.map((pos: any, index: any) => (
                 <MarkerF
                   key={pos.id}
                   label={`${pos.price}k`}
