@@ -60,14 +60,14 @@ const Loan = () => {
                 borderRadius: 3,
                 mt: 2,
                 boxShadow: 5,
-                bgcolor: "#5a6360",
+                bgcolor: "#6A9190",
                 color: "white",
                 fontFamily: "monospace",
                 fontWeight: "bold",
                 textShadow: "3px 2px #000000",
               }}
             >
-              Contact drejtorin
+              Contact Us
             </Button>
           </Grid>
         </Grid>

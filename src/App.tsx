@@ -48,6 +48,10 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="registration" element={<SignUp />} />
         <Route path="/" element={<Dashboard />} />
+        <Route path="buy" element={<Buy />} />
+        <Route path="sell" element={<Sell />} />
+        <Route path="rent" element={<Rent />} />
+        <Route path="loan" element={<Rent />} />
 
         {user && (
           <>

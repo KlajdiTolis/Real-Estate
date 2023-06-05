@@ -26,6 +26,7 @@ import Slider from "./components/SlickSlider/SlickSlider";
 //import Image
 import BGremoveLogo from "../../assets/buildings-removebg-preview.png";
 import HomeBg from "../../assets/real-estate2.jpg";
+import HomeBackGround from "../../assets/realEstatee.jpg";
 import BgLogin from "../../assets/whitebg2.jpg";
 
 interface TabPanelProps {
@@ -71,25 +72,17 @@ const Home = () => {
     >
       <Box
         sx={{
-          // backgroundColor: "#87a194",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          // backgroundImage: `url(${HomeBg})`,
-          height: bigScreen ? 390 : 280,
-          borderBottomLeftRadius: bigScreen ? "50% 75%" : "",
-          borderBottomRightRadius: bigScreen ? "50% 75%" : "",
-          backgroundColor: "rgba(135, 161, 148, 0.7)",
-          boxShadow: 10,
+          backgroundImage: `url(${HomeBackGround})`,
+          height: bigScreen ? 470 : 280,
+          borderBottomLeftRadius: bigScreen ? "40% 35%" : "",
+          borderBottomRightRadius: bigScreen ? "40% 35%" : "",
+          // backgroundColor: "rgba(135, 161, 148, 0.7)",
+          boxShadow: 20,
         }}
       >
         <Container>
-          {/* <Box sx={{ textAlign: "center" }}>
-            <img
-              src={BGremoveLogo}
-              width={bigScreen ? 120 : 100}
-              height={bigScreen ? 100 : 80}
-            />
-          </Box> */}
           <Typography
             component="h1"
             variant="h3"
@@ -98,28 +91,24 @@ const Home = () => {
             gutterBottom
             sx={{
               fontFamily: "monospace",
-              textShadow: "3px 3px #000000",
+              textShadow: "4px 2px #000000",
               color: "white",
               pb: 1,
               pt: 8,
               fontSize: bigScreen ? 40 : 35,
             }}
           >
-            Find Your Dream House
+            Find Your Dream Property
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "center", pt: 3 }}>
             <Filters />
           </Box>
-          {/* <Box sx={{ display: "flex", justifyContent: "center", pt: 10 }}>
-            <Slider />
-          </Box> */}
         </Container>
       </Box>
       <Grid
         container
         sx={{
           pt: 6,
-          // bgcolor: "red",
         }}
       >
         {/* <Grid
