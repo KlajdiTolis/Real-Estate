@@ -11,6 +11,7 @@ import {
   MenuItem,
   Stack,
   Popper,
+  Typography,
 } from "@mui/material";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -28,13 +29,19 @@ import "@reach/combobox/styles.css";
 interface Props {
   panTo: any;
   changeOptionInput: any;
-  tagName: any;
+  propStatus: any;
+  propType: any;
+  changePropType: any;
+  changeStartTime: any;
+  changeEndTime: any;
+  startPrice: any;
+  endPrice: any;
 }
 
 const options = [
   {
     id: 0,
-    name: "All",
+    name: "Sell",
   },
   {
     id: 1,
@@ -134,7 +141,7 @@ const prices = [
 const property = [
   {
     id: 0,
-    name: "Home",
+    name: "House",
   },
   {
     id: 1,
@@ -149,7 +156,13 @@ const property = [
 const PlacesAutocomplete: FC<Props> = ({
   panTo,
   changeOptionInput,
-  tagName,
+  propStatus,
+  propType,
+  changePropType,
+  changeEndTime,
+  changeStartTime,
+  startPrice,
+  endPrice,
 }) => {
   const [optionVal, setOptionVal] = useState<string>("");
 
@@ -160,6 +173,14 @@ const PlacesAutocomplete: FC<Props> = ({
     suggestions: { status, data },
     clearSuggestions,
   } = usePlacesAutocomplete();
+
+  // const handleChangeStartTime = (e: any) => {
+  //   setStartPrice(e.target.value);
+  // };
+
+  // const handleChangeEndTime = (e: any) => {
+  //   setEndPrice(e.target.value);
+  // };
 
   return (
     <Grid
@@ -235,22 +256,15 @@ const PlacesAutocomplete: FC<Props> = ({
             disablePortal
             id="combo-box-demo"
             options={options as any}
-            disableClearable={true}
+            // disableClearable={true}
             onChange={(event: any, value: any) => {
               setOptionVal(value.name);
-              changeOptionInput(value.name.toLowerCase());
+              changeOptionInput(value.name);
             }}
             getOptionLabel={(option: any) => option["name"]}
             sx={{
               width: 180,
-              // "& + .MuiAutocomplete-popper .MuiAutocomplete-option": {
-              //   backgroundColor: "red",
-              //   zIndex: 10,
-              // },
             }}
-            // PopoverProps={{
-            //   style: { zIndex: 5 },
-            // }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -264,42 +278,18 @@ const PlacesAutocomplete: FC<Props> = ({
           />
         </Box>
       </Grid>
-      <Grid
-        item
-        md={3}
-        sx={{ display: "flex", justifyContent: "center", pb: 2 }}
-      >
-        <FormControl variant="standard">
-          <InputLabel id="demo-simple-select-label">Price</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={optionVal}
-            label="Price"
-            size="small"
-            sx={{ minWidth: 180 }}
-            onChange={(e: any) => {
-              setOptionVal(e.target.value);
-            }}
-          >
-            {/* {prices
-              .filter((price) => price.type.includes(`${tagName}`))
-              .map((prices: any) => (
-                <MenuItem key={prices.rent.id} value={prices.rent.price}>
-                  {prices.rent.price}
-                </MenuItem>
-              ))} */}
-          </Select>
-        </FormControl>
-      </Grid>
-      <Grid item md={3}>
+      <Grid item md={3} sx={{ display: "flex", justifyContent: "left", pb: 2 }}>
         <Box sx={{ pl: 6 }}>
           <Autocomplete
             disablePortal
             id="combo-box-demo"
+            // disableCloseOnSelect={true}
             options={property as any}
-            disableClearable={true}
+            // disableClearable={true}
             getOptionLabel={(option: any) => option["name"]}
+            onChange={(event: any, value: any) => {
+              changePropType(value.name);
+            }}
             sx={{
               width: 180,
             }}
@@ -313,6 +303,48 @@ const PlacesAutocomplete: FC<Props> = ({
             )}
           />
         </Box>
+      </Grid>
+      <Grid item md={3}>
+        <FormControl variant="standard">
+          <InputLabel id="demo-simple-select-label">Price</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={optionVal}
+            label="Price"
+            size="small"
+            sx={{ minWidth: 180 }}
+            onChange={(e: any) => {
+              setOptionVal(e.target.value);
+            }}
+          >
+            <Typography sx={{ pl: 3.2, pt: 2, fontWeight: "bold" }}>
+              Enter Price
+            </Typography>
+            <Stack direction="row" spacing={2}>
+              <Box sx={{ pb: 1, paddingInline: 2 }}>
+                <input
+                  type="number"
+                  placeholder="Enter Start Pirce"
+                  style={{ margin: 10, width: 150, padding: 6 }}
+                  onChange={(e) => {
+                    changeStartTime(e.target.value);
+                  }}
+                  min="0"
+                />
+                <input
+                  type="number"
+                  placeholder="Enter End Pirce"
+                  style={{ margin: 10, width: 150, padding: 6 }}
+                  onChange={(e) => {
+                    changeEndTime(e.target.value);
+                  }}
+                  min="0"
+                />
+              </Box>
+            </Stack>
+          </Select>
+        </FormControl>
       </Grid>
     </Grid>
   );
