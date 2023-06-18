@@ -64,21 +64,22 @@ const Home = () => {
   console.log(optionVal);
   return (
     <Box
-      sx={{
-        backgroundImage: `url(${BgLogin})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
+      sx={
+        {
+          // backgroundImage: `url(${BgLogin})`,
+          // backgroundRepeat: "no-repeat",
+          // backgroundSize: "cover",
+        }
+      }
     >
       <Box
         sx={{
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundImage: `url(${HomeBackGround})`,
-          height: bigScreen ? 470 : 280,
-          borderBottomLeftRadius: bigScreen ? "40% 35%" : "",
+          height: bigScreen ? 400 : 280,
+          // borderBottomLeftRadius: bigScreen ? "40% 35%" : "",
           borderBottomRightRadius: bigScreen ? "40% 35%" : "",
-          // backgroundColor: "rgba(135, 161, 148, 0.7)",
           boxShadow: 20,
         }}
       >

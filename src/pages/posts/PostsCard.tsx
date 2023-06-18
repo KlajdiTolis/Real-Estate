@@ -23,6 +23,8 @@ import {
   limit,
   where,
   startAfter,
+  updateDoc,
+  doc,
 } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -30,6 +32,10 @@ import VerticalTabs from "../home/Home";
 import ViewDialog from "./ViewPost";
 import EditPost from "./EditPost";
 import Pagination from "../../layout/Pagination";
+
+//icon
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined"; //empty
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined"; //filled
 
 const theme = createTheme();
 
@@ -39,6 +45,7 @@ const PostsCard = () => {
   const [porpertyData, setPorpertyData] = useState<any>([]);
   const [user, error, isloading] = useAuthState(auth);
   const [userEmail, setUserEmail] = useState("");
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -69,13 +76,15 @@ const PostsCard = () => {
   useEffect(() => {
     fetchData();
     fetchAdminUsers();
-  }, []);
+  }, [porpertyData]);
 
-  // const indexOfLastPost = currentPage * postsPerPage;
-  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  // const currentPosts = cards.slice(indexOfFirstPost, indexOfLastPost);
+  const FavButton = async (data: any) => {
+    setIsFavorite(!isFavorite);
 
-  // const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
+    await updateDoc(doc(db, "home", `${data.id}`), {
+      isFavorite: !isFavorite,
+    });
+  };
 
   return (
     <Box sx={{ maxHeight: "80vh", overflowY: "scroll" }}>
@@ -95,6 +104,7 @@ const PostsCard = () => {
             <Typography sx={{ fontSize: 22, pb: 1 }}>
               Property Listing
             </Typography>
+            <Button sx={{ fontSize: 12 }}>Saved Property</Button>
           </Stack>
           <Grid container spacing={1}>
             {porpertyData &&
@@ -124,9 +134,24 @@ const PostsCard = () => {
                         height={170}
                       />
                       <CardContent sx={{ flexGrow: 1 }}>
+                        <Button
+                          sx={{
+                            display: "flex",
+                            justifyContent: "right",
+                            mt: -6,
+                            width: "100%",
+                          }}
+                          onClick={() => FavButton(data)}
+                        >
+                          {porpertyData.isFavorite ? (
+                            <FavoriteOutlinedIcon />
+                          ) : (
+                            <FavoriteBorderOutlinedIcon />
+                          )}
+                        </Button>
                         <Typography
                           gutterBottom
-                          sx={{ fontSize: 14, fontWeight: "bold" }}
+                          sx={{ fontSize: 14, fontWeight: "bold", pt: 2 }}
                         >
                           {data?.porperty_name}
                         </Typography>
