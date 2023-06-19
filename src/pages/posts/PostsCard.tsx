@@ -11,6 +11,7 @@ import {
   Typography,
   Container,
   CardActionArea,
+  IconButton,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -60,11 +61,10 @@ const PostsCard = () => {
     const data = query(
       collection(db, "home"),
       orderBy("price"),
-      startAfter(3)
-      // limit(8)
+      startAfter(3),
+      limit(2)
     );
     const doc = await getDocs(data);
-    // console.log(lastVisible,"lastVisible");
     setPorpertyData(
       doc.docs.map((docc: any) => ({
         ...docc.data(),
@@ -76,7 +76,7 @@ const PostsCard = () => {
   useEffect(() => {
     fetchData();
     fetchAdminUsers();
-  }, [porpertyData]);
+  }, [isFavorite]);
 
   const FavButton = async (data: any) => {
     setIsFavorite(!isFavorite);
@@ -134,24 +134,26 @@ const PostsCard = () => {
                         height={170}
                       />
                       <CardContent sx={{ flexGrow: 1 }}>
-                        <Button
-                          sx={{
-                            display: "flex",
-                            justifyContent: "right",
-                            mt: -6,
-                            width: "100%",
-                          }}
-                          onClick={() => FavButton(data)}
-                        >
-                          {porpertyData.isFavorite ? (
+                        {data && data.isFavorite ? (
+                          <IconButton
+                            sx={{ mt: -13, color: "white" }}
+                            size="large"
+                            onClick={() => FavButton(data)}
+                          >
                             <FavoriteOutlinedIcon />
-                          ) : (
+                          </IconButton>
+                        ) : (
+                          <IconButton
+                            sx={{ mt: -13, color: "white" }}
+                            size="large"
+                            onClick={() => FavButton(data)}
+                          >
                             <FavoriteBorderOutlinedIcon />
-                          )}
-                        </Button>
+                          </IconButton>
+                        )}
                         <Typography
                           gutterBottom
-                          sx={{ fontSize: 14, fontWeight: "bold", pt: 2 }}
+                          sx={{ fontSize: 14, fontWeight: "bold" }}
                         >
                           {data?.porperty_name}
                         </Typography>

@@ -49,7 +49,7 @@ const MapPage = () => {
     setPropType(data);
   };
 
-   const changeStartTime = (data: any) => {
+  const changeStartTime = (data: any) => {
     setStartPrice(data);
   };
 
@@ -63,9 +63,11 @@ const MapPage = () => {
 
   return (
     <Box
-      sx={{
-        backgroundImage: `url(${BgLogin})`,
-      }}
+      sx={
+        {
+          // backgroundImage: `url(${BgLogin})`,
+        }
+      }
     >
       <Box
         sx={{

@@ -186,7 +186,7 @@ const PlacesAutocomplete: FC<Props> = ({
     <Grid
       container
       sx={{
-        bgcolor: "RGB(243, 245, 230,0.5)",
+        // bgcolor: "rgb(77,135,106,0.5)",
         pt: 1,
         // borderRadius: 3,
         borderBottom: 2,
