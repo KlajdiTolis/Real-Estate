@@ -75,7 +75,7 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundImage: `url(${HomeBackGround})`,
-          height: bigScreen ? 470 : 280,
+          height: bigScreen ? 470 : 360,
           borderBottomLeftRadius: bigScreen ? "40% 35%" : "",
           borderBottomRightRadius: bigScreen ? "40% 35%" : "",
           // backgroundColor: "rgba(135, 161, 148, 0.7)",
